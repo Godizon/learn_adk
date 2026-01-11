@@ -27,7 +27,7 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
     setOutput(null);
 
     try {
-      const response = await fetch('http://localhost:8000/execute', {
+      const response = await fetch('/execute', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),

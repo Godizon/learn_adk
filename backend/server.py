@@ -1,9 +1,11 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 import io
 import contextlib
+import os
 
 app = FastAPI()
 
@@ -37,3 +39,9 @@ async def execute_code(payload: CodePayload):
         
     except Exception as e:
         return {"output": f">> Error: {str(e)}"}
+
+# Serve React App (Production only)
+# This mounts the 'dist' folder (built by Vite) to the root URL
+dist_path = os.path.join(os.path.dirname(__file__), "../dist")
+if os.path.exists(dist_path):
+    app.mount("/", StaticFiles(directory=dist_path, html=True), name="static")

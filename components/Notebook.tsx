@@ -16,7 +16,7 @@ const Notebook: React.FC<NotebookProps> = ({ notebook, onTermClick }) => {
     if (!cell || cell.type !== 'code') return;
 
     try {
-      const response = await fetch('http://localhost:8000/execute', {
+      const response = await fetch('/execute', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: cell.content }),
