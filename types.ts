@@ -2,14 +2,20 @@ export enum ContentType {
   MARKDOWN = 'MARKDOWN',
   CODE_PLAYGROUND = 'CODE_PLAYGROUND',
   NOTEBOOK = 'NOTEBOOK',
-  SPLIT_VIEW = 'SPLIT_VIEW'
+  SPLIT_VIEW = 'SPLIT_VIEW',
+  QUIZ = 'QUIZ'
+}
+
+export interface Hint {
+  text: string;
+  relearnLessonId?: string;
 }
 
 export interface CodeProject {
   id: string;
   initialCode: string;
   solutionCode?: string;
-  hints: string[];
+  hints: Hint[];
   language: 'python' | 'javascript' | 'typescript';
   description?: string;
 }
@@ -28,11 +34,27 @@ export interface NotebookData {
   cells: NotebookCell[];
 }
 
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctOptionIndex: number;
+  explanation?: string;
+  hint?: Hint;
+}
+
+export interface QuizData {
+  id: string;
+  title: string;
+  questions: QuizQuestion[];
+}
+
 export interface LessonContent {
   type: ContentType;
   markdown?: string;
   codeProject?: CodeProject;
   notebook?: NotebookData;
+  quiz?: QuizData;
 }
 
 export interface Lesson {

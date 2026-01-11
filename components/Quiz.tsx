@@ -1,0 +1,119 @@
+import React, { useState } from 'react';
+import { QuizData } from '../types';
+
+interface QuizProps {
+  quiz: QuizData;
+  onNavigate: (lessonId: string) => void;
+}
+
+const Quiz: React.FC<QuizProps> = ({ quiz, onNavigate }) => {
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [revealedHints, setRevealedHints] = useState<Record<string, boolean>>({});
+
+  const handleSelect = (questionId: string, optionIndex: number) => {
+    // If hint is revealed and requires relearning, prevent answering until they navigate away (simulated by UI)
+    setAnswers(prev => ({ ...prev, [questionId]: optionIndex }));
+  };
+
+  const toggleHint = (questionId: string) => {
+    setRevealedHints(prev => ({ ...prev, [questionId]: true }));
+  };
+
+  const handleRelearn = (lessonId: string) => {
+    if (window.confirm("This will take you back to the lesson to review this topic. Continue?")) {
+        onNavigate(lessonId);
+    }
+  };
+
+  return (
+    <div className="my-8 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-indigo-50 p-4 border-b border-indigo-100 flex items-center gap-3">
+        <div className="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
+            <i className="fa-solid fa-list-check text-xl"></i>
+        </div>
+        <div>
+            <h3 className="font-bold text-slate-800 text-lg">{quiz.title}</h3>
+            <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Knowledge Check</p>
+        </div>
+      </div>
+
+      <div className="p-6 space-y-8">
+        {quiz.questions.map((q, idx) => {
+          const isAnswered = answers[q.id] !== undefined;
+          const isCorrect = isAnswered && answers[q.id] === q.correctOptionIndex;
+          const showHint = revealedHints[q.id];
+
+          return (
+            <div key={q.id} className="animate-fadeIn">
+              <div className="flex gap-3 mb-3">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 text-slate-500 text-xs font-bold flex items-center justify-center mt-0.5">
+                    {idx + 1}
+                </span>
+                <h4 className="text-slate-800 font-medium text-base">{q.question}</h4>
+              </div>
+
+              <div className="ml-9 space-y-2">
+                {q.options.map((opt, optIdx) => (
+                  <button
+                    key={optIdx}
+                    onClick={() => handleSelect(q.id, optIdx)}
+                    disabled={showHint && q.hint?.relearnLessonId ? true : false}
+                    className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all ${
+                      answers[q.id] === optIdx
+                        ? isCorrect 
+                            ? 'bg-green-50 border-green-200 text-green-800 ring-1 ring-green-500' 
+                            : 'bg-red-50 border-red-200 text-red-800 ring-1 ring-red-500'
+                        : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-600'
+                    } ${showHint && q.hint?.relearnLessonId ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                    <div className="flex justify-between items-center">
+                        <span>{opt}</span>
+                        {answers[q.id] === optIdx && (
+                            <i className={`fa-solid ${isCorrect ? 'fa-check text-green-600' : 'fa-xmark text-red-600'}`}></i>
+                        )}
+                    </div>
+                  </button>
+                ))}
+
+                {/* Hint / Explanation Section */}
+                <div className="mt-4 flex items-start gap-3">
+                    {!isCorrect && !showHint && q.hint && (
+                        <button 
+                            onClick={() => toggleHint(q.id)}
+                            className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1 mt-2"
+                        >
+                            <i className="fa-solid fa-key"></i> Unlock Hint
+                        </button>
+                    )}
+
+                    {showHint && q.hint && (
+                        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded text-sm text-yellow-900 w-full">
+                            <p className="font-bold mb-1"><i className="fa-solid fa-lightbulb mr-1"></i> Hint:</p>
+                            <p className="mb-2">{q.hint.text}</p>
+                            {q.hint.relearnLessonId && (
+                                <button 
+                                    onClick={() => handleRelearn(q.hint!.relearnLessonId!)}
+                                    className="bg-yellow-200 hover:bg-yellow-300 text-yellow-900 text-xs px-3 py-1.5 rounded font-bold transition-colors flex items-center gap-2"
+                                >
+                                    <i className="fa-solid fa-arrow-left"></i> Relearn Topic
+                                </button>
+                            )}
+                        </div>
+                    )}
+
+                    {isCorrect && q.explanation && (
+                        <div className="bg-green-50 border-l-4 border-green-400 p-3 rounded text-sm text-green-800 w-full animate-fadeIn">
+                            <span className="font-bold">Correct!</span> {q.explanation}
+                        </div>
+                    )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Quiz;

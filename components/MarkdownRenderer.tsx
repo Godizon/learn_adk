@@ -27,17 +27,43 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, onTermClic
           );
         }
         
-        // Basic Markdown Rendering Simulation (for bold, headers, code blocks)
-        // In a real app, use react-markdown. Here we do simple replacements for visual structure.
+        // Split by Code Blocks (```lang ... ```) to handle them separately
+        const segments = part.split(/(```[\s\S]*?```)/g);
+
         return (
-          <span key={index} dangerouslySetInnerHTML={{ 
-            __html: part
-              .replace(/^# (.*$)/gm, '<h1 class="text-3xl mb-4 mt-6">$1</h1>')
-              .replace(/^### (.*$)/gm, '<h3 class="text-xl mb-2 mt-4 font-semibold text-slate-700">$1</h3>')
-              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-              .replace(/\n/g, '<br />')
-              .replace(/`([^`]+)`/g, '<code class="font-mono text-sm bg-slate-100 px-1 py-0.5 rounded text-pink-600">$1</code>')
-          }} />
+          <span key={index}>
+            {segments.map((segment, i) => {
+                // Check if this segment is a code block
+                if (segment.startsWith('```')) {
+                    const match = segment.match(/```(\w*)\n([\s\S]*?)```/);
+                    if (match) {
+                        const lang = match[1] || 'text';
+                        const code = match[2];
+                        return (
+                            <div key={i} className="my-6 rounded-lg overflow-hidden bg-[#1e1e1e] text-[#d4d4d4] border border-slate-800 shadow-sm">
+                                <div className="bg-[#252526] px-4 py-2 text-xs font-bold text-slate-400 uppercase border-b border-slate-700 flex items-center gap-2 select-none">
+                                    <span className={`w-2 h-2 rounded-full ${lang === 'python' ? 'bg-blue-500' : lang === 'bash' ? 'bg-green-500' : 'bg-slate-500'}`}></span>
+                                    {lang}
+                                </div>
+                                <pre className="p-4 overflow-x-auto font-mono text-sm leading-relaxed m-0 whitespace-pre">{code}</pre>
+                            </div>
+                        );
+                    }
+                }
+
+                // Regular Markdown Text
+                return (
+                  <span key={i} dangerouslySetInnerHTML={{ 
+                    __html: segment
+                      .replace(/^# (.*$)/gm, '<h1 class="text-3xl mb-4 mt-6">$1</h1>')
+                      .replace(/^### (.*$)/gm, '<h3 class="text-xl mb-2 mt-4 font-semibold text-slate-700">$1</h3>')
+                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                      .replace(/\n/g, '<br />')
+                      .replace(/`([^`]+)`/g, '<code class="font-mono text-sm bg-slate-100 px-1 py-0.5 rounded text-pink-600 border border-slate-200">$1</code>')
+                  }} />
+                );
+            })}
+          </span>
         );
       })}
     </div>

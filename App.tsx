@@ -5,6 +5,7 @@ import MarkdownRenderer from './components/MarkdownRenderer';
 import EncyclopediaPanel from './components/EncyclopediaPanel';
 import CodePlayground from './components/CodePlayground';
 import Notebook from './components/Notebook';
+import Quiz from './components/Quiz';
 
 const App: React.FC = () => {
   // State
@@ -38,6 +39,18 @@ const App: React.FC = () => {
             pythonInternals: 'TODO',
             relatedTerms: []
         });
+    }
+  };
+
+  const handleNavigate = (lessonId: string) => {
+    // Find the phase and week for this lesson
+    for (const phase of syllabusData) {
+        for (const week of phase.weeks) {
+            if (week.lessons.find(l => l.id === lessonId)) {
+                setActiveNav({ phaseId: phase.id, weekId: week.id, lessonId });
+                return;
+            }
+        }
     }
   };
 
@@ -141,12 +154,17 @@ const App: React.FC = () => {
                                 <i className="fa-solid fa-code text-indigo-500"></i>
                                 Interactive Lab: {block.codeProject.id}
                             </h3>
-                            <CodePlayground project={block.codeProject} />
+                            <CodePlayground project={block.codeProject} onNavigate={handleNavigate} />
                         </div>
                     )}
                     {block.type === ContentType.NOTEBOOK && block.notebook && (
                         <div className="mt-6">
                              <Notebook notebook={block.notebook} onTermClick={handleTermClick} />
+                        </div>
+                    )}
+                    {block.type === ContentType.QUIZ && block.quiz && (
+                        <div className="mt-6">
+                             <Quiz quiz={block.quiz} onNavigate={handleNavigate} />
                         </div>
                     )}
                 </div>

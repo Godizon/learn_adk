@@ -3,9 +3,10 @@ import { CodeProject } from '../types';
 
 interface CodePlaygroundProps {
   project: CodeProject;
+  onNavigate: (lessonId: string) => void;
 }
 
-const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
+const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) => {
   const [code, setCode] = useState(project.initialCode);
   const [output, setOutput] = useState<string | null>(null);
   // Hint state: how many hints are currently revealed. 0 means none.
@@ -146,7 +147,20 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
               <div className="space-y-2">
                   {project.hints.slice(0, hintsRevealedCount).map((hint, i) => (
                       <div key={i} className="bg-yellow-50 border-l-4 border-yellow-400 p-3 text-sm text-yellow-900 animate-fadeIn">
-                          <span className="font-bold mr-2">Hint {i + 1}:</span> {hint}
+                          <div className="flex justify-between items-start gap-4">
+                            <div>
+                                <span className="font-bold mr-2">Hint {i + 1}:</span> {hint.text}
+                            </div>
+                            {hint.relearnLessonId && (
+                                <button 
+                                    onClick={() => onNavigate(hint.relearnLessonId!)}
+                                    className="shrink-0 text-xs bg-yellow-200 hover:bg-yellow-300 text-yellow-900 px-2 py-1 rounded font-semibold transition-colors"
+                                    title="Go back to lesson"
+                                >
+                                    <i className="fa-solid fa-rotate-left mr-1"></i> Review
+                                </button>
+                            )}
+                          </div>
                       </div>
                   ))}
               </div>

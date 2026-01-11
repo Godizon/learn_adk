@@ -106,6 +106,33 @@ The **docstring** is CRITICAL: it is passed to the LLM so it knows *when* and *h
       pythonInternals: 'Accessed via `google-cloud-bigquery` library. Agents often generate the SQL string themselves based on the schema.',
       relatedTerms: ['SQL', 'Tool', 'GCP']
   },
+  'hallucination': {
+      id: 'hallucination',
+      term: 'Hallucination',
+      category: 'AI Risks',
+      summary: 'When an LLM generates factually incorrect information confidently.',
+      adkContext: 'Agents use **[[Tool]]**s to prevent hallucination. Instead of guessing the weather, they look it up.',
+      pythonInternals: 'Caused by the probabilistic nature of the model predicting the next token based on training data, not real-time facts.',
+      relatedTerms: ['Grounding', 'Probabilistic']
+  },
+  'grounding': {
+      id: 'grounding',
+      term: 'Grounding',
+      category: 'AI Reliability',
+      summary: 'Anchoring model outputs to verifiable sources of information.',
+      adkContext: 'Connecting an Agent to a database (like **[[BigQuery]]**) or a Search API grounds its responses in reality.',
+      pythonInternals: 'Often implemented by injecting tool outputs back into the prompt context before the model generates the final answer.',
+      relatedTerms: ['Hallucination', 'RAG']
+  },
+  'prompt_engineering': {
+      id: 'prompt_engineering',
+      term: 'Prompt Engineering',
+      category: 'AI Fundamentals',
+      summary: 'The art of crafting inputs (prompts) to guide the LLM to the desired output.',
+      adkContext: 'While Agents use code, the "System Instruction" is still a prompt. Good engineering (like Few-Shot) improves Agent reliability.',
+      pythonInternals: 'Prompts are just strings concatenated before tokenization.',
+      relatedTerms: ['LLM', 'Context Window']
+  },
 
   // --- Python & Environment Deep Dives ---
   'virtual_environment': {
@@ -123,6 +150,15 @@ The **docstring** is CRITICAL: it is passed to the LLM so it knows *when* and *h
 `,
       history: 'Introduced to solve "Dependency Hell" where Project A needs Lib v1.0 and Project B needs Lib v2.0.',
       relatedTerms: ['PATH', 'pip', 'Dependency Hell']
+  },
+  'pip': {
+      id: 'pip',
+      term: 'pip',
+      category: 'Python Ecosystem',
+      summary: 'The package installer for Python.',
+      adkContext: 'You will use `pip install google-cloud-aiplatform` to get the ADK SDKs.',
+      pythonInternals: 'Fetches packages from PyPI (Python Package Index).',
+      relatedTerms: ['Virtual Environment', 'Dependency']
   },
   'environment_variable': {
       id: 'environment_variable',
@@ -292,6 +328,46 @@ Every agent follows a loop, often called the **Reasoning Loop**:
 `
               },
               {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. The Ghost in the Machine: System Instructions
+Before an Agent enters the loop, it needs a persona. This is the **System Instruction**.
+
+*   **User Prompt**: "Book a flight to Paris."
+*   **System Instruction**: "You are a helpful travel agent. Always ask for dates first."
+
+In ADK, we define this in the **[[Class]]** \`__init__\`. It sets the baseline behavior for the **[[Probabilistic]]** engine.
+`
+              },
+              {
+                  type: ContentType.NOTEBOOK,
+                  notebook: {
+                      id: 'nb-persona',
+                      title: 'Deep Dive: Persona Injection',
+                      cells: [
+                          {
+                              id: 'c1',
+                              type: 'markdown',
+                              content: '### Experiment: Changing the System Instruction\nSee how the same user input results in different outputs based on the "System Instruction" (Persona).'
+                          },
+                          {
+                              id: 'c2',
+                              type: 'code',
+                              content: `def simulate_llm(system_instruction, user_input):
+    # This simulates how Gemini reacts to system instructions
+    if "pirate" in system_instruction.lower():
+        return f"Arrr! I be hearin': {user_input}"
+    elif "formal" in system_instruction.lower():
+        return f"Acknowledged. You stated: {user_input}"
+    else:
+        return f"I heard: {user_input}"
+
+print(simulate_llm("You are a pirate", "Hello"))
+print(simulate_llm("You are a formal assistant", "Hello"))`
+                          }
+                      ]
+                  }
+              },
+              {
                   type: ContentType.NOTEBOOK,
                   notebook: {
                       id: 'nb-paradigm',
@@ -357,10 +433,10 @@ print(agent_router("I have a broken screen"))`
 print(perceive_and_decide("What is the weather?"))
 print(perceive_and_decide("Tell me a joke"))`,
                   hints: [
-                    'Use simple `if "text" in user_input:` logic for this simulation.',
-                    'Check for "weather" first.',
-                    'Check for "time" second.',
-                    'The `else` block should return "Action: Chat".'
+                    { text: 'Use simple `if "text" in user_input:` logic for this simulation.', relearnLessonId: 'day-1-2' },
+                    { text: 'Check for "weather" first.', relearnLessonId: 'day-1-2' },
+                    { text: 'Check for "time" second.', relearnLessonId: 'day-1-2' },
+                    { text: 'The `else` block should return "Action: Chat".' }
                   ],
                   solutionCode: `def perceive_and_decide(user_input):
     if "weather" in user_input.lower():
@@ -380,19 +456,31 @@ print(perceive_and_decide("Tell me a joke"))`,
             content: [
               {
                 type: ContentType.MARKDOWN,
-                markdown: `# 1. The Danger of Global Installations
-When you install a library, it goes into a folder on your computer. If Project A needs \`requests==1.0\` and Project B needs \`requests==2.0\`, you have a conflict. This is **Dependency Hell**.
+                markdown: `# 1. The Foundation: Virtual Environments
+Before writing AI code, we must build the laboratory.
 
-**The Solution:** A **[[Virtual_Environment]]**. It is a folder that pretends to be a full computer.
+### The Problem: "It works on my machine"
+Python libraries change often.
+*   Project A needs \`google-cloud-aiplatform==1.0\`
+*   Project B needs \`google-cloud-aiplatform==2.0\`
 
-# 2. The Cloud Identity
-Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data centers. How does Google know you are allowed to use it?
+If you install these globally, they overwrite each other. This is **Dependency Hell**.
 
-1.  **Service Account**: A digital passport for your robot.
-2.  **JSON Key**: The password for that passport.
-3.  **Environment Variable**: The safe place to hide that password.
+### The Solution: The Virtual Environment (venv)
+A **[[Virtual_Environment]]** is a self-contained folder that contains a copy of the Python binary and a standalone \`site-packages\` folder.
 
-We use the **[[Environment_Variable]]** \`GOOGLE_APPLICATION_CREDENTIALS\`.
+\`\`\`text
+my-project/
+├── venv/               <-- The Isolated Lab
+│   ├── bin/            <-- Contains python executable
+│   └── lib/
+│       └── python3.10/
+│           └── site-packages/  <-- Where pip installs go
+├── main.py             <-- Your Code
+└── requirements.txt    <-- The Recipe
+\`\`\`
+
+When you "activate" a venv, you are telling your shell: *"When I type \`python\`, look in \`my-project/venv/bin\` first, not \`/usr/bin\`."*
 `
               },
               {
@@ -400,56 +488,133 @@ We use the **[[Environment_Variable]]** \`GOOGLE_APPLICATION_CREDENTIALS\`.
                 codeProject: {
                   id: 'env-setup-drill',
                   language: 'python',
-                  description: 'Drill: Setup Script. Write a Python script that checks if we are inside a Virtual Environment. Hint: `sys.prefix` != `sys.base_prefix` implies a venv is active.',
+                  description: 'Drill: Verify your environment. Write a script that checks your Python version and ensures you are in a Virtual Environment (sys.prefix != sys.base_prefix).',
                   initialCode: `import sys
+import os
 
-def check_environment():
-    # TODO: Check if sys.prefix is different from sys.base_prefix
-    # Return "Secure Virtual Env" or "Risky Global Env"
-    pass`,
+def verify_setup():
+    print(f"Python Executable: {sys.executable}")
+    
+    # TODO: Check if sys.prefix != sys.base_prefix
+    # If true, return "Secure: Virtual Env Active"
+    # If false, return "Warning: Global Env Detected"
+    pass
+
+print(verify_setup())`,
                   hints: [
-                    'Import `sys` is already done.',
-                    'Compare `sys.prefix` (current python location) with `sys.base_prefix` (original python location).',
-                    'If they are equal, you are NOT in a venv.'
+                    { text: 'Use `sys.prefix` and `sys.base_prefix`.', relearnLessonId: 'day-3-4' },
+                    { text: 'In a venv, `prefix` points to the local folder, `base_prefix` points to the system python.', relearnLessonId: 'day-3-4' },
+                    { text: 'Return the string exactly as requested.' }
                   ],
                   solutionCode: `import sys
 
-def check_environment():
+def verify_setup():
+    print(f"Python Executable: {sys.executable}")
+    
     if sys.prefix != sys.base_prefix:
-        return "Secure Virtual Env"
-    return "Risky Global Env"`
+        return "Secure: Virtual Env Active"
+    return "Warning: Global Env Detected"`
                 }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Dependency Management
+Installing libraries manually (\`pip install X\`) is fine for testing, but bad for production.
+
+### The Recipe: requirements.txt
+This file lists every library your agent needs.
+\`\`\`text
+google-cloud-aiplatform==1.38.1
+pydantic==2.5.3
+python-dotenv==1.0.0
+\`\`\`
+
+> **Best Practice:** Always pin your versions. If you just say \`pydantic\`, a future update might break your code.
+
+To install from a recipe:
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+`
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. The Cloud Identity (Authentication)
+Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data centers. How does Google know you are allowed to use it?
+
+### How do they trust you?
+1.  **Service Account**: A digital passport for your robot.
+2.  **[[ADC]] (Application Default Credentials)**: The magic protocol.
+    *   Run \`gcloud auth application-default login\` in your terminal.
+    *   This creates a JSON file on your hard drive.
+    *   The ADK **[[SDK]]** automatically finds this file.
+
+> **Security Rule:** NEVER commit JSON keys to GitHub. Always use ADC or Environment Variables.
+`
               },
               {
                   type: ContentType.NOTEBOOK,
                   notebook: {
                       id: 'nb-env-secrets',
-                      title: 'Managing Secrets',
+                      title: 'Managing Secrets & Config',
                       cells: [
                           {
                               id: 'c1',
                               type: 'markdown',
-                              content: '### Security Drill\nNever print your API keys. But for this drill, we will simulate loading a key from the environment variables.'
+                              content: '### The `os.environ` Dictionary\nPython accesses environment variables through a dictionary-like object. This is how we read configuration without hardcoding it.'
                           },
                           {
                               id: 'c2',
                               type: 'code',
                               content: `import os
 
-# Simulating a user setting the variable in terminal
-os.environ["MY_SECRET_KEY"] = "xy-123-fake-key"
+# 1. Simulate setting a variable (usually done by the OS or Docker)
+os.environ["PROJECT_ID"] = "my-genai-project-123"
+os.environ["REGION"] = "us-central1"
 
-# Your application code:
-def connect_to_db():
-    key = os.environ.get("MY_SECRET_KEY")
-    if not key:
-        raise ValueError("Key not found!")
-    return f"Connected with {key[:2]}***"
+# 2. Accessing it safely
+def get_config():
+    # .get() returns None if key is missing, preventing crashes
+    project = os.environ.get("PROJECT_ID")
+    
+    # accessing directly [key] crashes if missing - good for required vars
+    try:
+        region = os.environ["REGION"]
+    except KeyError:
+        return "Error: Missing REGION"
+        
+    return f"Configured for {project} in {region}"
 
-print(connect_to_db())`
+print(get_config())`
+                          },
+                          {
+                              id: 'c3',
+                              type: 'markdown',
+                              content: '### Why not hardcode?\nImagine you hardcode `PROJECT_ID = "dev-project"`. When you deploy to Production, you have to change the code. With Env Vars, you just change the environment configuration, not the code.'
                           }
                       ]
                   }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Project Structure
+A professional ADK project follows a standard layout.
+
+\`\`\`text
+my-agent/
+├── .env                # Secrets (GitIgnored!)
+├── .gitignore          # Tells git to ignore venv/ and .env
+├── main.py             # Entry point
+├── requirements.txt    # Dependencies
+├── src/
+│   ├── agent.py        # The Agent Class
+│   └── tools/          # Tool definitions
+│       ├── __init__.py
+│       └── search_tool.py
+\`\`\`
+
+Separating \`agent.py\` from \`tools\` keeps your code clean as the project grows.
+`
               }
             ]
           },
@@ -487,9 +652,9 @@ You will see **[[self]]** everywhere. It represents "This specific robot's memor
         # TODO: Return "I have remembered X messages"
         pass`,
                   hints: [
-                    'In `__init__`, use `self.history = []`.',
-                    'In `chat`, use `self.history.append(message)`.',
-                    'Use `len(self.history)` to get the count.'
+                    { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
+                    { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
+                    { text: 'Use `len(self.history)` to get the count.' }
                   ],
                   solutionCode: `class StatefulAgent:
     def __init__(self):
@@ -519,8 +684,8 @@ class MyBot(Agent):
         # TODO: Initialize the parent "Agent" class with name="BotV1"
         pass`,
                   hints: [
-                    'Use `super().__init__(name="...")`.',
-                    'If you forget this, the agent will crash silently.'
+                    { text: 'Use `super().__init__(name="...")`.', relearnLessonId: 'day-5' },
+                    { text: 'If you forget this, the agent will crash silently.', relearnLessonId: 'day-5' }
                   ],
                   solutionCode: `from adk.core import Agent
 
@@ -538,7 +703,20 @@ class MyBot(Agent):
             content: [
               {
                 type: ContentType.MARKDOWN,
-                markdown: `# Giving the Agent Hands
+                markdown: `# 1. The Hallucination Problem
+LLMs are dream machines. They are **[[Probabilistic]]**. If you ask them "What is the stock price of Google right now?", they will guess (**[[Hallucination]]**) a number because they don't have access to the internet.
+
+### The Fix: Grounding
+**[[Grounding]]** is the process of connecting the model to reality.
+*   **Ungrounded**: "I think the price is $100." (Guess)
+*   **Grounded**: "I used the 'StockTool' and it returned $175.50." (Fact)
+
+We achieve Grounding by giving the Agent **[[Tool]]**s.
+`
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Giving the Agent Hands
 By default, an LLM only knows text. It cannot do math perfectly, and it cannot check the weather.
 We give it **[[Tool]]**s.
 
@@ -599,9 +777,9 @@ print(json.dumps(schema, indent=2))`
 # TODO: Add docstring
 def check_stock...`,
                   hints: [
-                    'Start with `@tool` on the line before `def`.',
-                    'Definition: `def check_stock(product_id: str) -> int:`',
-                    'Docstring: `"""Returns the quantity of product."""` inside the function.'
+                    { text: 'Start with `@tool` on the line before `def`.', relearnLessonId: 'day-6' },
+                    { text: 'Definition: `def check_stock(product_id: str) -> int:`', relearnLessonId: 'day-6' },
+                    { text: 'Docstring: `"""Returns the quantity of product."""` inside the function.', relearnLessonId: 'day-6' }
                   ],
                   solutionCode: `from adk.tools import tool
 
@@ -660,10 +838,10 @@ class MathAgent(Agent):
         # TODO: self.system_instruction = "..."
         pass`,
                   hints: [
-                    'Define the tool first: `@tool def multiply(a: int, b: int) -> int: return a * b`',
-                    'In `__init__`, call `super().__init__(name="MathBot")`',
-                    'Assign `self.tools = [multiply]` (list of functions)',
-                    'Set `self.system_instruction = "You are a math tutor."`'
+                    { text: 'Define the tool first: `@tool def multiply(a: int, b: int) -> int: return a * b`', relearnLessonId: 'day-6' },
+                    { text: 'In `__init__`, call `super().__init__(name="MathBot")`', relearnLessonId: 'day-5' },
+                    { text: 'Assign `self.tools = [multiply]` (list of functions)', relearnLessonId: 'day-6' },
+                    { text: 'Set `self.system_instruction = "You are a math tutor."`' }
                   ],
                   solutionCode: `from adk.core import Agent
 from adk.tools import tool
@@ -678,6 +856,39 @@ class MathAgent(Agent):
         super().__init__(name="MathBot")
         self.tools = [multiply]
         self.system_instruction = "You are a math tutor."`
+                }
+              },
+              {
+                type: ContentType.QUIZ,
+                quiz: {
+                    id: 'quiz-week-1',
+                    title: 'Week 1 Certification Quiz',
+                    questions: [
+                        {
+                            id: 'q1',
+                            question: 'Which component is responsible for making an LLM behave deterministically?',
+                            options: ['The Prompt', 'The Tool', 'The Agent Framework', 'The Temperature'],
+                            correctOptionIndex: 2,
+                            explanation: 'The Agent Framework (ADK) wraps the probabilistic LLM with deterministic code (Tools, Memory) to ensure reliability.',
+                            hint: { text: 'Think about the "Chassis" vs the "Engine".', relearnLessonId: 'day-1-2' }
+                        },
+                        {
+                            id: 'q2',
+                            question: 'Why must we use Type Hints in Tool definitions?',
+                            options: ['To make Python faster', 'To generate JSON Schema for the LLM', 'To prevent runtime errors', 'It is optional'],
+                            correctOptionIndex: 1,
+                            explanation: 'ADK introspects the type hints to build the JSON Schema that tells the LLM how to call the function.',
+                            hint: { text: 'The LLM needs to know if it should send a string or a number.', relearnLessonId: 'day-6' }
+                        },
+                        {
+                            id: 'q3',
+                            question: 'What is the correct way to initialize a subclass of Agent?',
+                            options: ['def __init__(self): pass', 'super().__init__()', 'Agent.init()', 'self.init()'],
+                            correctOptionIndex: 1,
+                            explanation: 'You must call super().__init__() to ensure the base class sets up telemetry and memory.',
+                            hint: { text: 'We need to call the parent class initializer.', relearnLessonId: 'day-5' }
+                        }
+                    ]
                 }
               }
             ]
