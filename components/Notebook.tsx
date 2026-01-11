@@ -11,17 +11,22 @@ const Notebook: React.FC<NotebookProps> = ({ notebook, onTermClick }) => {
   const [cells, setCells] = useState<NotebookCell[]>(notebook.cells);
   const [activeCellId, setActiveCellId] = useState<string | null>(null);
 
-  const handleRunCell = (cellId: string) => {
-    // Simulate execution
-    setCells(prev => prev.map(cell => {
-      if (cell.id === cellId && cell.type === 'code') {
-        return {
-          ...cell,
-          output: `[${new Date().toLocaleTimeString()}] Executed successfully.\nResult: <Mock Object at 0x7f...>`,
-        };
-      }
-      return cell;
-    }));
+  const handleRunCell = async (cellId: string) => {
+    const cell = cells.find(c => c.id === cellId);
+    if (!cell || cell.type !== 'code') return;
+
+    try {
+      const response = await fetch('http://localhost:8000/execute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: cell.content }),
+      });
+      const data = await response.json();
+
+      setCells(prev => prev.map(c => c.id === cellId ? { ...c, output: data.output } : c));
+    } catch (error) {
+      setCells(prev => prev.map(c => c.id === cellId ? { ...c, output: ">> Error: Backend unreachable." } : c));
+    }
   };
 
   const handleCodeChange = (cellId: string, newCode: string) => {
@@ -31,6 +36,14 @@ const Notebook: React.FC<NotebookProps> = ({ notebook, onTermClick }) => {
       }
       return cell;
     }));
+  };
+
+  const handleResetCell = (cellId: string) => {
+    const originalCell = notebook.cells.find(c => c.id === cellId);
+    if (originalCell && originalCell.type === 'code' && window.confirm("Reset this cell to original state?")) {
+        handleCodeChange(cellId, originalCell.content);
+        setCells(prev => prev.map(c => c.id === cellId ? { ...c, output: undefined } : c));
+    }
   };
 
   return (
@@ -77,18 +90,28 @@ const Notebook: React.FC<NotebookProps> = ({ notebook, onTermClick }) => {
                             {/* Code Editor */}
                             <div className="relative">
                                 <textarea 
+                                    rows={Math.max(3, cell.content.split('\n').length)}
                                     value={cell.content}
                                     onChange={(e) => handleCodeChange(cell.id, e.target.value)}
-                                    className="w-full h-auto min-h-[100px] bg-slate-50 p-3 font-mono text-sm text-slate-800 focus:outline-none resize-y"
+                                    className="w-full h-auto min-h-[100px] bg-slate-50 p-3 font-mono text-sm text-slate-800 focus:outline-none resize-none overflow-hidden"
                                     spellCheck={false}
                                 />
-                                <button 
-                                    onClick={(e) => { e.stopPropagation(); handleRunCell(cell.id); }}
-                                    className="absolute top-2 right-2 bg-white hover:bg-green-50 text-green-600 border border-green-200 rounded p-1.5 shadow-sm transition-colors z-10"
-                                    title="Run Cell"
-                                >
-                                    <i className="fa-solid fa-play text-xs"></i>
-                                </button>
+                                <div className="absolute top-2 right-2 flex gap-2 z-10">
+                                    <button 
+                                        onClick={(e) => { e.stopPropagation(); handleResetCell(cell.id); }}
+                                        className="bg-white hover:bg-slate-100 text-slate-500 border border-slate-200 rounded p-1.5 shadow-sm transition-colors"
+                                        title="Reset Cell"
+                                    >
+                                        <i className="fa-solid fa-rotate-left text-xs"></i>
+                                    </button>
+                                    <button 
+                                        onClick={(e) => { e.stopPropagation(); handleRunCell(cell.id); }}
+                                        className="bg-white hover:bg-green-50 text-green-600 border border-green-200 rounded p-1.5 shadow-sm transition-colors"
+                                        title="Run Cell"
+                                    >
+                                        <i className="fa-solid fa-play text-xs"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}

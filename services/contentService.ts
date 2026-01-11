@@ -677,6 +677,6 @@ class MathAgent(Agent):
 
 export const getEncyclopediaEntry = (term: string): EncyclopediaEntry | undefined => {
   // Simple normalization for lookup
-  const key = term.toLowerCase().replace(/_/g, '').replace(/\[|\]/g, '');
+  const key = term.toLowerCase().replace(/ /g, '_').replace(/\[|\]/g, '');
   return encyclopediaData[key];
 };

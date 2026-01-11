@@ -125,7 +125,7 @@ const App: React.FC = () => {
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
-            {currentLesson?.content.map((block, idx) => (
+            {currentLesson?.content?.map((block, idx) => (
                 <div key={idx} className="mb-8 animate-fadeIn">
                     {block.type === ContentType.MARKDOWN && block.markdown && (
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">

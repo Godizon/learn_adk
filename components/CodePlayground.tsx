@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CodeProject } from '../types';
 
 interface CodePlaygroundProps {
@@ -11,19 +11,40 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
   // Hint state: how many hints are currently revealed. 0 means none.
   const [hintsRevealedCount, setHintsRevealedCount] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleRun = () => {
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [code]);
+
+  const handleRun = async () => {
     setIsRunning(true);
-    // Simulate execution time
-    setTimeout(() => {
+    setOutput(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/execute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      const data = await response.json();
+      setOutput(data.output);
+    } catch (error) {
+      setOutput(">> Error: Could not connect to Python backend.\n>> Ensure server is running on port 8000.");
+    } finally {
       setIsRunning(false);
-      // Simple mock output based on code content
-      if (code.includes('super().__init__') || code.includes('BaseAgent')) {
-          setOutput(">> Agent 'GreeterBot' initialized.\n>> System Instruction loaded.\n>> Ready.");
-      } else {
-          setOutput(">> Error: Agent failed to initialize.\n>> AttributeError: 'super' object has no attribute 'init' (Did you forget to call super().__init__?)");
-      }
-    }, 800);
+    }
+  };
+
+  const handleReset = () => {
+    if (window.confirm("Are you sure you want to reset the code? Your changes will be lost.")) {
+      setCode(project.initialCode);
+      setOutput(null);
+      setHintsRevealedCount(0);
+    }
   };
 
   const handleExport = () => {
@@ -54,6 +75,13 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
         </div>
         <div className="flex gap-2">
             <button 
+                onClick={handleReset}
+                className="text-xs font-semibold text-slate-600 hover:text-red-600 px-3 py-1.5 rounded hover:bg-slate-200 transition-colors"
+                title="Reset to initial code"
+            >
+                <i className="fa-solid fa-rotate-left mr-1"></i> Reset
+            </button>
+            <button 
                 onClick={handleExport}
                 className="text-xs font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded hover:bg-slate-200 transition-colors"
             >
@@ -65,9 +93,10 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
       {/* Editor Area */}
       <div className="relative">
         <textarea
+            ref={textareaRef}
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            className="w-full h-64 bg-[#1e1e1e] text-[#d4d4d4] font-mono p-4 text-sm focus:outline-none resize-none leading-relaxed"
+            className="w-full min-h-[16rem] bg-[#1e1e1e] text-[#d4d4d4] font-mono p-4 text-sm focus:outline-none resize-none leading-relaxed overflow-hidden"
             spellCheck={false}
         />
         <button 
