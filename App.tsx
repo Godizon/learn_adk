@@ -52,6 +52,9 @@ const App: React.FC = () => {
             }
         }
     }
+    
+    // If we get here, the lesson was not found in the syllabus
+    alert("Content will be added soon.");
   };
 
   return (

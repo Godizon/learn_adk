@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CodeProject } from '../types';
+import { syllabusData } from '../services/contentService';
 
 interface CodePlaygroundProps {
   project: CodeProject;
@@ -61,6 +62,19 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
   const showNextHint = () => {
       if (hintsRevealedCount < project.hints.length) {
           setHintsRevealedCount(prev => prev + 1);
+      }
+  };
+
+  const handleRelearn = (lessonId: string) => {
+      const exists = syllabusData.some(p => p.weeks.some(w => w.lessons.some(l => l.id === lessonId)));
+
+      if (!exists) {
+          alert("Content will be added soon.");
+          return;
+      }
+
+      if (window.confirm("Navigate to review this topic? Your current code changes will be lost.")) {
+          onNavigate(lessonId);
       }
   };
 
@@ -153,7 +167,7 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
                             </div>
                             {hint.relearnLessonId && (
                                 <button 
-                                    onClick={() => onNavigate(hint.relearnLessonId!)}
+                                    onClick={() => handleRelearn(hint.relearnLessonId!)}
                                     className="shrink-0 text-xs bg-yellow-200 hover:bg-yellow-300 text-yellow-900 px-2 py-1 rounded font-semibold transition-colors"
                                     title="Go back to lesson"
                                 >

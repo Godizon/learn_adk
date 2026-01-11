@@ -330,7 +330,7 @@ Every agent follows a loop, often called the **Reasoning Loop**:
               {
                 type: ContentType.MARKDOWN,
                 markdown: `# 3. The Ghost in the Machine: System Instructions
-Before an Agent enters the loop, it needs a persona. This is the **System Instruction**.
+Before an Agent enters the loop, it needs a persona. This is the **System Instruction** (a special type of **[[Prompt Engineering]]**).
 
 *   **User Prompt**: "Book a flight to Paris."
 *   **System Instruction**: "You are a helpful travel agent. Always ask for dates first."
@@ -420,6 +420,17 @@ print(agent_router("I have a broken screen"))`
                   }
               },
               {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Controlling the Chaos: Temperature
+The **[[LLM]]** is probabilistic. It rolls dice to pick the next word.
+We can control how "wild" these dice are using a parameter called **Temperature**.
+
+*   **Temperature = 0.0**: The model picks the most likely token every time. It becomes almost **[[Determinism]]**. Good for coding and data extraction.
+*   **Temperature = 1.0**: The model takes risks. Good for creative writing.
+
+> **Note:** Even at Temperature 0, there is slight variance due to floating-point math in GPUs. It reduces randomness significantly, but does not strictly eliminate it.`
+              },
+              {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
                   id: 'arch-quiz-1',
@@ -436,7 +447,7 @@ print(perceive_and_decide("Tell me a joke"))`,
                     { text: 'Use simple `if "text" in user_input:` logic for this simulation.', relearnLessonId: 'day-1-2' },
                     { text: 'Check for "weather" first.', relearnLessonId: 'day-1-2' },
                     { text: 'Check for "time" second.', relearnLessonId: 'day-1-2' },
-                    { text: 'The `else` block should return "Action: Chat".' }
+                    { text: 'The `else` block should return "Action: Chat".', relearnLessonId: 'day-1-2' }
                   ],
                   solutionCode: `def perceive_and_decide(user_input):
     if "weather" in user_input.lower():
@@ -504,7 +515,7 @@ print(verify_setup())`,
                   hints: [
                     { text: 'Use `sys.prefix` and `sys.base_prefix`.', relearnLessonId: 'day-3-4' },
                     { text: 'In a venv, `prefix` points to the local folder, `base_prefix` points to the system python.', relearnLessonId: 'day-3-4' },
-                    { text: 'Return the string exactly as requested.' }
+                    { text: 'Return the string exactly as requested.', relearnLessonId: 'day-3-4' }
                   ],
                   solutionCode: `import sys
 
@@ -654,7 +665,7 @@ You will see **[[self]]** everywhere. It represents "This specific robot's memor
                   hints: [
                     { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
                     { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
-                    { text: 'Use `len(self.history)` to get the count.' }
+                    { text: 'Use `len(self.history)` to get the count.', relearnLessonId: 'day-5' }
                   ],
                   solutionCode: `class StatefulAgent:
     def __init__(self):
@@ -725,6 +736,10 @@ We give it **[[Tool]]**s.
 2.  ADK reads the **[[Type_Hinting]]** and **Docstring**.
 3.  ADK converts this to a **[[JSON_Schema]]**.
 4.  The LLM reads the schema and says: *"Please call function 'add' with a=5, b=10"*
+
+### Type Hints & Runtime
+Python is a dynamic language. If you write \`a: int\`, Python doesn't care if you pass a string at runtime.
+**However**, ADK cares. ADK uses these hints to build the **[[JSON_Schema]]**. If the schema says "Integer", the LLM will try to send an Integer.
 `
               },
               {
@@ -841,7 +856,7 @@ class MathAgent(Agent):
                     { text: 'Define the tool first: `@tool def multiply(a: int, b: int) -> int: return a * b`', relearnLessonId: 'day-6' },
                     { text: 'In `__init__`, call `super().__init__(name="MathBot")`', relearnLessonId: 'day-5' },
                     { text: 'Assign `self.tools = [multiply]` (list of functions)', relearnLessonId: 'day-6' },
-                    { text: 'Set `self.system_instruction = "You are a math tutor."`' }
+                    { text: 'Set `self.system_instruction = "You are a math tutor."`', relearnLessonId: 'day-1-2' }
                   ],
                   solutionCode: `from adk.core import Agent
 from adk.tools import tool
@@ -870,7 +885,13 @@ class MathAgent(Agent):
                             options: ['The Prompt', 'The Tool', 'The Agent Framework', 'The Temperature'],
                             correctOptionIndex: 2,
                             explanation: 'The Agent Framework (ADK) wraps the probabilistic LLM with deterministic code (Tools, Memory) to ensure reliability.',
-                            hint: { text: 'Think about the "Chassis" vs the "Engine".', relearnLessonId: 'day-1-2' }
+                            hint: { text: 'Think about the "Chassis" vs the "Engine".', relearnLessonId: 'day-1-2' },
+                            optionExplanations: [
+                                { text: 'Prompts guide the model but cannot guarantee deterministic behavior on their own.', relearnLessonId: 'day-1-2' },
+                                { text: 'Tools are deterministic functions, but they are just one part of the system.', relearnLessonId: 'day-6' },
+                                { text: 'Correct. The Framework orchestrates the loop, memory, and tools to create reliable outcomes.', relearnLessonId: 'day-1-2' },
+                                { text: 'Temperature reduces randomness but does not eliminate it entirely.', relearnLessonId: 'day-1-2' }
+                            ]
                         },
                         {
                             id: 'q2',
@@ -878,7 +899,13 @@ class MathAgent(Agent):
                             options: ['To make Python faster', 'To generate JSON Schema for the LLM', 'To prevent runtime errors', 'It is optional'],
                             correctOptionIndex: 1,
                             explanation: 'ADK introspects the type hints to build the JSON Schema that tells the LLM how to call the function.',
-                            hint: { text: 'The LLM needs to know if it should send a string or a number.', relearnLessonId: 'day-6' }
+                            hint: { text: 'The LLM needs to know if it should send a string or a number.', relearnLessonId: 'day-6' },
+                            optionExplanations: [
+                                { text: 'Python type hints are ignored by the interpreter at runtime and do not improve performance.', relearnLessonId: 'day-6' },
+                                { text: 'Correct. The framework reads `a: int` and tells the LLM "Expect an integer".', relearnLessonId: 'day-6' },
+                                { text: 'Type hints do not prevent runtime errors in Python unless you use a static type checker.', relearnLessonId: 'day-6' },
+                                { text: 'In standard Python they are optional, but in ADK Tools they are mandatory.', relearnLessonId: 'day-6' }
+                            ]
                         },
                         {
                             id: 'q3',
@@ -886,7 +913,13 @@ class MathAgent(Agent):
                             options: ['def __init__(self): pass', 'super().__init__()', 'Agent.init()', 'self.init()'],
                             correctOptionIndex: 1,
                             explanation: 'You must call super().__init__() to ensure the base class sets up telemetry and memory.',
-                            hint: { text: 'We need to call the parent class initializer.', relearnLessonId: 'day-5' }
+                            hint: { text: 'We need to call the parent class initializer.', relearnLessonId: 'day-5' },
+                            optionExplanations: [
+                                { text: 'This overrides the parent initialization without calling it, which will break the Agent.', relearnLessonId: 'day-5' },
+                                { text: 'Correct. This ensures the `Agent` base class sets up memory and model connections.', relearnLessonId: 'day-5' },
+                                { text: 'This is not valid Python syntax for inheritance.', relearnLessonId: 'day-5' },
+                                { text: 'This method does not exist.', relearnLessonId: 'day-5' }
+                            ]
                         }
                     ]
                 }

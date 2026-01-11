@@ -41,6 +41,10 @@ export interface QuizQuestion {
   correctOptionIndex: number;
   explanation?: string;
   hint?: Hint;
+  optionExplanations?: {
+    text: string;
+    relearnLessonId?: string;
+  }[];
 }
 
 export interface QuizData {
