@@ -4,6 +4,7 @@ import { NavigationState, EncyclopediaEntry, ContentType } from './types';
 import MarkdownRenderer from './components/MarkdownRenderer';
 import EncyclopediaPanel from './components/EncyclopediaPanel';
 import CodePlayground from './components/CodePlayground';
+import Notebook from './components/Notebook';
 
 const App: React.FC = () => {
   // State
@@ -125,7 +126,7 @@ const App: React.FC = () => {
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
             {currentLesson?.content.map((block, idx) => (
-                <div key={idx} className="mb-8">
+                <div key={idx} className="mb-8 animate-fadeIn">
                     {block.type === ContentType.MARKDOWN && block.markdown && (
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                             <MarkdownRenderer 
@@ -141,6 +142,11 @@ const App: React.FC = () => {
                                 Interactive Lab: {block.codeProject.id}
                             </h3>
                             <CodePlayground project={block.codeProject} />
+                        </div>
+                    )}
+                    {block.type === ContentType.NOTEBOOK && block.notebook && (
+                        <div className="mt-6">
+                             <Notebook notebook={block.notebook} onTermClick={handleTermClick} />
                         </div>
                     )}
                 </div>

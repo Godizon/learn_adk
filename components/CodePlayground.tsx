@@ -8,7 +8,8 @@ interface CodePlaygroundProps {
 const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
   const [code, setCode] = useState(project.initialCode);
   const [output, setOutput] = useState<string | null>(null);
-  const [hintsVisible, setHintsVisible] = useState(false);
+  // Hint state: how many hints are currently revealed. 0 means none.
+  const [hintsRevealedCount, setHintsRevealedCount] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   const handleRun = () => {
@@ -16,7 +17,12 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
     // Simulate execution time
     setTimeout(() => {
       setIsRunning(false);
-      setOutput(">> Agent initialized successfully.\n>> Connection to Vertex AI established.\n>> Ready for instructions.");
+      // Simple mock output based on code content
+      if (code.includes('super().__init__') || code.includes('BaseAgent')) {
+          setOutput(">> Agent 'GreeterBot' initialized.\n>> System Instruction loaded.\n>> Ready.");
+      } else {
+          setOutput(">> Error: Agent failed to initialize.\n>> AttributeError: 'super' object has no attribute 'init' (Did you forget to call super().__init__?)");
+      }
     }, 800);
   };
 
@@ -28,6 +34,12 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+  };
+
+  const showNextHint = () => {
+      if (hintsRevealedCount < project.hints.length) {
+          setHintsRevealedCount(prev => prev + 1);
+      }
   };
 
   return (
@@ -80,26 +92,34 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project }) => {
         </div>
       )}
 
-      {/* Hints & Instructions */}
-      <div className="bg-slate-50 p-4 border-t border-slate-200">
-          <div className="flex items-center justify-between mb-2">
+      {/* Instructions & Progressive Hints */}
+      <div className="bg-slate-50 p-5 border-t border-slate-200">
+          <div className="flex items-center justify-between mb-3">
             <h4 className="text-sm font-bold text-slate-700 uppercase tracking-wide">Assignment Instructions</h4>
-            <button 
-                onClick={() => setHintsVisible(!hintsVisible)}
-                className="text-sm text-indigo-600 font-medium hover:text-indigo-800"
-            >
-                {hintsVisible ? 'Hide Hints' : 'Need a Hint?'}
-            </button>
+            
+            {hintsRevealedCount < project.hints.length ? (
+                <button 
+                    onClick={showNextHint}
+                    className="text-xs flex items-center gap-1 bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full hover:bg-yellow-200 font-semibold transition-colors"
+                >
+                    <i className="fa-solid fa-lightbulb"></i>
+                    {hintsRevealedCount === 0 ? 'Get a Hint' : 'Next Hint'}
+                </button>
+            ) : (
+                <span className="text-xs text-slate-400 font-medium italic">All hints revealed</span>
+            )}
           </div>
-          <p className="text-slate-600 text-sm mb-3">{project.description}</p>
           
-          {hintsVisible && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm text-yellow-800 animate-fadeIn">
-                  <ul className="list-disc list-inside space-y-1">
-                      {project.hints.map((hint, i) => (
-                          <li key={i}>{hint}</li>
-                      ))}
-                  </ul>
+          <p className="text-slate-600 text-sm mb-4 leading-relaxed">{project.description}</p>
+          
+          {/* Hints Container */}
+          {hintsRevealedCount > 0 && (
+              <div className="space-y-2">
+                  {project.hints.slice(0, hintsRevealedCount).map((hint, i) => (
+                      <div key={i} className="bg-yellow-50 border-l-4 border-yellow-400 p-3 text-sm text-yellow-900 animate-fadeIn">
+                          <span className="font-bold mr-2">Hint {i + 1}:</span> {hint}
+                      </div>
+                  ))}
               </div>
           )}
       </div>

@@ -1,6 +1,7 @@
 export enum ContentType {
   MARKDOWN = 'MARKDOWN',
   CODE_PLAYGROUND = 'CODE_PLAYGROUND',
+  NOTEBOOK = 'NOTEBOOK',
   SPLIT_VIEW = 'SPLIT_VIEW'
 }
 
@@ -13,10 +14,25 @@ export interface CodeProject {
   description?: string;
 }
 
+export interface NotebookCell {
+  id: string;
+  type: 'markdown' | 'code';
+  content: string;
+  output?: string;
+}
+
+export interface NotebookData {
+  id: string;
+  title: string;
+  description?: string;
+  cells: NotebookCell[];
+}
+
 export interface LessonContent {
   type: ContentType;
   markdown?: string;
   codeProject?: CodeProject;
+  notebook?: NotebookData;
 }
 
 export interface Lesson {
