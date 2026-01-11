@@ -341,6 +341,24 @@ if resp.status_code == 200:
       pythonInternals: 'Often implemented as a "Router Agent" or simple conditional logic.',
       relatedTerms: ['Orchestration', 'Versioning']
   },
+  'deprecation': {
+      id: 'deprecation',
+      term: 'Deprecation',
+      category: 'Software Lifecycle',
+      summary: 'Marking a feature as obsolete to warn users it will be removed in the future.',
+      adkContext: 'When upgrading Tools, you don\'t delete the old one immediately (which breaks Agents). You mark it deprecated so the Agent (or developer) knows to switch.',
+      pythonInternals: '`warnings.warn("Use v2", DeprecationWarning)`',
+      relatedTerms: ['Versioning', 'Tool Routing']
+  },
+  'latency': {
+      id: 'latency',
+      term: 'Latency',
+      category: 'Performance',
+      summary: 'The time delay between a request and a response.',
+      adkContext: 'High latency in Tools makes the Agent feel slow. Async tools and Caching are the primary ways to reduce latency.',
+      pythonInternals: 'Measured in milliseconds (ms).',
+      relatedTerms: ['Caching', 'Async Tools']
+  },
   'vector_store': {
       id: 'vector_store',
       term: 'Vector Store',
@@ -376,6 +394,33 @@ if resp.status_code == 200:
       adkContext: 'The core math behind Semantic Search. Returns a value between -1 (opposite) and 1 (identical).',
       pythonInternals: '`dot(A, B) / (norm(A) * norm(B))`',
       relatedTerms: ['Embeddings', 'Vector Store']
+  },
+  'ranking': {
+      id: 'ranking',
+      term: 'Ranking',
+      category: 'Search',
+      summary: 'The process of ordering search results by relevance.',
+      adkContext: 'After retrieving 100 documents from a Vector Store, a "Reranker" model might re-sort them to find the top 5 most relevant ones for the LLM context.',
+      pythonInternals: 'Often uses a Cross-Encoder model.',
+      relatedTerms: ['Retrieval', 'Semantic Search']
+  },
+  'hybrid_search': {
+      id: 'hybrid_search',
+      term: 'Hybrid Search',
+      category: 'Search',
+      summary: 'Combining Keyword Search (BM25) with Semantic Search (Vectors).',
+      adkContext: 'Vectors are bad at exact matches (like part numbers "X-123"). Keywords are bad at concepts. Hybrid search gives the best of both.',
+      pythonInternals: '`weighted_score = alpha * vector_score + (1 - alpha) * keyword_score`',
+      relatedTerms: ['Vector Store', 'Elasticsearch']
+  },
+  'summarization': {
+      id: 'summarization',
+      term: 'Summarization',
+      category: 'NLP Tasks',
+      summary: 'Reducing text length while preserving key information.',
+      adkContext: 'Used to compress Conversation History so it fits in the Context Window without losing the "gist" of what happened.',
+      pythonInternals: '`model.generate_content("Summarize this: " + history)`',
+      relatedTerms: ['Context Window', 'Pruning']
   },
 
   // --- Python & Environment Deep Dives ---
@@ -2329,6 +2374,49 @@ def master_search(query: str) -> str:
 print(master_search("old:Python 2"))
 print(master_search("Python 3"))`
                         }
+                    },
+                    {
+                        type: ContentType.MARKDOWN,
+                        markdown: `# 5. Tool Deprecation
+Software changes. Sometimes you need to remove a tool.
+But if you delete it, existing Agents might crash.
+
+**Pattern:**
+1.  Mark the tool as "Deprecated" in the docstring.
+2.  Log a warning when it is called.
+3.  Route to the new tool if possible, or return the old result with a warning.
+`
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'deprecation-drill',
+                            language: 'python',
+                            description: 'Assignment: Implement `legacy_tool`. It should print a warning "WARNING: Deprecated, use new_tool" but still return "Legacy Data".',
+                            initialCode: `from adk.tools import tool
+
+@tool
+def legacy_tool() -> str:
+    """Old tool. Use new_tool instead."""
+    # TODO: Print warning
+    # TODO: Return data
+    pass
+
+print(legacy_tool())`,
+                            hints: [
+                                { text: 'Just use `print("WARNING: ...")` for this drill.', relearnLessonId: 'w3-d1-3' },
+                                { text: 'Return the string "Legacy Data".', relearnLessonId: 'w3-d1-3' }
+                            ],
+                            solutionCode: `from adk.tools import tool
+
+@tool
+def legacy_tool() -> str:
+    """Old tool. Use new_tool instead."""
+    print("WARNING: Deprecated, use new_tool")
+    return "Legacy Data"
+
+print(legacy_tool())`
+                        }
                     }
                 ]
             },
@@ -2456,6 +2544,84 @@ print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Session Management with Firestore
+                        markdown: `# 3. Production: Vertex AI Vector Search
+In production, you don't loop through a dictionary. You use a scalable engine like **[[Vertex_AI_Search]]**.
+
+**Workflow:**
+1.  **Upload**: Save vectors to a GCS Bucket.
+2.  **Index**: Create an Index in Vertex AI.
+3.  **Deploy**: Deploy the Index to an Endpoint.
+4.  **Query**: Send a vector to the Endpoint to get nearest neighbors.
+`
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'mock-vertex-search',
+                            language: 'python',
+                            description: 'Assignment: Mock a Vertex AI Vector Search client. Implement `find_neighbors(vector)`. If vector[0] > 0.5, return ["id_1", "id_2"]. Else return ["id_3"].',
+                            initialCode: `class VectorSearchEndpoint:
+    def find_neighbors(self, vector):
+        # TODO: Check vector[0]
+        # TODO: Return list of IDs
+        pass
+
+endpoint = VectorSearchEndpoint()
+print(endpoint.find_neighbors([0.9, 0.1]))`,
+                            hints: [
+                                { text: 'Access the first element with `vector[0]`.', relearnLessonId: 'w3-d4-7' },
+                                { text: 'Return the list of strings as requested.', relearnLessonId: 'w3-d4-7' }
+                            ],
+                            solutionCode: `class VectorSearchEndpoint:
+    def find_neighbors(self, vector):
+        if vector[0] > 0.5:
+            return ["id_1", "id_2"]
+        return ["id_3"]
+
+endpoint = VectorSearchEndpoint()
+print(endpoint.find_neighbors([0.9, 0.1]))`
+                        }
+                    },
+                    {
+                        type: ContentType.MARKDOWN,
+                        markdown: `# 4. Retrieval Strategies: Hybrid Search
+Vectors are great for concepts ("Dog" matches "Puppy").
+But they are bad at exact matches (Part # "X-99").
+
+**[[Hybrid_Search]]** combines:
+1.  **Semantic Score** (Cosine Similarity)
+2.  **Keyword Score** (Does the word exist?)
+
+\`Final Score = (VectorScore * 0.7) + (KeywordScore * 0.3)\`
+`
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'hybrid-search-drill',
+                            language: 'python',
+                            description: 'Assignment: Implement `hybrid_score`. Calculate weighted average of `vec_score` (0.7 weight) and `key_score` (0.3 weight).',
+                            initialCode: `def hybrid_score(vec_score, key_score):
+    # TODO: Return weighted sum
+    pass
+
+print(hybrid_score(0.9, 0.0)) # High vector, no keyword
+print(hybrid_score(0.5, 1.0)) # Med vector, exact keyword`,
+                            hints: [
+                                { text: 'Multiply `vec_score` by 0.7', relearnLessonId: 'w3-d4-7' },
+                                { text: 'Multiply `key_score` by 0.3', relearnLessonId: 'w3-d4-7' },
+                                { text: 'Add them together.', relearnLessonId: 'w3-d4-7' }
+                            ],
+                            solutionCode: `def hybrid_score(vec_score, key_score):
+    return (vec_score * 0.7) + (key_score * 0.3)
+
+print(hybrid_score(0.9, 0.0))
+print(hybrid_score(0.5, 1.0))`
+                        }
+                    },
+                    {
+                        type: ContentType.MARKDOWN,
+                        markdown: `# 5. Session Management with Firestore
 Users expect the Agent to remember them when they come back next week.
 We use **[[Firestore]]** to store the conversation history (Session State).
 
@@ -2523,6 +2689,44 @@ print(load_session("unknown"))`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 4. Context Pruning
+                        markdown: `# 6. User Preferences
+Beyond history, we store **User Preferences**.
+*   "Talk like a pirate"
+*   "Be concise"
+*   "Use Metric system"
+
+These are stored in **[[Firestore]]** alongside the session but injected into the **System Instruction**.
+`
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'user-prefs-drill',
+                            language: 'python',
+                            description: 'Assignment: Implement `get_system_prompt(user_prefs)`. If `user_prefs["concise"]` is True, return "You are a concise assistant." Else return "You are a helpful assistant."',
+                            initialCode: `def get_system_prompt(user_prefs):
+    # TODO: Check "concise" key
+    # TODO: Return appropriate string
+    pass
+
+print(get_system_prompt({"concise": True}))
+print(get_system_prompt({"concise": False}))`,
+                            hints: [
+                                { text: 'Use `if user_prefs.get("concise"):`', relearnLessonId: 'w3-d4-7' },
+                                { text: 'Return the exact strings requested.', relearnLessonId: 'w3-d4-7' }
+                            ],
+                            solutionCode: `def get_system_prompt(user_prefs):
+    if user_prefs.get("concise"):
+        return "You are a concise assistant."
+    return "You are a helpful assistant."
+
+print(get_system_prompt({"concise": True}))
+print(get_system_prompt({"concise": False}))`
+                        }
+                    },
+                    {
+                        type: ContentType.MARKDOWN,
+                        markdown: `# 7. Context Pruning
 Even with a 1M token window, sending 1000 messages costs money and adds latency.
 We need **Pruning Strategies**.
 
@@ -2585,6 +2789,38 @@ print(prune_history(chat))`,
 
 chat = ["System", "Msg1", "Msg2", "Msg3", "Msg4", "Msg5", "Msg6"]
 print(prune_history(chat))`
+                        }
+                    },
+                    {
+                        type: ContentType.MARKDOWN,
+                        markdown: `# 8. Summarization Strategy
+Instead of deleting old messages, we **Summarize** them.
+We ask the LLM: *"Summarize the conversation so far."*
+Then we replace the history with that summary.
+`
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'summarization-drill',
+                            language: 'python',
+                            description: 'Assignment: Mock a summarizer. Define `summarize_history(history)`. Return a string "Summary of X messages" where X is len(history).',
+                            initialCode: `def summarize_history(history):
+    # TODO: Get length of history
+    # TODO: Return "Summary of {len} messages"
+    pass
+
+chat = ["Msg1", "Msg2", "Msg3"]
+print(summarize_history(chat))`,
+                            hints: [
+                                { text: 'Use `len(history)`', relearnLessonId: 'w3-d4-7' },
+                                { text: 'Use an f-string.', relearnLessonId: 'w3-d4-7' }
+                            ],
+                            solutionCode: `def summarize_history(history):
+    return f"Summary of {len(history)} messages"
+
+chat = ["Msg1", "Msg2", "Msg3"]
+print(summarize_history(chat))`
                         }
                     },
                     {
