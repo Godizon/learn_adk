@@ -18,6 +18,15 @@ class MyAgent(BaseAgent):
 `,
     relatedTerms: ['Tools', 'Orchestration', 'State']
   },
+  'orchestration': {
+    id: 'orchestration',
+    term: 'Orchestration',
+    category: 'ADK Core',
+    summary: 'The coordination of multiple agents or tasks to achieve a complex goal.',
+    adkContext: 'Single agents are powerful, but complex workflows (like writing a book) require Orchestration. One agent outlines, another writes, a third edits. ADK provides patterns like "Supervisor" or "Router" to manage this.',
+    pythonInternals: 'Often implemented as a state machine (using libraries like `langgraph`) where the output of Agent A becomes the input of Agent B.',
+    relatedTerms: ['Agent', 'Workflow', 'State']
+  },
   'determinism': {
     id: 'determinism',
     term: 'Determinism',
@@ -88,6 +97,15 @@ The **docstring** is CRITICAL: it is passed to the LLM so it knows *when* and *h
       pythonInternals: 'Python ignores these at runtime (unless using a validator), but ADK uses introspection to read them for schema generation.',
       relatedTerms: ['Tool', 'JSON Schema']
   },
+  'bigquery': {
+      id: 'bigquery',
+      term: 'BigQuery',
+      category: 'GCP Services',
+      summary: 'Google\'s fully managed, serverless data warehouse.',
+      adkContext: 'A common use case for Agents is "Data Agents". You give the agent a tool to run SQL queries on BigQuery so it can answer questions like "What were sales last month?" by looking at real data.',
+      pythonInternals: 'Accessed via `google-cloud-bigquery` library. Agents often generate the SQL string themselves based on the schema.',
+      relatedTerms: ['SQL', 'Tool', 'GCP']
+  },
 
   // --- Python & Environment Deep Dives ---
   'virtual_environment': {
@@ -120,6 +138,33 @@ api_key = os.environ.get("API_KEY")
 `,
       relatedTerms: ['Service Account', 'Security']
   },
+  'service_account': {
+      id: 'service_account',
+      term: 'Service Account',
+      category: 'GCP Security',
+      summary: 'A special type of Google account intended to represent a non-human user (like your Agent).',
+      adkContext: 'Your agent needs permission to call Vertex AI. You don\'t use your Gmail password; you use a Service Account Key (JSON) or ADC.',
+      pythonInternals: 'The SDK looks for credentials in this order: Code -> Env Var -> ADC -> Metadata Server.',
+      relatedTerms: ['ADC', 'IAM', 'GCP']
+  },
+  'adc': {
+      id: 'adc',
+      term: 'ADC',
+      category: 'GCP Security',
+      summary: 'Application Default Credentials.',
+      adkContext: 'The standard way to handle auth. Locally, you run `gcloud auth application-default login`. In the cloud, it happens automatically.',
+      pythonInternals: '`google.auth.default()` is the function that magically finds your credentials.',
+      relatedTerms: ['Service Account', 'CLI']
+  },
+  'cloud_run': {
+      id: 'cloud_run',
+      term: 'Cloud Run',
+      category: 'GCP Compute',
+      summary: 'A managed compute platform that lets you run containers directly on top of Google\'s scalable infrastructure.',
+      adkContext: 'The standard way to deploy ADK agents. You package your Python code into a Docker container, and Cloud Run gives you a HTTPS URL (Webhook) for your agent.',
+      pythonInternals: 'Requires a `Dockerfile` and a web server (like FastAPI or Flask) to listen for requests.',
+      relatedTerms: ['Docker', 'Deploy', 'Webhook']
+  },
   'cli': {
       id: 'cli',
       term: 'CLI',
@@ -137,6 +182,15 @@ api_key = os.environ.get("API_KEY")
       adkContext: 'The Vertex AI SDK allows your Python code to talk to Gemini models. Without the SDK, you would have to write raw HTTP requests.',
       pythonInternals: 'Wrappers around API endpoints, handling authentication and error retry logic automatically.',
       relatedTerms: ['API', 'Library']
+  },
+  'vertex_ai': {
+      id: 'vertex_ai',
+      term: 'Vertex AI',
+      category: 'GCP Services',
+      summary: 'Google Cloud\'s unified AI platform.',
+      adkContext: 'ADK is the framework, but Vertex AI is the platform providing the models (Gemini), vector search, and evaluation tools.',
+      pythonInternals: '`import vertexai` is usually the first line of code in an ADK project.',
+      relatedTerms: ['Gemini', 'GCP', 'SDK']
   },
 
   // --- Python Syntax Deep Dives ---
