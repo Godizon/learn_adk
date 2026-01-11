@@ -404,6 +404,24 @@ if resp.status_code == 200:
       pythonInternals: 'Often uses a Cross-Encoder model.',
       relatedTerms: ['Retrieval', 'Semantic Search']
   },
+  'cross_encoder': {
+      id: 'cross_encoder',
+      term: 'Cross-Encoder',
+      category: 'AI Models',
+      summary: 'A model that processes two inputs (Query + Document) simultaneously to output a relevance score.',
+      adkContext: 'Used for **[[Ranking]]**. It is slower than Vector Search (Bi-Encoder) but much more accurate because it sees the interaction between words in the query and document.',
+      pythonInternals: '`score = model.predict([(query, doc)])`',
+      relatedTerms: ['Ranking', 'Embeddings']
+  },
+  'bm25': {
+      id: 'bm25',
+      term: 'BM25',
+      category: 'Search Algorithms',
+      summary: 'Best Matching 25. A ranking function used by search engines to estimate the relevance of documents to a given search query.',
+      adkContext: 'The standard algorithm for **[[Hybrid_Search]]** (Keyword part). It cares about exact word frequency, unlike Vectors.',
+      pythonInternals: 'Available in libraries like `rank_bm25`.',
+      relatedTerms: ['Hybrid Search', 'TF-IDF']
+  },
   'hybrid_search': {
       id: 'hybrid_search',
       term: 'Hybrid Search',
@@ -484,6 +502,42 @@ if resp.status_code == 200:
       adkContext: 'Vertex AI Vector Search builds an index (like a tree) so it can find the nearest neighbor in milliseconds without checking every single vector.',
       pythonInternals: 'Algorithms like HNSW (Hierarchical Navigable Small World) or IVF (Inverted File Index).',
       relatedTerms: ['Vector Store', 'Latency']
+  },
+  'faithfulness': {
+      id: 'faithfulness',
+      term: 'Faithfulness',
+      category: 'RAG Evaluation',
+      summary: 'A metric measuring if the generated answer is derived solely from the retrieved context.',
+      adkContext: 'Prevents hallucinations. If the context says "Sky is green" and Agent says "Sky is blue" (from training data), Faithfulness is low.',
+      pythonInternals: 'Evaluated using LLM-as-a-Judge (asking another LLM to compare answer vs context).',
+      relatedTerms: ['Hallucination', 'Grounding']
+  },
+  'relevance': {
+      id: 'relevance',
+      term: 'Relevance',
+      category: 'RAG Evaluation',
+      summary: 'A metric measuring if the generated answer actually addresses the user query.',
+      adkContext: 'An answer can be faithful (factually correct based on docs) but irrelevant (doesn\'t answer the specific question).',
+      pythonInternals: 'Evaluated using LLM-as-a-Judge.',
+      relatedTerms: ['Precision', 'Recall']
+  },
+  'recall': {
+      id: 'recall',
+      term: 'Recall',
+      category: 'Search Metrics',
+      summary: 'The fraction of relevant documents that were successfully retrieved.',
+      adkContext: 'If there are 10 docs about "Pricing" and your RAG retrieves 8 of them, Recall is 0.8.',
+      pythonInternals: '`relevant_retrieved / total_relevant`',
+      relatedTerms: ['Precision', 'Retrieval']
+  },
+  'precision': {
+      id: 'precision',
+      term: 'Precision',
+      category: 'Search Metrics',
+      summary: 'The fraction of retrieved documents that are actually relevant.',
+      adkContext: 'If your RAG retrieves 10 docs and only 2 are about "Pricing", Precision is 0.2. Low precision confuses the LLM.',
+      pythonInternals: '`relevant_retrieved / total_retrieved`',
+      relatedTerms: ['Recall', 'Reranking']
   },
   'query_expansion': {
       id: 'query_expansion',
@@ -3288,13 +3342,95 @@ print(expand_query("It is too slow"))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 4. Reranking & Context Optimization
 After retrieval, we might have 50 documents. We can't fit them all in the **[[Context_Window]]**.
-We use a **Reranker** (Cross-Encoder) to score them accurately and pick the top 5.
+We use a **Reranker** (**[[Cross_Encoder]]**) to score them accurately and pick the top 5.
 
 **Context Optimization:**
 *   **Ranking**: Sort by relevance.
 *   **Selection**: Take top N.
 *   **Compression**: Summarize or remove irrelevant parts of the selected docs.
 `
+                    },
+                    {
+                        type: ContentType.NOTEBOOK,
+                        notebook: {
+                            id: 'nb-reranking',
+                            title: 'Vector vs Cross-Encoder',
+                            cells: [
+                                {
+                                    id: 'c1',
+                                    type: 'markdown',
+                                    content: '### Why Rerank?\nVector search is fast but misses nuance. Cross-Encoders are slow but smart. See how the ranking changes.'
+                                },
+                                {
+                                    id: 'c2',
+                                    type: 'code',
+                                    content: `docs = [
+    {"id": 1, "text": "Apple fruit", "vec_score": 0.9},
+    {"id": 2, "text": "Apple iPhone", "vec_score": 0.88}
+]
+query = "tasty snack"
+
+# Vector search might put them close because "Apple" is in both.
+# A Cross-Encoder sees "tasty snack" + "Apple iPhone" and gives a low score.
+
+def mock_rerank(query, docs):
+    for d in docs:
+        if "fruit" in d["text"]:
+            d["rerank_score"] = 0.99
+        else:
+            d["rerank_score"] = 0.1
+    return sorted(docs, key=lambda x: x["rerank_score"], reverse=True)
+
+print(mock_rerank(query, docs))`
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        type: ContentType.CODE_PLAYGROUND,
+                        codeProject: {
+                            id: 'context-packing-drill',
+                            language: 'python',
+                            description: 'Assignment: Context Optimization. Given a list of ranked docs (dicts with "text" and "tokens"), select the top N docs that fit within `max_tokens`. Return the list of selected texts.',
+                            initialCode: `def pack_context(ranked_docs, max_tokens):
+    selected_texts = []
+    current_tokens = 0
+    
+    # TODO: Loop through docs
+    # TODO: If current_tokens + doc['tokens'] <= max_tokens:
+    # TODO: Add doc['text'] to list, update count
+    
+    return selected_texts
+
+docs = [
+    {"text": "Doc A", "tokens": 50},
+    {"text": "Doc B", "tokens": 30},
+    {"text": "Doc C", "tokens": 40}
+]
+print(pack_context(docs, 85))`,
+                            hints: [
+                                { text: 'Loop through `ranked_docs` in order.', relearnLessonId: 'w4-d4-5' },
+                                { text: 'Keep a running total of tokens.', relearnLessonId: 'w4-d4-5' },
+                                { text: 'Stop or skip if the limit is reached.', relearnLessonId: 'w4-d4-5' }
+                            ],
+                            solutionCode: `def pack_context(ranked_docs, max_tokens):
+    selected_texts = []
+    current_tokens = 0
+    
+    for doc in ranked_docs:
+        if current_tokens + doc['tokens'] <= max_tokens:
+            selected_texts.append(doc['text'])
+            current_tokens += doc['tokens']
+            
+    return selected_texts
+
+docs = [
+    {"text": "Doc A", "tokens": 50},
+    {"text": "Doc B", "tokens": 30},
+    {"text": "Doc C", "tokens": 40}
+]
+print(pack_context(docs, 85))`
+                        }
                     }
                 ]
             },
@@ -3424,6 +3560,20 @@ We test with **Golden Queries**.
                                         { text: 'Correct. It refines the selection for the LLM context.', relearnLessonId: 'w4-d4-5' },
                                         { text: 'Translation is a different task.', relearnLessonId: 'w4-d4-5' },
                                         { text: 'Compression is summarization.', relearnLessonId: 'w4-d4-5' }
+                                    ]
+                                },
+                                {
+                                    id: 'q4',
+                                    question: 'What does "Faithfulness" measure in RAG?',
+                                    options: ['If the answer is polite', 'If the answer comes solely from the retrieved context', 'If the answer is grammatically correct', 'If the answer matches the user\'s opinion'],
+                                    correctOptionIndex: 1,
+                                    explanation: 'Faithfulness ensures the model is not hallucinating info outside the provided documents.',
+                                    hint: { text: 'Is it faithful to the source material?', relearnLessonId: 'w4-d6-7' },
+                                    optionExplanations: [
+                                        { text: 'Politeness is style, not faithfulness.', relearnLessonId: 'w4-d6-7' },
+                                        { text: 'Correct. It checks for hallucinations.', relearnLessonId: 'w4-d6-7' },
+                                        { text: 'Grammar is fluency.', relearnLessonId: 'w4-d6-7' },
+                                        { text: 'That would be "alignment" or "sycophancy".', relearnLessonId: 'w4-d6-7' }
                                     ]
                                 }
                             ]
