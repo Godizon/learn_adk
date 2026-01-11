@@ -8,6 +8,14 @@ import contextlib
 import os
 from types import ModuleType
 
+# --- Real AI Integration (Optional) ---
+try:
+    import vertexai
+    from vertexai.generative_models import GenerativeModel
+    HAS_VERTEX = True
+except ImportError:
+    HAS_VERTEX = False
+
 # --- Mock ADK Framework Setup (for Learning Environment) ---
 # This allows "from adk.core import Agent" to work in the exec() scope
 # without needing a real package installed.
@@ -20,6 +28,42 @@ class MockAgent:
     def __init__(self, name="Agent", tools=None):
         self.name = name
         self.tools = tools or []
+        self.history = []
+        self.system_instruction = None
+
+    def chat(self, message):
+        self.history.append({"role": "user", "content": message})
+        
+        if HAS_VERTEX:
+            try:
+                # Attempt to use real credentials if available
+                try:
+                    vertexai.init()
+                except Exception:
+                    pass # Assume configured or let it fail gracefully
+
+                model = GenerativeModel("gemini-1.5-pro")
+                
+                # Build context
+                context = ""
+                if self.system_instruction:
+                    context += f"System: {self.system_instruction}\n"
+                for msg in self.history:
+                    context += f"{msg['role']}: {msg['content']}\n"
+                
+                response = model.generate_content(context)
+                reply = response.text
+                self.history.append({"role": "model", "content": reply})
+                return reply
+            except Exception as e:
+                # Fallback if auth fails or API error
+                print(f"Warning: Real AI call failed ({e}). Using mock.")
+        
+        # Mock behavior
+        reply = f"[{self.name}] Mock Response: {message}"
+        self.history.append({"role": "model", "content": reply})
+        return reply
+
 adk_core.Agent = MockAgent
 sys.modules["adk.core"] = adk_core
 

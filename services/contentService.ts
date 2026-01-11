@@ -1046,6 +1046,19 @@ When you "activate" a venv, you are telling your shell: *"When I type \`python\`
 `
               },
               {
+                type: ContentType.MARKDOWN,
+                markdown: `# Analogy: The Sterile Laboratory
+Think of your global Python installation as the outside world. It's messy and full of conflicting bacteria (libraries).
+
+A **[[Virtual_Environment]]** is like a sterile, sealed laboratory box.
+- **Clean Room**: Nothing is inside except the specific tools (libraries) you explicitly install.
+- **Isolation**: Work you do in Lab A (Project A) cannot contaminate Lab B (Project B).
+- **Reproducibility**: If your experiment works in this lab, you can give someone else the exact same "lab in a box" (the venv + requirements.txt), and it will work for them, too.
+
+> **Pro-Tip:** Never, ever run \`sudo pip install\` or install packages to your system's Python (if you're on Linux/macOS). On Windows, this is just running \`pip install\` from a Command Prompt that is *not* in an activated venv. This is like spilling a test tube in the open air. It leads to contamination and unpredictable results.
+`
+              },
+              {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
                   id: 'env-setup-drill',
@@ -1101,6 +1114,16 @@ pip install -r requirements.txt
               },
               {
                 type: ContentType.MARKDOWN,
+                markdown: `### Common Pitfall: The Global \`pip\`
+Your terminal might have multiple \`pip\` commands. If your virtual environment is not activated, running \`pip install\` will install packages into your system's global Python. This is the #1 cause of "Module Not Found" errors.
+
+**How to check:**
+- **In an activated venv:** running \`which pip\` (macOS/Linux) or \`where pip\` (Windows) should point to a path *inside your project's venv folder*.
+- **If it points to a system path** like \`/usr/local/bin/pip\` or \`C:\\Python310\\Scripts\\pip.exe\`, your venv is NOT active. Stop and reactivate it.
+`
+              },
+              {
+                type: ContentType.MARKDOWN,
                 markdown: `# 3. The Cloud Identity (Authentication)
 Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data centers. How does Google know you are allowed to use it?
 
@@ -1131,17 +1154,18 @@ Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data ce
                               content: `import os
 
 # 1. Simulate setting a variable (usually done by the OS or Docker)
-os.environ["PROJECT_ID"] = "my-genai-project-123"
-os.environ["REGION"] = "us-central1"
+# We use a specific key to avoid overwriting your real GCP config if present
+os.environ["APP_PROJECT_ID"] = "my-genai-project-123"
+os.environ["APP_REGION"] = "us-central1"
 
 # 2. Accessing it safely
 def get_config():
     # .get() returns None if key is missing, preventing crashes
-    project = os.environ.get("PROJECT_ID")
+    project = os.environ.get("APP_PROJECT_ID")
     
     # accessing directly [key] crashes if missing - good for required vars
     try:
-        region = os.environ["REGION"]
+        region = os.environ["APP_REGION"]
     except KeyError:
         return "Error: Missing REGION"
         
