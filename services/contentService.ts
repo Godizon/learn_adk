@@ -846,6 +846,40 @@ print(agent_router("I have a broken screen"))`
                   }
               },
               {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'token-sim-1',
+                  language: 'python',
+                  description: 'Simulation: LLMs do not read words; they read numbers (Tokens). Write a simple tokenizer that maps words to IDs using the provided `VOCAB` dictionary. If a word is not found, use ID 0 (UNK).',
+                  initialCode: `VOCAB = {"hello": 1, "world": 2, "adk": 3, "agent": 4}
+
+def tokenize(text):
+    tokens = []
+    # TODO: Split text into words (lower case)
+    # TODO: Look up each word in VOCAB
+    # TODO: Append ID to tokens list
+    return tokens
+
+print(tokenize("Hello World ADK"))
+print(tokenize("Hello Universe"))`,
+                  hints: [
+                    { text: 'Use `text.lower().split()` to get words.', relearnLessonId: 'day-1-2' },
+                    { text: 'Use `VOCAB.get(word, 0)` to handle unknown words.', relearnLessonId: 'day-1-2' }
+                  ],
+                  solutionCode: `VOCAB = {"hello": 1, "world": 2, "adk": 3, "agent": 4}
+
+def tokenize(text):
+    tokens = []
+    words = text.lower().split()
+    for w in words:
+        tokens.append(VOCAB.get(w, 0))
+    return tokens
+
+print(tokenize("Hello World ADK"))
+print(tokenize("Hello Universe"))`
+                }
+              },
+              {
                 type: ContentType.MARKDOWN,
                 markdown: `# 4. Controlling the Chaos: Temperature
 The **[[LLM]]** is probabilistic. It rolls dice to pick the next word.
@@ -1103,6 +1137,42 @@ You will see **[[self]]** everywhere. It represents "This specific robot's memor
                 }
               },
               {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'oop-self-drill',
+                  language: 'python',
+                  description: 'Drill: Understanding `self`. Create a class `Robot` that takes a `name` in `__init__`. Define `say_hello()` that prints "I am [name]". Create two robots with different names and call `say_hello` on both.',
+                  initialCode: `class Robot:
+    def __init__(self, name):
+        # TODO: Store name in self
+        pass
+
+    def say_hello(self):
+        # TODO: Print "I am {self.name}"
+        pass
+
+# TODO: Create r1 = Robot("R2D2")
+# TODO: Create r2 = Robot("C3PO")
+# TODO: Call say_hello() on both`,
+                  hints: [
+                    { text: '`self.name = name` inside `__init__`.', relearnLessonId: 'day-5' },
+                    { text: '`print(f"I am {self.name}")` inside `say_hello`.', relearnLessonId: 'day-5' }
+                  ],
+                  solutionCode: `class Robot:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f"I am {self.name}")
+
+r1 = Robot("R2D2")
+r2 = Robot("C3PO")
+
+r1.say_hello()
+r2.say_hello()`
+                }
+              },
+              {
                 type: ContentType.MARKDOWN,
                 markdown: `### Inheritance
 Why write code from scratch? We use **[[Inheritance]]** to steal code from Google's \`BaseAgent\`.
@@ -1204,6 +1274,26 @@ print(json.dumps(schema, indent=2))`
                           }
                       ]
                   }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'type-introspection',
+                  language: 'python',
+                  description: 'Drill: Python Introspection. Define a function `greet(name: str, age: int)`. Then print `greet.__annotations__` to see how ADK discovers your types.',
+                  initialCode: `def greet(name: str, age: int):
+    pass
+
+# TODO: Print the __annotations__ attribute of the greet function
+`,
+                  hints: [
+                    { text: 'Just `print(greet.__annotations__)`', relearnLessonId: 'day-6' }
+                  ],
+                  solutionCode: `def greet(name: str, age: int):
+    pass
+
+print(greet.__annotations__)`
+                }
               },
               {
                 type: ContentType.CODE_PLAYGROUND,
