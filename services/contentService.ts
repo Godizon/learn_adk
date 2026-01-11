@@ -3,6 +3,97 @@ import { CoursePhase, EncyclopediaEntry, ContentType } from '../types';
 // --- Encyclopedia Data (The Knowledge Graph) ---
 export const encyclopediaData: Record<string, EncyclopediaEntry> = {
   // --- Architecture Core ---
+  // --- Python Basics (For Absolute Beginners) ---
+  'variable': {
+      id: 'variable',
+      term: 'Variable',
+      category: 'Python Basics',
+      summary: 'A name attached to a piece of data.',
+      adkContext: 'In ADK, you store your Agent in a variable (e.g., `my_agent = Agent()`). Think of it as a labeled box.',
+      pythonInternals: '`x = 5`. `x` is the variable name, `5` is the value.',
+      relatedTerms: ['Data Type', 'State']
+  },
+  'string': {
+      id: 'string',
+      term: 'String',
+      category: 'Python Basics',
+      summary: 'Text data, surrounded by quotes.',
+      adkContext: 'Prompts, user messages, and tool outputs are almost always Strings.',
+      pythonInternals: '`"Hello"` or `\'Hello\'`.',
+      relatedTerms: ['Token', 'Text']
+  },
+  'integer': {
+      id: 'integer',
+      term: 'Integer',
+      category: 'Python Basics',
+      summary: 'A whole number (no decimal point).',
+      adkContext: 'Used for counting tokens, setting limits (e.g., `max_output_tokens=100`), or indexing lists.',
+      pythonInternals: '`x = 5` (int). `x = 5.0` (float).',
+      relatedTerms: ['Float', 'Math']
+  },
+  'boolean': {
+      id: 'boolean',
+      term: 'Boolean',
+      category: 'Python Basics',
+      summary: 'True or False.',
+      adkContext: 'Used for flags like `verbose=True` or `return_dict=False`.',
+      pythonInternals: '`True` and `False` (Capitalized in Python!).',
+      relatedTerms: ['Logic', 'If Statement']
+  },
+  'list': {
+      id: 'list',
+      term: 'List',
+      category: 'Python Basics',
+      summary: 'An ordered collection of items.',
+      adkContext: 'Used for `history` (list of messages) or `tools` (list of functions).',
+      pythonInternals: '`my_list = [1, 2, 3]`. Accessed by index: `my_list[0]` is 1.',
+      relatedTerms: ['Array', 'Collection']
+  },
+  'dictionary': {
+      id: 'dictionary',
+      term: 'Dictionary',
+      category: 'Python Basics',
+      summary: 'A collection of Key-Value pairs.',
+      adkContext: 'Used for configuration (`config={"temp": 0.5}`) and JSON objects.',
+      pythonInternals: '`my_dict = {"key": "value"}`. Accessed by key: `my_dict["key"]`.',
+      relatedTerms: ['JSON', 'Map']
+  },
+  'loop': {
+      id: 'loop',
+      term: 'Loop',
+      category: 'Python Basics',
+      summary: 'Repeating a block of code multiple times.',
+      adkContext: 'Agents run in a loop: Perceive -> Act -> Observe -> Repeat.',
+      pythonInternals: '`for item in list:` or `while True:`.',
+      relatedTerms: ['Iteration', 'Recursion']
+  },
+  'if_statement': {
+      id: 'if_statement',
+      term: 'If Statement',
+      category: 'Python Basics',
+      summary: 'Making a decision in code.',
+      adkContext: 'Used in Tools ("If price > 100, ask for approval") or Routers.',
+      pythonInternals: '`if condition: do_something()`',
+      relatedTerms: ['Logic', 'Boolean']
+  },
+  'function': {
+      id: 'function',
+      term: 'Function',
+      category: 'Python Basics',
+      summary: 'A reusable block of code that performs a specific task.',
+      adkContext: 'Every **[[Tool]]** is a function. It takes input (arguments) and returns output.',
+      pythonInternals: '`def my_func(arg): return arg * 2`',
+      relatedTerms: ['Tool', 'Method']
+  },
+  'module': {
+      id: 'module',
+      term: 'Module',
+      category: 'Python Basics',
+      summary: 'A file containing Python code (functions, classes) that you can import.',
+      adkContext: 'You import ADK components from modules: `from adk.core import Agent`.',
+      pythonInternals: '`import math` or `from math import sqrt`.',
+      relatedTerms: ['Import', 'Library']
+  },
   'agent': {
     id: 'agent',
     term: 'Agent',
@@ -3186,6 +3277,35 @@ print(recursive_chunk(text, 20))`
                         }
                     },
                     {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'chunking-overlap-drill',
+                  language: 'python',
+                  description: 'Drill: Overlapping Chunks. When splitting text, we often want overlap so context isn\'t lost at the cut. Implement `chunk_with_overlap(text, size, overlap)`.',
+                  initialCode: `def chunk_with_overlap(text, size, overlap):
+    chunks = []
+    # TODO: Loop from 0 to len(text) with step = (size - overlap)
+    # TODO: Slice text[i : i + size]
+    return chunks
+
+text = "abcdefghijklmnop"
+print(chunk_with_overlap(text, 5, 2))`,
+                  hints: [
+                    { text: 'Use `range(0, len(text), size - overlap)`', relearnLessonId: 'w4-d1-3' },
+                    { text: 'Append `text[i : i + size]` to chunks.', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def chunk_with_overlap(text, size, overlap):
+    chunks = []
+    step = size - overlap
+    for i in range(0, len(text), step):
+        chunks.append(text[i : i + size])
+    return chunks
+
+text = "abcdefghijklmnop"
+print(chunk_with_overlap(text, 5, 2))`
+                }
+              },
+              {
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Metadata Extraction
 Searching for "Contract" is hard. Searching for "Contract" where \`year=2024\` is easy.
@@ -3391,6 +3511,38 @@ print(merge_results(v_scores, k_scores))`
                         }
                     },
                     {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'keyword-scoring-drill',
+                  language: 'python',
+                  description: 'Drill: Keyword Scoring. Before using complex libraries, understand the logic. Implement `keyword_score(query, doc)`. Count how many words from `query` appear in `doc`.',
+                  initialCode: `def keyword_score(query, doc):
+    score = 0
+    # TODO: Split query and doc into words (lower case)
+    # TODO: For each word in query, check if it exists in doc words
+    # TODO: Increment score
+    return score
+
+print(keyword_score("apple pie", "I love apple pie"))
+print(keyword_score("banana", "I love apple pie"))`,
+                  hints: [
+                    { text: 'Use `text.lower().split()`', relearnLessonId: 'w4-d4-5' },
+                    { text: 'Iterate: `for word in query_words:`', relearnLessonId: 'w4-d4-5' }
+                  ],
+                  solutionCode: `def keyword_score(query, doc):
+    score = 0
+    q_words = query.lower().split()
+    d_words = doc.lower().split()
+    for w in q_words:
+        if w in d_words:
+            score += 1
+    return score
+
+print(keyword_score("apple pie", "I love apple pie"))
+print(keyword_score("banana", "I love apple pie"))`
+                }
+              },
+              {
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Query Expansion
 Users write bad queries.
@@ -3551,6 +3703,28 @@ You have built the pieces. Now we assemble the **Production RAG Agent**.
 `
                     },
                     {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'citation-check-drill',
+                  language: 'python',
+                  description: 'Drill: Citation Verification. To prevent hallucinations, we check if the answer references the source. Implement `check_citation(answer, source_id)`. Return True if `source_id` is in `answer`.',
+                  initialCode: `def check_citation(answer, source_id):
+    # TODO: Check if source_id string is inside answer string
+    pass
+
+print(check_citation("The sky is blue [Doc1]", "[Doc1]"))
+print(check_citation("The sky is blue", "[Doc1]"))`,
+                  hints: [
+                    { text: 'Use `if source_id in answer:`', relearnLessonId: 'w4-d6-7' }
+                  ],
+                  solutionCode: `def check_citation(answer, source_id):
+    return source_id in answer
+
+print(check_citation("The sky is blue [Doc1]", "[Doc1]"))
+print(check_citation("The sky is blue", "[Doc1]"))`
+                }
+              },
+              {
                         type: ContentType.CODE_PLAYGROUND,
                         codeProject: {
                             id: 'capstone-rag-agent',
