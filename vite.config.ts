@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
         proxy: {
-          '/execute': 'http://localhost:8000'
+          '/execute': 'http://127.0.0.1:8000'
         }
       },
       plugins: [react()],

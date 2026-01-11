@@ -44,7 +44,7 @@ class CodePayload(BaseModel):
     code: str
 
 @app.post("/execute")
-async def execute_code(payload: CodePayload):
+def execute_code(payload: CodePayload):
     # Capture stdout and stderr
     stdout_capture = io.StringIO()
     stderr_capture = io.StringIO()
@@ -68,3 +68,7 @@ async def execute_code(payload: CodePayload):
 dist_path = os.path.join(os.path.dirname(__file__), "../dist")
 if os.path.exists(dist_path):
     app.mount("/", StaticFiles(directory=dist_path, html=True), name="static")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
