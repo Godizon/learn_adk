@@ -6,6 +6,29 @@ import sys
 import io
 import contextlib
 import os
+from types import ModuleType
+
+# --- Mock ADK Framework Setup (for Learning Environment) ---
+# This allows "from adk.core import Agent" to work in the exec() scope
+# without needing a real package installed.
+
+adk_mod = ModuleType("adk")
+sys.modules["adk"] = adk_mod
+
+adk_core = ModuleType("adk.core")
+class MockAgent:
+    def __init__(self, name="Agent", tools=None):
+        self.name = name
+        self.tools = tools or []
+adk_core.Agent = MockAgent
+sys.modules["adk.core"] = adk_core
+
+adk_tools = ModuleType("adk.tools")
+def mock_tool(func):
+    return func
+adk_tools.tool = mock_tool
+sys.modules["adk.tools"] = adk_tools
+# -----------------------------------------------------------
 
 app = FastAPI()
 
