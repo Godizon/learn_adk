@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Confetti from 'react-confetti';
 import { CodeProject } from '../types';
-import { syllabusData } from '../services/contentService';
-
+import { syllabusData, getLessonByProjectId, getNextLesson } from '../services/contentService';
+import { markProjectComplete, markLessonComplete, getProgress } from '../services/progressService';
 interface CodePlaygroundProps {
   project: CodeProject;
   onNavigate: (lessonId: string) => void;
@@ -16,6 +17,9 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
   const [showSolution, setShowSolution] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [nextLessonId, setNextLessonId] = useState<string | null>(null);
+  const [lessonProgress, setLessonProgress] = useState<{completed: number, total: number} | null>(null);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -23,6 +27,18 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [code]);
+
+  // Initialize progress display
+  useEffect(() => {
+    const lesson = getLessonByProjectId(project.id);
+    if (lesson) {
+        const total = lesson.content.filter(c => c.codeProject).length;
+        const completed = getProgress().completedProjects.filter(id => 
+            lesson.content.some(c => c.codeProject?.id === id)
+        ).length;
+        setLessonProgress({ completed, total });
+    }
+  }, [project.id]);
 
   const handleRun = async () => {
     setIsRunning(true);
@@ -46,6 +62,28 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
             ? cleanOutput.includes(cleanExpected) 
             : cleanOutput === cleanExpected;
         setIsCorrect(passed);
+
+        if (passed) {
+            markProjectComplete(project.id);
+            const lesson = getLessonByProjectId(project.id);
+            
+            if (lesson) {
+                const allProjects = lesson.content.filter(c => c.codeProject).map(c => c.codeProject!.id);
+                const currentProgress = getProgress();
+                const isLessonDone = allProjects.every(id => currentProgress.completedProjects.includes(id));
+                
+                setLessonProgress({ completed: allProjects.filter(id => currentProgress.completedProjects.includes(id)).length, total: allProjects.length });
+
+                if (isLessonDone) {
+                    markLessonComplete(lesson.id);
+                    setShowConfetti(true);
+                    const next = getNextLesson(lesson.id);
+                    if (next) setNextLessonId(next.id);
+                    // Stop confetti after 8 seconds
+                    setTimeout(() => setShowConfetti(false), 8000);
+                }
+            }
+        }
       }
     } catch (error) {
       setOutput(">> Error: Could not connect to Python backend.\n>> Ensure server is running on port 8000.");
@@ -61,6 +99,8 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
       setHintsRevealedCount(0);
       setIsCorrect(null);
       setShowSolution(false);
+      setShowConfetti(false);
+      setNextLessonId(null);
     }
   };
 
@@ -95,6 +135,7 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
 
   return (
     <div className="my-8 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
+      {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} recycle={false} numberOfPieces={500} />}
       {/* Toolbar */}
       <div className="bg-slate-50 border-b border-slate-200 p-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
@@ -102,6 +143,11 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
             <span className="ml-2 text-xs font-mono text-slate-500 font-semibold">{project.language === 'python' ? 'main.py' : 'app.ts'}</span>
+            {lessonProgress && (
+                <span className="ml-4 text-xs text-slate-400 font-medium">
+                    Lesson Progress: {lessonProgress.completed}/{lessonProgress.total}
+                </span>
+            )}
         </div>
         <div className="flex gap-2">
             <button 
@@ -162,6 +208,14 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
                     <h5 className={`text-sm font-bold ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
                         {isCorrect ? 'Excellent! Output matches expected result.' : 'Incorrect Output'}
                     </h5>
+                    {isCorrect && nextLessonId && (
+                        <button 
+                            onClick={() => onNavigate(nextLessonId)}
+                            className="mt-3 bg-green-600 hover:bg-green-700 text-white text-xs px-4 py-2 rounded-full font-bold shadow-sm transition-all flex items-center gap-2 animate-bounce"
+                        >
+                            Next Day <i className="fa-solid fa-arrow-right"></i>
+                        </button>
+                    )}
                     {!isCorrect && (
                         <div className="mt-2">
                             <p className="text-xs text-red-700 mb-3">Your code ran, but the output didn't match the assignment requirements.</p>

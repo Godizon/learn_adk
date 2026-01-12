@@ -1,4 +1,4 @@
-import { CoursePhase, EncyclopediaEntry, ContentType } from '../types';
+import { CoursePhase, EncyclopediaEntry, ContentType, Lesson } from '../types';
 
 // --- Encyclopedia Data (The Knowledge Graph) ---
 export const encyclopediaData: Record<string, EncyclopediaEntry> = {
@@ -802,7 +802,28 @@ my_dog = Dog() # The Object (Instance)
       adkContext: '`class MyAgent(BaseAgent):` means your agent gets all the "plumbing" of `BaseAgent` for free.',
       pythonInternals: 'Python supports multiple inheritance.',
       relatedTerms: ['Class', 'Super']
-  }
+  },
+'temperature': {
+    id: 'temperature',
+    term: 'Temperature',
+    category: 'AI Hyperparameters',
+    summary: 'A setting that controls the "randomness" or "creativity" of the model\'s output.',
+    adkContext: 'For Agents, you typically want a **low temperature** (0.0 to 0.2). This ensures the agent follows instructions strictly and generates valid JSON for tools. High temperature (0.7+) makes the agent creative but prone to hallucinations and format errors.',
+    pythonInternals: `It is passed via the \`generation_config\` object.
+\`\`\`python
+from vertexai.generative_models import GenerationConfig
+
+# Deterministic (Best for Tools/Logic)
+config = GenerationConfig(temperature=0.0)
+
+# Creative (Best for Brainstorming)
+config = GenerationConfig(temperature=0.9)
+
+response = model.generate_content(prompt, generation_config=config)
+\`\`\`
+Math: Logits are divided by Temperature before the Softmax layer.`,
+    relatedTerms: ['Determinism', 'Probabilistic', 'Hallucination']
+}
 };
 
 // --- Course Syllabus Data ---
@@ -975,7 +996,7 @@ print(tokenize("Hello Universe"))`,
                 type: ContentType.MARKDOWN,
                 markdown: `# 4. Controlling the Chaos: Temperature
 The [[LLM]] is probabilistic. It rolls dice to pick the next word.
-We can control how "wild" these dice are using a parameter called **Temperature**.
+We can control how "wild" these dice are using a parameter called [[Temperature]].
 
 **Temperature = 0.0**: The model picks the most likely token every time. It becomes almost [[Determinism]]. Good for coding and data extraction.
 **Temperature = 1.0**: The model takes risks. Good for creative writing.
@@ -3936,4 +3957,30 @@ export const getEncyclopediaEntry = (term: string): EncyclopediaEntry | undefine
   // Simple normalization for lookup
   const key = term.toLowerCase().replace(/ /g, '_').replace(/\[|\]/g, '');
   return encyclopediaData[key];
+};
+
+export const getLessonByProjectId = (projectId: string): Lesson | undefined => {
+  for (const phase of syllabusData) {
+    for (const week of phase.weeks) {
+      for (const lesson of week.lessons) {
+        if (lesson.content.some(c => c.codeProject?.id === projectId)) {
+          return lesson;
+        }
+      }
+    }
+  }
+  return undefined;
+};
+
+export const getNextLesson = (currentLessonId: string): Lesson | undefined => {
+  let found = false;
+  for (const phase of syllabusData) {
+    for (const week of phase.weeks) {
+      for (const lesson of week.lessons) {
+        if (found) return lesson;
+        if (lesson.id === currentLessonId) found = true;
+      }
+    }
+  }
+  return undefined;
 };
