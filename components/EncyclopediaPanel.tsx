@@ -49,6 +49,18 @@ const EncyclopediaPanel: React.FC<EncyclopediaPanelProps> = ({ entry, isOpen, on
                 </p>
             </section>
 
+            {/* Analogy Section (Added) */}
+            {entry.analogy && (
+                <section className="bg-amber-50 p-5 rounded-xl border border-amber-200 shadow-sm">
+                    <h3 className="text-amber-800 font-bold flex items-center gap-2 mb-3">
+                        <i className="fa-solid fa-lightbulb text-amber-500"></i> Intuitive Analogy
+                    </h3>
+                    <div className="prose prose-sm prose-amber text-slate-800">
+                        <div dangerouslySetInnerHTML={{ __html: entry.analogy.replace(/\n/g, '<br/>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                    </div>
+                </section>
+            )}
+
             {/* ADK Context */}
             <section className="bg-blue-50 p-5 rounded-xl border border-blue-100">
                 <h3 className="text-blue-900 font-bold flex items-center gap-2 mb-3">
@@ -76,7 +88,10 @@ const EncyclopediaPanel: React.FC<EncyclopediaPanelProps> = ({ entry, isOpen, on
                         <i className="fa-solid fa-code-branch"></i> Cross-Language Comparison
                     </h3>
                     <div className="prose prose-sm max-w-none text-slate-600">
-                         <div dangerouslySetInnerHTML={{ __html: entry.crossLanguage.replace(/\n/g, '<br/>') }} />
+                         <div dangerouslySetInnerHTML={{ __html: entry.crossLanguage.replace(/\n/g, '<br/>').replace(/\|/g, '').replace(/-+/g, '') }} /> 
+                         {/* Note: Simple table rendering in vanilla HTML/CSS within React can be tricky without a Markdown parser. 
+                             If your data is raw markdown tables, you might need a library like 'react-markdown'. 
+                             The replace regex above is a rudimentary fallback. */}
                     </div>
                 </section>
              )}

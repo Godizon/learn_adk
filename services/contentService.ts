@@ -747,20 +747,48 @@ print(response.text)
   },
 
   // --- Python Syntax Deep Dives ---
-  'class': {
+'class': {
       id: 'class',
       term: 'Class',
-      category: 'Core Python',
-      summary: 'A blueprint for creating objects.',
-      adkContext: 'Every Agent you build is a **Class**. Understanding OOP is mandatory.',
+      category: 'Computer Science Fundamentals',
+      summary: 'A user-defined blueprint or template that bundles data (attributes) and behavior (methods) into a single logical unit.',
+      adkContext: 'In ADK, a Class is the container for your Agent\'s logic. It allows you to create multiple independent Agents from one set of instructions. If `CustomerSupportAgent` is the Class, then "Chat_Session_401" and "Chat_Session_402" are distinct **Objects** (Instances) running that class. They share the same code but have different memories (State).',
       pythonInternals: `
 \`\`\`python
-class Dog:  # The Blueprint
-    pass
-my_dog = Dog() # The Object (Instance)
+# The Class (The Character Sheet Template)
+class RPGCharacter:
+    # __init__ sets the initial State
+    def __init__(self, name: str, job: str):
+        self.name = name        # Attribute (Data)
+        self.job = job          # Attribute (Data)
+        self.health = 100       # Attribute (Data)
+
+    # Methods define Behavior
+    def take_damage(self, amount: int):
+        self.health -= amount
+        if self.health <= 0:
+            print(f"{self.name} has fallen!")
+
+# The Objects (The Actual Players)
+hero_1 = RPGCharacter("Aragorn", "Ranger")
+hero_2 = RPGCharacter("Gandalf", "Wizard")
+
+# hero_1 and hero_2 are unique.
+# Damaging hero_1 does NOT hurt hero_2.
+hero_1.take_damage(50) 
+print(hero_2.health) # Still 100
 \`\`\`
 `,
-      relatedTerms: ['Instance', 'Method', 'Self']
+      history: 'The concept originated in **Simula 67** (1967), created by Ole-Johan Dahl and Kristen Nygaard to simulate real-world systems (like ships or queues). It was further popularized by **Smalltalk** (1970s), where "everything is an object," influencing C++, Java, and Python.',
+      crossLanguage: `
+| Language | Implementation Detail |
+| :--- | :--- |
+| **Java** | Strict. Everything must be inside a class. One public class per file. |
+| **JavaScript** | Originally prototype-based. \`class\` keyword added in ES6 (2015) as "syntactic sugar" over prototypes. |
+| **C** | Does not have classes. Uses \`struct\` for data, but behavior (functions) must be kept separate. |
+`,
+      analogy: 'Think of a Class as a **Cookie Cutter** and Objects as the **Cookies**. You only need one cutter (Class) to make infinite cookies (Objects). Each cookie is made of the same stuff, but one might have sprinkles (different State) and another might be burnt.',
+      relatedTerms: ['Instance', 'Object-Oriented Programming (OOP)', 'Inheritance', 'Encapsulation']
   },
   'init': {
     id: 'init',
@@ -776,14 +804,38 @@ my_dog = Dog() # The Object (Instance)
     history: `Origin: Simula 67 (1967).`,
     relatedTerms: ['self', 'super', 'inheritance']
   },
-  'self': {
+'self': {
       id: 'self',
       term: 'self',
       category: 'Core Python',
-      summary: 'A reference to the current instance of the class.',
-      adkContext: 'In your agent methods, you use `self.memory` to access previous conversations. Without `self`, you are accessing global variables (bad).',
-      pythonInternals: 'Python passes the object as the first argument to instance methods automatically.',
-      relatedTerms: ['Class', 'Instance']
+      summary: 'A conventional name for the first argument of instance methods. It acts as a reference to the **current specific object** interacting with the code.',
+      adkContext: 'In ADK, an Agent needs to remember things (like `history` or `api_key`). If you just write `history = []` inside a function, that list dies when the function ends. If you write `self.history = []`, it is saved to the Agent\'s permanent backpack. `self` ensures that Agent A doesn\'t accidentally read Agent B\'s memory.',
+      pythonInternals: `
+\`\`\`python
+class Agent:
+    def __init__(self, name):
+        self.name = name  # Stored on the object (Permanent)
+
+    def speak(self):
+        # We must use 'self' to retrieve the name we stored earlier
+        print(f"I am {self.name}") 
+
+bot = Agent("Hal")
+bot.speak() 
+# Python translates this call behind the scenes to:
+# Agent.speak(bot) -> 'self' becomes 'bot'
+\`\`\`
+**Crucial Note**: \`self\` is technically just a naming convention. You *could* name it \`banana\`, but you will be shunned by the Python community.`,
+      history: 'Python adopted explicit `self` from **Modula-3**. While most languages hide this reference, Python\'s creator, Guido van Rossum, insisted on it because "Explicit is better than implicit" (The Zen of Python). It removes ambiguity about whether you are using a local variable or an instance variable.',
+      crossLanguage: `
+| Language | Syntax | Difference |
+| :--- | :--- | :--- |
+| **Java/C++** | \`this\` | Implicit. You don't declare it in arguments. You can often omit it (e.g., \`name\` implies \`this.name\`). |
+| **JavaScript** | \`this\` | Context-dependent and notoriously confusing. Its value changes based on *how* a function is called. |
+| **Python** | \`self\` | Explicit. You MUST declare it as the first argument, and you MUST use it to access attributes. |
+`,
+      analogy: 'Think of a Class as a fixed wall mirror. It has the ability to reflect, but it has no face of its own. When **You** stand in front of it, the reflection (Instance) is **Yourself** (`self`). If you step away and a **Cat** stands there, the reflection becomes the **Cat** (`self`). The mirror doesn\'t change, but who "self" is changes depending on who is currently standing in the frame.',
+      relatedTerms: ['Class', 'Instance', 'Scope', 'This']
   },
   'decorator': {
       id: 'decorator',
@@ -1248,12 +1300,12 @@ You will see [[self]] everywhere. It represents "This specific robot's memory". 
 `
               },
               {
-                type: ContentType.CODE_PLAYGROUND,
-                codeProject: {
-                  id: 'agent-basics-1',
-                  language: 'python',
-                  description: 'Assignment: Create a "StatefulAgent" class. It should have a `history` list. The `chat` method should append the user input to `history` and return the size of the history.',
-                  initialCode: `class StatefulAgent:
+  type: ContentType.CODE_PLAYGROUND,
+  codeProject: {
+    id: 'agent-basics-1',
+    language: 'python',
+    description: 'Assignment: Create a "StatefulAgent" class. It should have a `history` list. The `chat` method should append the user input to `history` and return the size of the history.',
+    initialCode: `class StatefulAgent:
     def __init__(self):
         # TODO: Initialize an empty list called self.history
         pass
@@ -1261,22 +1313,32 @@ You will see [[self]] everywhere. It represents "This specific robot's memory". 
     def chat(self, message):
         # TODO: Append message to self.history
         # TODO: Return "I have remembered X messages"
-        pass`,
-                  hints: [
-                    { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
-                    { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
-                    { text: 'Use `len(self.history)` to get the count.', relearnLessonId: 'day-5' }
-                  ],
-                  solutionCode: `class StatefulAgent:
+        pass
+
+# --- Driver Code (Do not edit below) ---
+# This tests your agent!
+my_agent = StatefulAgent()
+print(my_agent.chat("Hello AI"))
+print(my_agent.chat("My name is Human"))`,
+    hints: [
+      { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
+      { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
+      { text: 'Use an f-string or string concatenation to return the count: f"I have remembered {len(self.history)} messages"', relearnLessonId: 'day-5' }
+    ],
+    solutionCode: `class StatefulAgent:
     def __init__(self):
         self.history = []
 
     def chat(self, message):
         self.history.append(message)
-        return f"I have remembered {len(self.history)} messages"`,
-                  expectedOutput: 'I have remembered 1 messages'
-                }
-              },
+        return f"I have remembered {len(self.history)} messages"
+
+my_agent = StatefulAgent()
+print(my_agent.chat("Hello AI"))
+print(my_agent.chat("My name is Human"))`,
+    expectedOutput: 'I have remembered 1 messages\nI have remembered 2 messages'
+  }
+},
               {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {

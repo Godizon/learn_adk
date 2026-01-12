@@ -89,7 +89,7 @@ export interface EncyclopediaEntry {
   term: string;
   category: string; // e.g., "Core Python", "ADK Architecture"
   summary: string;
-  
+  analogy?: string;
   // The comprehensive sections requested
   adkContext: string; // Relevance to ADK
   pythonInternals: string; // Underlying code/mechanics
