@@ -22,6 +22,17 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
   const [lessonProgress, setLessonProgress] = useState<{completed: number, total: number} | null>(null);
 
   useEffect(() => {
+    setCode(project.initialCode);
+    setOutput(null);
+    setHintsRevealedCount(0);
+    setIsCorrect(null);
+    setShowSolution(false);
+    setShowConfetti(false);
+    setNextLessonId(null);
+    setIsRunning(false);
+  }, [project.id, project.initialCode]);
+
+  useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
