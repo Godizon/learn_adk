@@ -5,94 +5,94 @@ export const encyclopediaData: Record<string, EncyclopediaEntry> = {
   // --- Architecture Core ---
   // --- Python Basics (For Absolute Beginners) ---
   'variable': {
-      id: 'variable',
-      term: 'Variable',
-      category: 'Python Basics',
-      summary: 'A name attached to a piece of data.',
-      adkContext: 'In ADK, you store your Agent in a variable (e.g., `my_agent = Agent()`). Think of it as a labeled box.',
-      pythonInternals: '`x = 5`. `x` is the variable name, `5` is the value.',
-      relatedTerms: ['Data Type', 'State']
+    id: 'variable',
+    term: 'Variable',
+    category: 'Python Basics',
+    summary: 'A name attached to a piece of data.',
+    adkContext: 'In ADK, you store your Agent in a variable (e.g., `my_agent = Agent()`). Think of it as a labeled box.',
+    pythonInternals: '`x = 5`. `x` is the variable name, `5` is the value.',
+    relatedTerms: ['Data Type', 'State']
   },
   'string': {
-      id: 'string',
-      term: 'String',
-      category: 'Python Basics',
-      summary: 'Text data, surrounded by quotes.',
-      adkContext: 'Prompts, user messages, and tool outputs are almost always Strings.',
-      pythonInternals: '`"Hello"` or `\'Hello\'`.',
-      relatedTerms: ['Token', 'Text']
+    id: 'string',
+    term: 'String',
+    category: 'Python Basics',
+    summary: 'Text data, surrounded by quotes.',
+    adkContext: 'Prompts, user messages, and tool outputs are almost always Strings.',
+    pythonInternals: '`"Hello"` or `\'Hello\'`.',
+    relatedTerms: ['Token', 'Text']
   },
   'integer': {
-      id: 'integer',
-      term: 'Integer',
-      category: 'Python Basics',
-      summary: 'A whole number (no decimal point).',
-      adkContext: 'Used for counting tokens, setting limits (e.g., `max_output_tokens=100`), or indexing lists.',
-      pythonInternals: '`x = 5` (int). `x = 5.0` (float).',
-      relatedTerms: ['Float', 'Math']
+    id: 'integer',
+    term: 'Integer',
+    category: 'Python Basics',
+    summary: 'A whole number (no decimal point).',
+    adkContext: 'Used for counting tokens, setting limits (e.g., `max_output_tokens=100`), or indexing lists.',
+    pythonInternals: '`x = 5` (int). `x = 5.0` (float).',
+    relatedTerms: ['Float', 'Math']
   },
   'boolean': {
-      id: 'boolean',
-      term: 'Boolean',
-      category: 'Python Basics',
-      summary: 'True or False.',
-      adkContext: 'Used for flags like `verbose=True` or `return_dict=False`.',
-      pythonInternals: '`True` and `False` (Capitalized in Python!).',
-      relatedTerms: ['Logic', 'If Statement']
+    id: 'boolean',
+    term: 'Boolean',
+    category: 'Python Basics',
+    summary: 'True or False.',
+    adkContext: 'Used for flags like `verbose=True` or `return_dict=False`.',
+    pythonInternals: '`True` and `False` (Capitalized in Python!).',
+    relatedTerms: ['Logic', 'If Statement']
   },
   'list': {
-      id: 'list',
-      term: 'List',
-      category: 'Python Basics',
-      summary: 'An ordered collection of items.',
-      adkContext: 'Used for `history` (list of messages) or `tools` (list of functions).',
-      pythonInternals: '`my_list = [1, 2, 3]`. Accessed by index: `my_list[0]` is 1.',
-      relatedTerms: ['Array', 'Collection']
+    id: 'list',
+    term: 'List',
+    category: 'Python Basics',
+    summary: 'An ordered collection of items.',
+    adkContext: 'Used for `history` (list of messages) or `tools` (list of functions).',
+    pythonInternals: '`my_list = [1, 2, 3]`. Accessed by index: `my_list[0]` is 1.',
+    relatedTerms: ['Array', 'Collection']
   },
   'dictionary': {
-      id: 'dictionary',
-      term: 'Dictionary',
-      category: 'Python Basics',
-      summary: 'A collection of Key-Value pairs.',
-      adkContext: 'Used for configuration (`config={"temp": 0.5}`) and JSON objects.',
-      pythonInternals: '`my_dict = {"key": "value"}`. Accessed by key: `my_dict["key"]`.',
-      relatedTerms: ['JSON', 'Map']
+    id: 'dictionary',
+    term: 'Dictionary',
+    category: 'Python Basics',
+    summary: 'A collection of Key-Value pairs.',
+    adkContext: 'Used for configuration (`config={"temp": 0.5}`) and JSON objects.',
+    pythonInternals: '`my_dict = {"key": "value"}`. Accessed by key: `my_dict["key"]`.',
+    relatedTerms: ['JSON', 'Map']
   },
   'loop': {
-      id: 'loop',
-      term: 'Loop',
-      category: 'Python Basics',
-      summary: 'Repeating a block of code multiple times.',
-      adkContext: 'Agents run in a loop: Perceive -> Act -> Observe -> Repeat.',
-      pythonInternals: '`for item in list:` or `while True:`.',
-      relatedTerms: ['Iteration', 'Recursion']
+    id: 'loop',
+    term: 'Loop',
+    category: 'Python Basics',
+    summary: 'Repeating a block of code multiple times.',
+    adkContext: 'Agents run in a loop: Perceive -> Act -> Observe -> Repeat.',
+    pythonInternals: '`for item in list:` or `while True:`.',
+    relatedTerms: ['Iteration', 'Recursion']
   },
   'if_statement': {
-      id: 'if_statement',
-      term: 'If Statement',
-      category: 'Python Basics',
-      summary: 'Making a decision in code.',
-      adkContext: 'Used in Tools ("If price > 100, ask for approval") or Routers.',
-      pythonInternals: '`if condition: do_something()`',
-      relatedTerms: ['Logic', 'Boolean']
+    id: 'if_statement',
+    term: 'If Statement',
+    category: 'Python Basics',
+    summary: 'Making a decision in code.',
+    adkContext: 'Used in Tools ("If price > 100, ask for approval") or Routers.',
+    pythonInternals: '`if condition: do_something()`',
+    relatedTerms: ['Logic', 'Boolean']
   },
   'function': {
-      id: 'function',
-      term: 'Function',
-      category: 'Python Basics',
-      summary: 'A reusable block of code that performs a specific task.',
-      adkContext: 'Every [[Tool]] is a function. It takes input (arguments) and returns output.',
-      pythonInternals: '`def my_func(arg): return arg * 2`',
-      relatedTerms: ['Tool', 'Method']
+    id: 'function',
+    term: 'Function',
+    category: 'Python Basics',
+    summary: 'A reusable block of code that performs a specific task.',
+    adkContext: 'Every [[Tool]] is a function. It takes input (arguments) and returns output.',
+    pythonInternals: '`def my_func(arg): return arg * 2`',
+    relatedTerms: ['Tool', 'Method']
   },
   'module': {
-      id: 'module',
-      term: 'Module',
-      category: 'Python Basics',
-      summary: 'A file containing Python code (functions, classes) that you can import.',
-      adkContext: 'You import ADK components from modules: `from adk.core import Agent`.',
-      pythonInternals: '`import math` or `from math import sqrt`.',
-      relatedTerms: ['Import', 'Library']
+    id: 'module',
+    term: 'Module',
+    category: 'Python Basics',
+    summary: 'A file containing Python code (functions, classes) that you can import.',
+    adkContext: 'You import ADK components from modules: `from adk.core import Agent`.',
+    pythonInternals: '`import math` or `from math import sqrt`.',
+    relatedTerms: ['Import', 'Library']
   },
   'agent': {
     id: 'agent',
@@ -155,12 +155,12 @@ class MyAgent(BaseAgent):
     relatedTerms: ['Context Window', 'Cost']
   },
   'tool': {
-      id: 'tool',
-      term: 'Tool',
-      category: 'ADK Core',
-      summary: 'Interfaces that allow Agents to interact with the outside world.',
-      adkContext: 'Tools are Python functions decorated with specific metadata that describes their usage to the LLM. They bridge the probabilistic mind with the deterministic world.',
-      pythonInternals: `Tools often use the \`@tool\` decorator.
+    id: 'tool',
+    term: 'Tool',
+    category: 'ADK Core',
+    summary: 'Interfaces that allow Agents to interact with the outside world.',
+    adkContext: 'Tools are Python functions decorated with specific metadata that describes their usage to the LLM. They bridge the probabilistic mind with the deterministic world.',
+    pythonInternals: `Tools often use the \`@tool\` decorator.
 \`\`\`python
 @tool
 def get_weather(city: str) -> str:
@@ -168,33 +168,33 @@ def get_weather(city: str) -> str:
     return requests.get(f"api.weather.com/{city}")
 \`\`\`
 The **docstring** is CRITICAL: it is passed to the LLM so it knows *when* and *how* to use the tool.`,
-      relatedTerms: ['Decorator', 'Function', 'JSON Schema']
+    relatedTerms: ['Decorator', 'Function', 'JSON Schema']
   },
   'json_schema': {
-      id: 'json_schema',
-      term: 'JSON Schema',
-      category: 'Data Structures',
-      summary: 'A vocabulary that allows you to annotate and validate JSON documents.',
-      adkContext: 'When you define a Python tool, ADK converts it into a JSON Schema. The LLM reads this schema to understand what arguments (inputs) the tool needs.',
-      pythonInternals: 'Libraries like `pydantic` are often used to generate these schemas automatically from Python type hints.',
-      relatedTerms: ['Tool', 'Type Hinting']
+    id: 'json_schema',
+    term: 'JSON Schema',
+    category: 'Data Structures',
+    summary: 'A vocabulary that allows you to annotate and validate JSON documents.',
+    adkContext: 'When you define a Python tool, ADK converts it into a JSON Schema. The LLM reads this schema to understand what arguments (inputs) the tool needs.',
+    pythonInternals: 'Libraries like `pydantic` are often used to generate these schemas automatically from Python type hints.',
+    relatedTerms: ['Tool', 'Type Hinting']
   },
   'type_hinting': {
-      id: 'type_hinting',
-      term: 'Type Hinting',
-      category: 'Python Features',
-      summary: 'Syntax to declare the expected type of variables.',
-      adkContext: 'Mandatory for Tools. `def add(a: int, b: int) -> int`. Without hints, the LLM doesn\'t know if it should send a number `5` or a string `"5"`.',
-      pythonInternals: 'Python ignores these at runtime (unless using a validator), but ADK uses introspection to read them for schema generation.',
-      relatedTerms: ['Tool', 'JSON Schema']
+    id: 'type_hinting',
+    term: 'Type Hinting',
+    category: 'Python Features',
+    summary: 'Syntax to declare the expected type of variables.',
+    adkContext: 'Mandatory for Tools. `def add(a: int, b: int) -> int`. Without hints, the LLM doesn\'t know if it should send a number `5` or a string `"5"`.',
+    pythonInternals: 'Python ignores these at runtime (unless using a validator), but ADK uses introspection to read them for schema generation.',
+    relatedTerms: ['Tool', 'JSON Schema']
   },
   'bigquery': {
-      id: 'bigquery',
-      term: 'BigQuery',
-      category: 'GCP Services',
-      summary: 'Google\'s fully managed, serverless data warehouse.',
-      adkContext: 'A common use case for Agents is "Data Agents". You give the agent a tool to run SQL queries on BigQuery so it can answer questions like "What were sales last month?" by looking at real data.',
-      pythonInternals: `Accessed via \`google-cloud-bigquery\`.
+    id: 'bigquery',
+    term: 'BigQuery',
+    category: 'GCP Services',
+    summary: 'Google\'s fully managed, serverless data warehouse.',
+    adkContext: 'A common use case for Agents is "Data Agents". You give the agent a tool to run SQL queries on BigQuery so it can answer questions like "What were sales last month?" by looking at real data.',
+    pythonInternals: `Accessed via \`google-cloud-bigquery\`.
 \`\`\`python
 from google.cloud import bigquery
 client = bigquery.Client()
@@ -207,51 +207,51 @@ for row in results:
     print(row.name)
 \`\`\`
 `,
-      relatedTerms: ['SQL', 'Tool', 'GCP']
+    relatedTerms: ['SQL', 'Tool', 'GCP']
   },
   'hallucination': {
-      id: 'hallucination',
-      term: 'Hallucination',
-      category: 'AI Risks',
-      summary: 'When an LLM generates factually incorrect information confidently.',
-      adkContext: 'Agents use [[Tool]]s to prevent hallucination. Instead of guessing the weather, they look it up.',
-      pythonInternals: 'Caused by the probabilistic nature of the model predicting the next token based on training data, not real-time facts.',
-      relatedTerms: ['Grounding', 'Probabilistic']
+    id: 'hallucination',
+    term: 'Hallucination',
+    category: 'AI Risks',
+    summary: 'When an LLM generates factually incorrect information confidently.',
+    adkContext: 'Agents use [[Tool]]s to prevent hallucination. Instead of guessing the weather, they look it up.',
+    pythonInternals: 'Caused by the probabilistic nature of the model predicting the next token based on training data, not real-time facts.',
+    relatedTerms: ['Grounding', 'Probabilistic']
   },
   'grounding': {
-      id: 'grounding',
-      term: 'Grounding',
-      category: 'AI Reliability',
-      summary: 'Anchoring model outputs to verifiable sources of information.',
-      adkContext: 'Connecting an Agent to a database (like [[BigQuery]]) or a Search API grounds its responses in reality.',
-      pythonInternals: 'Often implemented by injecting tool outputs back into the prompt context before the model generates the final answer.',
-      relatedTerms: ['Hallucination', 'RAG']
+    id: 'grounding',
+    term: 'Grounding',
+    category: 'AI Reliability',
+    summary: 'Anchoring model outputs to verifiable sources of information.',
+    adkContext: 'Connecting an Agent to a database (like [[BigQuery]]) or a Search API grounds its responses in reality.',
+    pythonInternals: 'Often implemented by injecting tool outputs back into the prompt context before the model generates the final answer.',
+    relatedTerms: ['Hallucination', 'RAG']
   },
   'prompt_engineering': {
-      id: 'prompt_engineering',
-      term: 'Prompt Engineering',
-      category: 'AI Fundamentals',
-      summary: 'The art of crafting inputs (prompts) to guide the LLM to the desired output.',
-      adkContext: 'While Agents use code, the "System Instruction" is still a prompt. Good engineering (like Few-Shot) improves Agent reliability.',
-      pythonInternals: 'Prompts are just strings concatenated before tokenization.',
-      relatedTerms: ['LLM', 'Context Window']
+    id: 'prompt_engineering',
+    term: 'Prompt Engineering',
+    category: 'AI Fundamentals',
+    summary: 'The art of crafting inputs (prompts) to guide the LLM to the desired output.',
+    adkContext: 'While Agents use code, the "System Instruction" is still a prompt. Good engineering (like Few-Shot) improves Agent reliability.',
+    pythonInternals: 'Prompts are just strings concatenated before tokenization.',
+    relatedTerms: ['LLM', 'Context Window']
   },
   'context_window': {
-      id: 'context_window',
-      term: 'Context Window',
-      category: 'AI Constraints',
-      summary: 'The maximum amount of text (tokens) an LLM can process at once.',
-      adkContext: 'If conversation history exceeds the window, the agent "forgets" the beginning. Strategies like "Sliding Window" or "Summarization" are used to manage this.',
-      pythonInternals: 'Gemini 1.5 Pro has a 1M+ token window, reducing the need for complex memory management, but cost is still a factor.',
-      relatedTerms: ['Token', 'LLM', 'Memory']
+    id: 'context_window',
+    term: 'Context Window',
+    category: 'AI Constraints',
+    summary: 'The maximum amount of text (tokens) an LLM can process at once.',
+    adkContext: 'If conversation history exceeds the window, the agent "forgets" the beginning. Strategies like "Sliding Window" or "Summarization" are used to manage this.',
+    pythonInternals: 'Gemini 1.5 Pro has a 1M+ token window, reducing the need for complex memory management, but cost is still a factor.',
+    relatedTerms: ['Token', 'LLM', 'Memory']
   },
   'pydantic': {
-      id: 'pydantic',
-      term: 'Pydantic',
-      category: 'Python Libraries',
-      summary: 'Data validation and settings management using Python type annotations.',
-      adkContext: 'ADK uses Pydantic under the hood to validate Tool arguments. If the LLM sends a string for an integer field, Pydantic raises an error.',
-      pythonInternals: `
+    id: 'pydantic',
+    term: 'Pydantic',
+    category: 'Python Libraries',
+    summary: 'Data validation and settings management using Python type annotations.',
+    adkContext: 'ADK uses Pydantic under the hood to validate Tool arguments. If the LLM sends a string for an integer field, Pydantic raises an error.',
+    pythonInternals: `
 \`\`\`python
 from pydantic import BaseModel, Field
 
@@ -264,24 +264,24 @@ user = User(id=123, name="Alice")
 print(user.model_dump_json())
 \`\`\`
 `,
-      relatedTerms: ['Type Hinting', 'JSON Schema', 'Validation']
+    relatedTerms: ['Type Hinting', 'JSON Schema', 'Validation']
   },
   'docstring': {
-      id: 'docstring',
-      term: 'Docstring',
-      category: 'Python Syntax',
-      summary: 'A string literal specified in source code that is used, like a comment, to document a specific segment of code.',
-      adkContext: 'For Tools, the docstring is NOT just for humans. It is sent to the LLM to explain *what* the tool does. Bad docstrings = Confused Agents.',
-      pythonInternals: 'Accessed via `__doc__`.',
-      relatedTerms: ['Tool', 'Prompt Engineering']
+    id: 'docstring',
+    term: 'Docstring',
+    category: 'Python Syntax',
+    summary: 'A string literal specified in source code that is used, like a comment, to document a specific segment of code.',
+    adkContext: 'For Tools, the docstring is NOT just for humans. It is sent to the LLM to explain *what* the tool does. Bad docstrings = Confused Agents.',
+    pythonInternals: 'Accessed via `__doc__`.',
+    relatedTerms: ['Tool', 'Prompt Engineering']
   },
   'cloud_storage': {
-      id: 'cloud_storage',
-      term: 'Cloud Storage',
-      category: 'GCP Services',
-      summary: 'Object storage for companies of all sizes. Store any amount of data.',
-      adkContext: 'Agents use GCS to read/write files (PDFs, Images) that are too large for the context window.',
-      pythonInternals: `Accessed via \`google-cloud-storage\`.
+    id: 'cloud_storage',
+    term: 'Cloud Storage',
+    category: 'GCP Services',
+    summary: 'Object storage for companies of all sizes. Store any amount of data.',
+    adkContext: 'Agents use GCS to read/write files (PDFs, Images) that are too large for the context window.',
+    pythonInternals: `Accessed via \`google-cloud-storage\`.
 \`\`\`python
 from google.cloud import storage
 client = storage.Client()
@@ -295,15 +295,15 @@ blob.upload_from_string("Hello World")
 content = blob.download_as_text()
 \`\`\`
 `,
-      relatedTerms: ['GCP', 'Blob']
+    relatedTerms: ['GCP', 'Blob']
   },
   'firestore': {
-      id: 'firestore',
-      term: 'Firestore',
-      category: 'GCP Services',
-      summary: 'NoSQL document database built for automatic scaling.',
-      adkContext: 'Used by Agents to persist long-term memory (Session History) so users can continue chats days later.',
-      pythonInternals: `Accessed via \`google-cloud-firestore\`.
+    id: 'firestore',
+    term: 'Firestore',
+    category: 'GCP Services',
+    summary: 'NoSQL document database built for automatic scaling.',
+    adkContext: 'Used by Agents to persist long-term memory (Session History) so users can continue chats days later.',
+    pythonInternals: `Accessed via \`google-cloud-firestore\`.
 \`\`\`python
 from google.cloud import firestore
 db = firestore.Client()
@@ -318,51 +318,51 @@ if doc.exists:
     print(doc.to_dict())
 \`\`\`
 `,
-      relatedTerms: ['Database', 'State']
+    relatedTerms: ['Database', 'State']
   },
   'vertex_ai_search': {
-      id: 'vertex_ai_search',
-      term: 'Vertex AI Search',
-      category: 'GCP Services',
-      summary: 'Google-quality search and discovery for your own data.',
-      adkContext: 'Enables RAG (Retrieval Augmented Generation). The Agent searches your PDFs/Docs to answer questions.',
-      pythonInternals: 'Previously "Gen App Builder".',
-      relatedTerms: ['RAG', 'Grounding']
+    id: 'vertex_ai_search',
+    term: 'Vertex AI Search',
+    category: 'GCP Services',
+    summary: 'Google-quality search and discovery for your own data.',
+    adkContext: 'Enables RAG (Retrieval Augmented Generation). The Agent searches your PDFs/Docs to answer questions.',
+    pythonInternals: 'Previously "Gen App Builder".',
+    relatedTerms: ['RAG', 'Grounding']
   },
   'built_in_tools': {
-      id: 'built_in_tools',
-      term: 'Built-in Tools',
-      category: 'ADK Features',
-      summary: 'Pre-made tools provided by the framework.',
-      adkContext: 'ADK comes with tools like `CodeInterpreter` (run Python) and `GoogleSearch`. You don\'t need to write these from scratch.',
-      pythonInternals: '`from adk.tools import GoogleSearchTool`',
-      relatedTerms: ['Tool', 'Code Interpreter']
+    id: 'built_in_tools',
+    term: 'Built-in Tools',
+    category: 'ADK Features',
+    summary: 'Pre-made tools provided by the framework.',
+    adkContext: 'ADK comes with tools like `CodeInterpreter` (run Python) and `GoogleSearch`. You don\'t need to write these from scratch.',
+    pythonInternals: '`from adk.tools import GoogleSearchTool`',
+    relatedTerms: ['Tool', 'Code Interpreter']
   },
   'validation_error': {
-      id: 'validation_error',
-      term: 'Validation Error',
-      category: 'Error Handling',
-      summary: 'Error raised when inputs do not match the expected schema.',
-      adkContext: 'If a tool expects an `int` but gets "five", Pydantic raises a ValidationError. The Agent sees this error and usually tries to correct itself.',
-      pythonInternals: '`pydantic.ValidationError`',
-      relatedTerms: ['Pydantic', 'Type Hinting']
+    id: 'validation_error',
+    term: 'Validation Error',
+    category: 'Error Handling',
+    summary: 'Error raised when inputs do not match the expected schema.',
+    adkContext: 'If a tool expects an `int` but gets "five", Pydantic raises a ValidationError. The Agent sees this error and usually tries to correct itself.',
+    pythonInternals: '`pydantic.ValidationError`',
+    relatedTerms: ['Pydantic', 'Type Hinting']
   },
   'tool_chaining': {
-      id: 'tool_chaining',
-      term: 'Tool Chaining',
-      category: 'Agent Patterns',
-      summary: 'The process where an Agent uses the output of one tool as the input for another.',
-      adkContext: 'Example: Agent calls `search_google("weather in NY")` -> gets "Rainy" -> calls `recommend_outfit("Rainy")`.',
-      pythonInternals: 'The LLM handles this naturally by generating multiple tool calls in sequence or loop iterations.',
-      relatedTerms: ['Orchestration', 'Reasoning Loop']
+    id: 'tool_chaining',
+    term: 'Tool Chaining',
+    category: 'Agent Patterns',
+    summary: 'The process where an Agent uses the output of one tool as the input for another.',
+    adkContext: 'Example: Agent calls `search_google("weather in NY")` -> gets "Rainy" -> calls `recommend_outfit("Rainy")`.',
+    pythonInternals: 'The LLM handles this naturally by generating multiple tool calls in sequence or loop iterations.',
+    relatedTerms: ['Orchestration', 'Reasoning Loop']
   },
   'api_integration': {
-      id: 'api_integration',
-      term: 'API Integration',
-      category: 'Connectivity',
-      summary: 'Connecting an Agent to external services via HTTP requests.',
-      adkContext: 'Agents are not limited to GCP. They can call Slack, Jira, or any REST API using standard Python libraries inside a Tool.',
-      pythonInternals: `Standard library \`requests\` is used.
+    id: 'api_integration',
+    term: 'API Integration',
+    category: 'Connectivity',
+    summary: 'Connecting an Agent to external services via HTTP requests.',
+    adkContext: 'Agents are not limited to GCP. They can call Slack, Jira, or any REST API using standard Python libraries inside a Tool.',
+    pythonInternals: `Standard library \`requests\` is used.
 \`\`\`python
 import requests
 
@@ -376,362 +376,362 @@ if resp.status_code == 200:
     print("Success")
 \`\`\`
 `,
-      relatedTerms: ['REST', 'JSON']
+    relatedTerms: ['REST', 'JSON']
   },
   'gcp_console': {
-      id: 'gcp_console',
-      term: 'GCP Console',
-      category: 'GCP Tools',
-      summary: 'The web-based interface for managing Google Cloud resources.',
-      adkContext: 'You use the console to create projects, enable billing, and turn on APIs (like BigQuery) so your Agent can use them.',
-      pythonInternals: 'N/A (Web UI)',
-      relatedTerms: ['GCP', 'Project']
+    id: 'gcp_console',
+    term: 'GCP Console',
+    category: 'GCP Tools',
+    summary: 'The web-based interface for managing Google Cloud resources.',
+    adkContext: 'You use the console to create projects, enable billing, and turn on APIs (like BigQuery) so your Agent can use them.',
+    pythonInternals: 'N/A (Web UI)',
+    relatedTerms: ['GCP', 'Project']
   },
   'api_enablement': {
-      id: 'api_enablement',
-      term: 'API Enablement',
-      category: 'GCP Configuration',
-      summary: 'The process of turning on specific services for your project.',
-      adkContext: 'Even if you have credentials, your Agent cannot call BigQuery unless the "BigQuery API" is enabled in the Console.',
-      pythonInternals: 'Errors usually look like "API has not been used in project..."',
-      relatedTerms: ['GCP Console', 'Service Account']
+    id: 'api_enablement',
+    term: 'API Enablement',
+    category: 'GCP Configuration',
+    summary: 'The process of turning on specific services for your project.',
+    adkContext: 'Even if you have credentials, your Agent cannot call BigQuery unless the "BigQuery API" is enabled in the Console.',
+    pythonInternals: 'Errors usually look like "API has not been used in project..."',
+    relatedTerms: ['GCP Console', 'Service Account']
   },
   'async_tools': {
-      id: 'async_tools',
-      term: 'Async Tools',
-      category: 'Advanced Patterns',
-      summary: 'Tools defined with `async def` to allow non-blocking execution.',
-      adkContext: 'Critical for high-performance agents. Allows the agent to do other work (or run other tools) while waiting for a slow API.',
-      pythonInternals: 'Uses Python\'s `asyncio` library. `async def my_tool(): await ...`',
-      relatedTerms: ['Concurrency', 'Performance']
+    id: 'async_tools',
+    term: 'Async Tools',
+    category: 'Advanced Patterns',
+    summary: 'Tools defined with `async def` to allow non-blocking execution.',
+    adkContext: 'Critical for high-performance agents. Allows the agent to do other work (or run other tools) while waiting for a slow API.',
+    pythonInternals: 'Uses Python\'s `asyncio` library. `async def my_tool(): await ...`',
+    relatedTerms: ['Concurrency', 'Performance']
   },
   'caching': {
-      id: 'caching',
-      term: 'Caching',
-      category: 'Optimization',
-      summary: 'Storing the result of an expensive operation to reuse it later.',
-      adkContext: 'If an agent asks "Get Stock Price" twice in 1 minute, caching prevents a second API call, saving money and time.',
-      pythonInternals: 'Decorators like `@functools.lru_cache` or custom dictionaries.',
-      relatedTerms: ['Optimization', 'Latency']
+    id: 'caching',
+    term: 'Caching',
+    category: 'Optimization',
+    summary: 'Storing the result of an expensive operation to reuse it later.',
+    adkContext: 'If an agent asks "Get Stock Price" twice in 1 minute, caching prevents a second API call, saving money and time.',
+    pythonInternals: 'Decorators like `@functools.lru_cache` or custom dictionaries.',
+    relatedTerms: ['Optimization', 'Latency']
   },
   'parallel_execution': {
-      id: 'parallel_execution',
-      term: 'Parallel Execution',
-      category: 'Advanced Patterns',
-      summary: 'Running multiple tools simultaneously.',
-      adkContext: 'If an agent needs Weather and Stock Price, it shouldn\'t wait for one to finish before starting the other. ADK handles this if tools are async.',
-      pythonInternals: '`asyncio.gather()`',
-      relatedTerms: ['Async Tools', 'Concurrency']
+    id: 'parallel_execution',
+    term: 'Parallel Execution',
+    category: 'Advanced Patterns',
+    summary: 'Running multiple tools simultaneously.',
+    adkContext: 'If an agent needs Weather and Stock Price, it shouldn\'t wait for one to finish before starting the other. ADK handles this if tools are async.',
+    pythonInternals: '`asyncio.gather()`',
+    relatedTerms: ['Async Tools', 'Concurrency']
   },
   'tool_routing': {
-      id: 'tool_routing',
-      term: 'Tool Routing',
-      category: 'Orchestration',
-      summary: 'Logic that decides which tool (or version of a tool) to call.',
-      adkContext: 'Useful for versioning ("Use SearchV2 for new queries, SearchV1 for legacy") or specialized routing ("Use MedicalSearch for health queries").',
-      pythonInternals: 'Often implemented as a "Router Agent" or simple conditional logic.',
-      relatedTerms: ['Orchestration', 'Versioning']
+    id: 'tool_routing',
+    term: 'Tool Routing',
+    category: 'Orchestration',
+    summary: 'Logic that decides which tool (or version of a tool) to call.',
+    adkContext: 'Useful for versioning ("Use SearchV2 for new queries, SearchV1 for legacy") or specialized routing ("Use MedicalSearch for health queries").',
+    pythonInternals: 'Often implemented as a "Router Agent" or simple conditional logic.',
+    relatedTerms: ['Orchestration', 'Versioning']
   },
   'deprecation': {
-      id: 'deprecation',
-      term: 'Deprecation',
-      category: 'Software Lifecycle',
-      summary: 'Marking a feature as obsolete to warn users it will be removed in the future.',
-      adkContext: 'When upgrading Tools, you don\'t delete the old one immediately (which breaks Agents). You mark it deprecated so the Agent (or developer) knows to switch.',
-      pythonInternals: '`warnings.warn("Use v2", DeprecationWarning)`',
-      relatedTerms: ['Versioning', 'Tool Routing']
+    id: 'deprecation',
+    term: 'Deprecation',
+    category: 'Software Lifecycle',
+    summary: 'Marking a feature as obsolete to warn users it will be removed in the future.',
+    adkContext: 'When upgrading Tools, you don\'t delete the old one immediately (which breaks Agents). You mark it deprecated so the Agent (or developer) knows to switch.',
+    pythonInternals: '`warnings.warn("Use v2", DeprecationWarning)`',
+    relatedTerms: ['Versioning', 'Tool Routing']
   },
   'latency': {
-      id: 'latency',
-      term: 'Latency',
-      category: 'Performance',
-      summary: 'The time delay between a request and a response.',
-      adkContext: 'High latency in Tools makes the Agent feel slow. Async tools and Caching are the primary ways to reduce latency.',
-      pythonInternals: 'Measured in milliseconds (ms).',
-      relatedTerms: ['Caching', 'Async Tools']
+    id: 'latency',
+    term: 'Latency',
+    category: 'Performance',
+    summary: 'The time delay between a request and a response.',
+    adkContext: 'High latency in Tools makes the Agent feel slow. Async tools and Caching are the primary ways to reduce latency.',
+    pythonInternals: 'Measured in milliseconds (ms).',
+    relatedTerms: ['Caching', 'Async Tools']
   },
   'vector_store': {
-      id: 'vector_store',
-      term: 'Vector Store',
-      category: 'AI Memory',
-      summary: 'A database optimized for storing and searching vector embeddings.',
-      adkContext: 'Used for Long-Term Memory. The Agent converts memories into vectors, stores them here, and retrieves relevant ones later using Semantic Search.',
-      pythonInternals: 'Common options: Vertex AI Vector Search, Pinecone, ChromaDB.',
-      relatedTerms: ['Embeddings', 'Semantic Search', 'RAG']
+    id: 'vector_store',
+    term: 'Vector Store',
+    category: 'AI Memory',
+    summary: 'A database optimized for storing and searching vector embeddings.',
+    adkContext: 'Used for Long-Term Memory. The Agent converts memories into vectors, stores them here, and retrieves relevant ones later using Semantic Search.',
+    pythonInternals: 'Common options: Vertex AI Vector Search, Pinecone, ChromaDB.',
+    relatedTerms: ['Embeddings', 'Semantic Search', 'RAG']
   },
   'embeddings': {
-      id: 'embeddings',
-      term: 'Embeddings',
-      category: 'AI Fundamentals',
-      summary: 'Numerical representations of text where similar meanings have similar numbers.',
-      adkContext: 'To "remember" things, we turn text into lists of floating-point numbers (vectors). "Dog" and "Puppy" will have vectors that are mathematically close.',
-      pythonInternals: '`model.get_embeddings("text")` returns `[0.1, -0.5, ...]`',
-      relatedTerms: ['Vector Store', 'Cosine Similarity']
+    id: 'embeddings',
+    term: 'Embeddings',
+    category: 'AI Fundamentals',
+    summary: 'Numerical representations of text where similar meanings have similar numbers.',
+    adkContext: 'To "remember" things, we turn text into lists of floating-point numbers (vectors). "Dog" and "Puppy" will have vectors that are mathematically close.',
+    pythonInternals: '`model.get_embeddings("text")` returns `[0.1, -0.5, ...]`',
+    relatedTerms: ['Vector Store', 'Cosine Similarity']
   },
   'semantic_search': {
-      id: 'semantic_search',
-      term: 'Semantic Search',
-      category: 'AI Retrieval',
-      summary: 'Searching data by meaning rather than keyword matching.',
-      adkContext: 'Allows an Agent to find "How to fix a flat tire" even if the user asks "My car wheel is busted".',
-      pythonInternals: 'Calculated using Cosine Similarity between the query vector and stored vectors.',
-      relatedTerms: ['Embeddings', 'Vector Store']
+    id: 'semantic_search',
+    term: 'Semantic Search',
+    category: 'AI Retrieval',
+    summary: 'Searching data by meaning rather than keyword matching.',
+    adkContext: 'Allows an Agent to find "How to fix a flat tire" even if the user asks "My car wheel is busted".',
+    pythonInternals: 'Calculated using Cosine Similarity between the query vector and stored vectors.',
+    relatedTerms: ['Embeddings', 'Vector Store']
   },
   'cosine_similarity': {
-      id: 'cosine_similarity',
-      term: 'Cosine Similarity',
-      category: 'Math',
-      summary: 'A metric used to measure how similar two vectors are.',
-      adkContext: 'The core math behind Semantic Search. Returns a value between -1 (opposite) and 1 (identical).',
-      pythonInternals: '`dot(A, B) / (norm(A) * norm(B))`',
-      relatedTerms: ['Embeddings', 'Vector Store']
+    id: 'cosine_similarity',
+    term: 'Cosine Similarity',
+    category: 'Math',
+    summary: 'A metric used to measure how similar two vectors are.',
+    adkContext: 'The core math behind Semantic Search. Returns a value between -1 (opposite) and 1 (identical).',
+    pythonInternals: '`dot(A, B) / (norm(A) * norm(B))`',
+    relatedTerms: ['Embeddings', 'Vector Store']
   },
   'ranking': {
-      id: 'ranking',
-      term: 'Ranking',
-      category: 'Search',
-      summary: 'The process of ordering search results by relevance.',
-      adkContext: 'After retrieving 100 documents from a Vector Store, a "Reranker" model might re-sort them to find the top 5 most relevant ones for the LLM context.',
-      pythonInternals: 'Often uses a Cross-Encoder model.',
-      relatedTerms: ['Retrieval', 'Semantic Search']
+    id: 'ranking',
+    term: 'Ranking',
+    category: 'Search',
+    summary: 'The process of ordering search results by relevance.',
+    adkContext: 'After retrieving 100 documents from a Vector Store, a "Reranker" model might re-sort them to find the top 5 most relevant ones for the LLM context.',
+    pythonInternals: 'Often uses a Cross-Encoder model.',
+    relatedTerms: ['Retrieval', 'Semantic Search']
   },
   'cross_encoder': {
-      id: 'cross_encoder',
-      term: 'Cross-Encoder',
-      category: 'AI Models',
-      summary: 'A model that processes two inputs (Query + Document) simultaneously to output a relevance score.',
-      adkContext: 'Used for [[Ranking]]. It is slower than Vector Search (Bi-Encoder) but much more accurate because it sees the interaction between words in the query and document.',
-      pythonInternals: '`score = model.predict([(query, doc)])`',
-      relatedTerms: ['Ranking', 'Embeddings']
+    id: 'cross_encoder',
+    term: 'Cross-Encoder',
+    category: 'AI Models',
+    summary: 'A model that processes two inputs (Query + Document) simultaneously to output a relevance score.',
+    adkContext: 'Used for [[Ranking]]. It is slower than Vector Search (Bi-Encoder) but much more accurate because it sees the interaction between words in the query and document.',
+    pythonInternals: '`score = model.predict([(query, doc)])`',
+    relatedTerms: ['Ranking', 'Embeddings']
   },
   'bm25': {
-      id: 'bm25',
-      term: 'BM25',
-      category: 'Search Algorithms',
-      summary: 'Best Matching 25. A ranking function used by search engines to estimate the relevance of documents to a given search query.',
-      adkContext: 'The standard algorithm for [[Hybrid_Search]] (Keyword part). It cares about exact word frequency, unlike Vectors.',
-      pythonInternals: 'Available in libraries like `rank_bm25`.',
-      relatedTerms: ['Hybrid Search', 'TF-IDF']
+    id: 'bm25',
+    term: 'BM25',
+    category: 'Search Algorithms',
+    summary: 'Best Matching 25. A ranking function used by search engines to estimate the relevance of documents to a given search query.',
+    adkContext: 'The standard algorithm for [[Hybrid_Search]] (Keyword part). It cares about exact word frequency, unlike Vectors.',
+    pythonInternals: 'Available in libraries like `rank_bm25`.',
+    relatedTerms: ['Hybrid Search', 'TF-IDF']
   },
   'hybrid_search': {
-      id: 'hybrid_search',
-      term: 'Hybrid Search',
-      category: 'Search',
-      summary: 'Combining Keyword Search (BM25) with Semantic Search (Vectors).',
-      adkContext: 'Vectors are bad at exact matches (like part numbers "X-123"). Keywords are bad at concepts. Hybrid search gives the best of both.',
-      pythonInternals: '`weighted_score = alpha * vector_score + (1 - alpha) * keyword_score`',
-      relatedTerms: ['Vector Store', 'Elasticsearch']
+    id: 'hybrid_search',
+    term: 'Hybrid Search',
+    category: 'Search',
+    summary: 'Combining Keyword Search (BM25) with Semantic Search (Vectors).',
+    adkContext: 'Vectors are bad at exact matches (like part numbers "X-123"). Keywords are bad at concepts. Hybrid search gives the best of both.',
+    pythonInternals: '`weighted_score = alpha * vector_score + (1 - alpha) * keyword_score`',
+    relatedTerms: ['Vector Store', 'Elasticsearch']
   },
   'summarization': {
-      id: 'summarization',
-      term: 'Summarization',
-      category: 'NLP Tasks',
-      summary: 'Reducing text length while preserving key information.',
-      adkContext: 'Used to compress Conversation History so it fits in the Context Window without losing the "gist" of what happened.',
-      pythonInternals: '`model.generate_content("Summarize this: " + history)`',
-      relatedTerms: ['Context Window', 'Pruning']
+    id: 'summarization',
+    term: 'Summarization',
+    category: 'NLP Tasks',
+    summary: 'Reducing text length while preserving key information.',
+    adkContext: 'Used to compress Conversation History so it fits in the Context Window without losing the "gist" of what happened.',
+    pythonInternals: '`model.generate_content("Summarize this: " + history)`',
+    relatedTerms: ['Context Window', 'Pruning']
   },
   'rag': {
-      id: 'rag',
-      term: 'RAG',
-      category: 'Architecture',
-      summary: 'Retrieval Augmented Generation.',
-      adkContext: 'The pattern of fetching data (Retrieval) and passing it to the LLM (Generation) to ground the response in facts.',
-      pythonInternals: 'Retrieve -> Concat to Prompt -> Generate.',
-      relatedTerms: ['Grounding', 'Vector Store']
+    id: 'rag',
+    term: 'RAG',
+    category: 'Architecture',
+    summary: 'Retrieval Augmented Generation.',
+    adkContext: 'The pattern of fetching data (Retrieval) and passing it to the LLM (Generation) to ground the response in facts.',
+    pythonInternals: 'Retrieve -> Concat to Prompt -> Generate.',
+    relatedTerms: ['Grounding', 'Vector Store']
   },
   'chunking': {
-      id: 'chunking',
-      term: 'Chunking',
-      category: 'RAG Pipeline',
-      summary: 'Splitting large documents into smaller, manageable pieces.',
-      adkContext: 'LLMs have context limits. We cannot feed a whole book. We chunk it into paragraphs so we can retrieve only the relevant parts.',
-      pythonInternals: 'Libraries like `langchain` provide `RecursiveCharacterTextSplitter`.',
-      relatedTerms: ['Context Window', 'Embeddings']
+    id: 'chunking',
+    term: 'Chunking',
+    category: 'RAG Pipeline',
+    summary: 'Splitting large documents into smaller, manageable pieces.',
+    adkContext: 'LLMs have context limits. We cannot feed a whole book. We chunk it into paragraphs so we can retrieve only the relevant parts.',
+    pythonInternals: 'Libraries like `langchain` provide `RecursiveCharacterTextSplitter`.',
+    relatedTerms: ['Context Window', 'Embeddings']
   },
   'metadata': {
-      id: 'metadata',
-      term: 'Metadata',
-      category: 'Data',
-      summary: 'Data that provides information about other data.',
-      adkContext: 'In RAG, we attach metadata (Author, Date) to chunks. This allows "Pre-filtering" (e.g., "Search only documents from 2024").',
-      pythonInternals: 'Stored as a JSON object alongside the vector in the Vector Store.',
-      relatedTerms: ['Vector Store', 'Filtering']
+    id: 'metadata',
+    term: 'Metadata',
+    category: 'Data',
+    summary: 'Data that provides information about other data.',
+    adkContext: 'In RAG, we attach metadata (Author, Date) to chunks. This allows "Pre-filtering" (e.g., "Search only documents from 2024").',
+    pythonInternals: 'Stored as a JSON object alongside the vector in the Vector Store.',
+    relatedTerms: ['Vector Store', 'Filtering']
   },
   'ingestion': {
-      id: 'ingestion',
-      term: 'Ingestion',
-      category: 'Data Pipeline',
-      summary: 'The process of importing data for immediate use or storage.',
-      adkContext: 'The first step of RAG. Reading PDFs, HTML, or Docx files and converting them into plain text.',
-      pythonInternals: 'Libraries: `pypdf`, `beautifulsoup4`, `unstructured`.',
-      relatedTerms: ['RAG', 'Preprocessing']
+    id: 'ingestion',
+    term: 'Ingestion',
+    category: 'Data Pipeline',
+    summary: 'The process of importing data for immediate use or storage.',
+    adkContext: 'The first step of RAG. Reading PDFs, HTML, or Docx files and converting them into plain text.',
+    pythonInternals: 'Libraries: `pypdf`, `beautifulsoup4`, `unstructured`.',
+    relatedTerms: ['RAG', 'Preprocessing']
   },
   'corpus': {
-      id: 'corpus',
-      term: 'Corpus',
-      category: 'NLP Data',
-      summary: 'A collection of written texts.',
-      adkContext: 'In RAG, your "Corpus" is the set of PDFs, Docs, and Wikis that you ingest into the Vector Store.',
-      pythonInternals: 'Usually stored as a list of strings or documents before chunking.',
-      relatedTerms: ['Ingestion', 'Dataset']
+    id: 'corpus',
+    term: 'Corpus',
+    category: 'NLP Data',
+    summary: 'A collection of written texts.',
+    adkContext: 'In RAG, your "Corpus" is the set of PDFs, Docs, and Wikis that you ingest into the Vector Store.',
+    pythonInternals: 'Usually stored as a list of strings or documents before chunking.',
+    relatedTerms: ['Ingestion', 'Dataset']
   },
   'preprocessing': {
-      id: 'preprocessing',
-      term: 'Preprocessing',
-      category: 'Data Pipeline',
-      summary: 'Cleaning and normalizing text before chunking.',
-      adkContext: 'Removing HTML tags, fixing encoding errors, and normalizing whitespace ensures high-quality embeddings.',
-      pythonInternals: '`text = text.replace("\\n", " ").strip()`',
-      relatedTerms: ['Ingestion', 'Chunking']
+    id: 'preprocessing',
+    term: 'Preprocessing',
+    category: 'Data Pipeline',
+    summary: 'Cleaning and normalizing text before chunking.',
+    adkContext: 'Removing HTML tags, fixing encoding errors, and normalizing whitespace ensures high-quality embeddings.',
+    pythonInternals: '`text = text.replace("\\n", " ").strip()`',
+    relatedTerms: ['Ingestion', 'Chunking']
   },
   'indexing': {
-      id: 'indexing',
-      term: 'Indexing',
-      category: 'Vector Search',
-      summary: 'Organizing vectors in a data structure for fast retrieval.',
-      adkContext: 'Vertex AI Vector Search builds an index (like a tree) so it can find the nearest neighbor in milliseconds without checking every single vector.',
-      pythonInternals: 'Algorithms like HNSW (Hierarchical Navigable Small World) or IVF (Inverted File Index).',
-      relatedTerms: ['Vector Store', 'Latency']
+    id: 'indexing',
+    term: 'Indexing',
+    category: 'Vector Search',
+    summary: 'Organizing vectors in a data structure for fast retrieval.',
+    adkContext: 'Vertex AI Vector Search builds an index (like a tree) so it can find the nearest neighbor in milliseconds without checking every single vector.',
+    pythonInternals: 'Algorithms like HNSW (Hierarchical Navigable Small World) or IVF (Inverted File Index).',
+    relatedTerms: ['Vector Store', 'Latency']
   },
   'faithfulness': {
-      id: 'faithfulness',
-      term: 'Faithfulness',
-      category: 'RAG Evaluation',
-      summary: 'A metric measuring if the generated answer is derived solely from the retrieved context.',
-      adkContext: 'Prevents hallucinations. If the context says "Sky is green" and Agent says "Sky is blue" (from training data), Faithfulness is low.',
-      pythonInternals: 'Evaluated using LLM-as-a-Judge (asking another LLM to compare answer vs context).',
-      relatedTerms: ['Hallucination', 'Grounding']
+    id: 'faithfulness',
+    term: 'Faithfulness',
+    category: 'RAG Evaluation',
+    summary: 'A metric measuring if the generated answer is derived solely from the retrieved context.',
+    adkContext: 'Prevents hallucinations. If the context says "Sky is green" and Agent says "Sky is blue" (from training data), Faithfulness is low.',
+    pythonInternals: 'Evaluated using LLM-as-a-Judge (asking another LLM to compare answer vs context).',
+    relatedTerms: ['Hallucination', 'Grounding']
   },
   'relevance': {
-      id: 'relevance',
-      term: 'Relevance',
-      category: 'RAG Evaluation',
-      summary: 'A metric measuring if the generated answer actually addresses the user query.',
-      adkContext: 'An answer can be faithful (factually correct based on docs) but irrelevant (doesn\'t answer the specific question).',
-      pythonInternals: 'Evaluated using LLM-as-a-Judge.',
-      relatedTerms: ['Precision', 'Recall']
+    id: 'relevance',
+    term: 'Relevance',
+    category: 'RAG Evaluation',
+    summary: 'A metric measuring if the generated answer actually addresses the user query.',
+    adkContext: 'An answer can be faithful (factually correct based on docs) but irrelevant (doesn\'t answer the specific question).',
+    pythonInternals: 'Evaluated using LLM-as-a-Judge.',
+    relatedTerms: ['Precision', 'Recall']
   },
   'recall': {
-      id: 'recall',
-      term: 'Recall',
-      category: 'Search Metrics',
-      summary: 'The fraction of relevant documents that were successfully retrieved.',
-      adkContext: 'If there are 10 docs about "Pricing" and your RAG retrieves 8 of them, Recall is 0.8.',
-      pythonInternals: '`relevant_retrieved / total_relevant`',
-      relatedTerms: ['Precision', 'Retrieval']
+    id: 'recall',
+    term: 'Recall',
+    category: 'Search Metrics',
+    summary: 'The fraction of relevant documents that were successfully retrieved.',
+    adkContext: 'If there are 10 docs about "Pricing" and your RAG retrieves 8 of them, Recall is 0.8.',
+    pythonInternals: '`relevant_retrieved / total_relevant`',
+    relatedTerms: ['Precision', 'Retrieval']
   },
   'precision': {
-      id: 'precision',
-      term: 'Precision',
-      category: 'Search Metrics',
-      summary: 'The fraction of retrieved documents that are actually relevant.',
-      adkContext: 'If your RAG retrieves 10 docs and only 2 are about "Pricing", Precision is 0.2. Low precision confuses the LLM.',
-      pythonInternals: '`relevant_retrieved / total_retrieved`',
-      relatedTerms: ['Recall', 'Reranking']
+    id: 'precision',
+    term: 'Precision',
+    category: 'Search Metrics',
+    summary: 'The fraction of retrieved documents that are actually relevant.',
+    adkContext: 'If your RAG retrieves 10 docs and only 2 are about "Pricing", Precision is 0.2. Low precision confuses the LLM.',
+    pythonInternals: '`relevant_retrieved / total_retrieved`',
+    relatedTerms: ['Recall', 'Reranking']
   },
   'query_expansion': {
-      id: 'query_expansion',
-      term: 'Query Expansion',
-      category: 'RAG Optimization',
-      summary: 'Improving search results by generating synonyms or related questions from the original query.',
-      adkContext: 'If a user asks "My car won\'t start", the Agent might expand this to "car battery dead", "ignition failure", etc., to find more relevant docs.',
-      pythonInternals: '`model.generate_content("Generate 3 search queries for: " + user_query)`',
-      relatedTerms: ['RAG', 'Semantic Search']
+    id: 'query_expansion',
+    term: 'Query Expansion',
+    category: 'RAG Optimization',
+    summary: 'Improving search results by generating synonyms or related questions from the original query.',
+    adkContext: 'If a user asks "My car won\'t start", the Agent might expand this to "car battery dead", "ignition failure", etc., to find more relevant docs.',
+    pythonInternals: '`model.generate_content("Generate 3 search queries for: " + user_query)`',
+    relatedTerms: ['RAG', 'Semantic Search']
   },
 
   // --- Python & Environment Deep Dives ---
   'virtual_environment': {
-      id: 'virtual_environment',
-      term: 'Virtual Environment',
-      category: 'Development Setup',
-      summary: 'An isolated self-contained directory tree that contains a Python installation for a particular version of Python.',
-      adkContext: 'ADK projects require specific versions of libraries (like `langchain`, `google-cloud-aiplatform`). Installing these globally can break your OS tools. ALWAYS use a venv.',
-      pythonInternals: `When you activate a venv, it modifies your shell's \`PATH\` variable to point to the venv's \`bin\` folder.
+    id: 'virtual_environment',
+    term: 'Virtual Environment',
+    category: 'Development Setup',
+    summary: 'An isolated self-contained directory tree that contains a Python installation for a particular version of Python.',
+    adkContext: 'ADK projects require specific versions of libraries (like `langchain`, `google-cloud-aiplatform`). Installing these globally can break your OS tools. ALWAYS use a venv.',
+    pythonInternals: `When you activate a venv, it modifies your shell's \`PATH\` variable to point to the venv's \`bin\` folder.
 \`\`\`bash
 # What happens when you type 'python'
 /usr/bin/python  # Global (BAD)
 /my-project/venv/bin/python # Local (GOOD)
 \`\`\`
 `,
-      history: 'Introduced to solve "Dependency Hell" where Project A needs Lib v1.0 and Project B needs Lib v2.0.',
-      relatedTerms: ['PATH', 'pip', 'Dependency Hell']
+    history: 'Introduced to solve "Dependency Hell" where Project A needs Lib v1.0 and Project B needs Lib v2.0.',
+    relatedTerms: ['PATH', 'pip', 'Dependency Hell']
   },
   'pip': {
-      id: 'pip',
-      term: 'pip',
-      category: 'Python Ecosystem',
-      summary: 'The package installer for Python.',
-      adkContext: 'You will use `pip install google-cloud-aiplatform` to get the ADK SDKs.',
-      pythonInternals: 'Fetches packages from PyPI (Python Package Index).',
-      relatedTerms: ['Virtual Environment', 'Dependency']
+    id: 'pip',
+    term: 'pip',
+    category: 'Python Ecosystem',
+    summary: 'The package installer for Python.',
+    adkContext: 'You will use `pip install google-cloud-aiplatform` to get the ADK SDKs.',
+    pythonInternals: 'Fetches packages from PyPI (Python Package Index).',
+    relatedTerms: ['Virtual Environment', 'Dependency']
   },
   'environment_variable': {
-      id: 'environment_variable',
-      term: 'Environment Variable',
-      category: 'OS Concepts',
-      summary: 'Dynamic named values that can affect the way running processes will behave on a computer.',
-      adkContext: 'We use env vars to store **Secrets** (API Keys, Project IDs). NEVER hardcode secrets in your Python files. ADK looks for `GOOGLE_APPLICATION_CREDENTIALS`.',
-      pythonInternals: `Accessed via \`os.environ\`.
+    id: 'environment_variable',
+    term: 'Environment Variable',
+    category: 'OS Concepts',
+    summary: 'Dynamic named values that can affect the way running processes will behave on a computer.',
+    adkContext: 'We use env vars to store **Secrets** (API Keys, Project IDs). NEVER hardcode secrets in your Python files. ADK looks for `GOOGLE_APPLICATION_CREDENTIALS`.',
+    pythonInternals: `Accessed via \`os.environ\`.
 \`\`\`python
 import os
 api_key = os.environ.get("API_KEY")
 \`\`\`
 `,
-      relatedTerms: ['Service Account', 'Security']
+    relatedTerms: ['Service Account', 'Security']
   },
   'service_account': {
-      id: 'service_account',
-      term: 'Service Account',
-      category: 'GCP Security',
-      summary: 'A special type of Google account intended to represent a non-human user (like your Agent).',
-      adkContext: 'Your agent needs permission to call Vertex AI. You don\'t use your Gmail password; you use a Service Account Key (JSON) or ADC.',
-      pythonInternals: 'The SDK looks for credentials in this order: Code -> Env Var -> ADC -> Metadata Server.',
-      relatedTerms: ['ADC', 'IAM', 'GCP']
+    id: 'service_account',
+    term: 'Service Account',
+    category: 'GCP Security',
+    summary: 'A special type of Google account intended to represent a non-human user (like your Agent).',
+    adkContext: 'Your agent needs permission to call Vertex AI. You don\'t use your Gmail password; you use a Service Account Key (JSON) or ADC.',
+    pythonInternals: 'The SDK looks for credentials in this order: Code -> Env Var -> ADC -> Metadata Server.',
+    relatedTerms: ['ADC', 'IAM', 'GCP']
   },
   'adc': {
-      id: 'adc',
-      term: 'ADC',
-      category: 'GCP Security',
-      summary: 'Application Default Credentials.',
-      adkContext: 'The standard way to handle auth. Locally, you run `gcloud auth application-default login`. In the cloud, it happens automatically.',
-      pythonInternals: '`google.auth.default()` is the function that magically finds your credentials.',
-      relatedTerms: ['Service Account', 'CLI']
+    id: 'adc',
+    term: 'ADC',
+    category: 'GCP Security',
+    summary: 'Application Default Credentials.',
+    adkContext: 'The standard way to handle auth. Locally, you run `gcloud auth application-default login`. In the cloud, it happens automatically.',
+    pythonInternals: '`google.auth.default()` is the function that magically finds your credentials.',
+    relatedTerms: ['Service Account', 'CLI']
   },
   'cloud_run': {
-      id: 'cloud_run',
-      term: 'Cloud Run',
-      category: 'GCP Compute',
-      summary: 'A managed compute platform that lets you run containers directly on top of Google\'s scalable infrastructure.',
-      adkContext: 'The standard way to deploy ADK agents. You package your Python code into a Docker container, and Cloud Run gives you a HTTPS URL (Webhook) for your agent.',
-      pythonInternals: 'Requires a `Dockerfile` and a web server (like FastAPI or Flask) to listen for requests.',
-      relatedTerms: ['Docker', 'Deploy', 'Webhook']
+    id: 'cloud_run',
+    term: 'Cloud Run',
+    category: 'GCP Compute',
+    summary: 'A managed compute platform that lets you run containers directly on top of Google\'s scalable infrastructure.',
+    adkContext: 'The standard way to deploy ADK agents. You package your Python code into a Docker container, and Cloud Run gives you a HTTPS URL (Webhook) for your agent.',
+    pythonInternals: 'Requires a `Dockerfile` and a web server (like FastAPI or Flask) to listen for requests.',
+    relatedTerms: ['Docker', 'Deploy', 'Webhook']
   },
   'cli': {
-      id: 'cli',
-      term: 'CLI',
-      category: 'Computing Concepts',
-      summary: 'Command Line Interface.',
-      adkContext: 'You will use the ADK CLI (`adk init`, `adk deploy`) to manage your project lifecycle.',
-      pythonInternals: 'Python CLI tools are often built using `argparse` or `click`.',
-      relatedTerms: ['Terminal', 'Shell']
+    id: 'cli',
+    term: 'CLI',
+    category: 'Computing Concepts',
+    summary: 'Command Line Interface.',
+    adkContext: 'You will use the ADK CLI (`adk init`, `adk deploy`) to manage your project lifecycle.',
+    pythonInternals: 'Python CLI tools are often built using `argparse` or `click`.',
+    relatedTerms: ['Terminal', 'Shell']
   },
   'sdk': {
-      id: 'sdk',
-      term: 'SDK',
-      category: 'Computing Concepts',
-      summary: 'Software Development Kit.',
-      adkContext: 'The Vertex AI SDK allows your Python code to talk to Gemini models. Without the SDK, you would have to write raw HTTP requests.',
-      pythonInternals: 'Wrappers around API endpoints, handling authentication and error retry logic automatically.',
-      relatedTerms: ['API', 'Library']
+    id: 'sdk',
+    term: 'SDK',
+    category: 'Computing Concepts',
+    summary: 'Software Development Kit.',
+    adkContext: 'The Vertex AI SDK allows your Python code to talk to Gemini models. Without the SDK, you would have to write raw HTTP requests.',
+    pythonInternals: 'Wrappers around API endpoints, handling authentication and error retry logic automatically.',
+    relatedTerms: ['API', 'Library']
   },
   'vertex_ai': {
-      id: 'vertex_ai',
-      term: 'Vertex AI',
-      category: 'GCP Services',
-      summary: 'Google Cloud\'s unified AI platform.',
-      adkContext: 'ADK is the framework, but Vertex AI is the platform providing the models (Gemini), vector search, and evaluation tools.',
-      pythonInternals: `
+    id: 'vertex_ai',
+    term: 'Vertex AI',
+    category: 'GCP Services',
+    summary: 'Google Cloud\'s unified AI platform.',
+    adkContext: 'ADK is the framework, but Vertex AI is the platform providing the models (Gemini), vector search, and evaluation tools.',
+    pythonInternals: `
 \`\`\`python
 import vertexai
 from vertexai.generative_models import GenerativeModel
@@ -743,17 +743,17 @@ response = model.generate_content("Why is the sky blue?")
 print(response.text)
 \`\`\`
 `,
-      relatedTerms: ['Gemini', 'GCP', 'SDK']
+    relatedTerms: ['Gemini', 'GCP', 'SDK']
   },
 
   // --- Python Syntax Deep Dives ---
-'class': {
-      id: 'class',
-      term: 'Class',
-      category: 'Computer Science Fundamentals',
-      summary: 'A user-defined blueprint or template that bundles data (attributes) and behavior (methods) into a single logical unit.',
-      adkContext: 'In ADK, a Class is the container for your Agent\'s logic. It allows you to create multiple independent Agents from one set of instructions. If `CustomerSupportAgent` is the Class, then "Chat_Session_401" and "Chat_Session_402" are distinct **Objects** (Instances) running that class. They share the same code but have different memories (State).',
-      pythonInternals: `
+  'class': {
+    id: 'class',
+    term: 'Class',
+    category: 'Computer Science Fundamentals',
+    summary: 'A user-defined blueprint or template that bundles data (attributes) and behavior (methods) into a single logical unit.',
+    adkContext: 'In ADK, a Class is the container for your Agent\'s logic. It allows you to create multiple independent Agents from one set of instructions. If `CustomerSupportAgent` is the Class, then "Chat_Session_401" and "Chat_Session_402" are distinct **Objects** (Instances) running that class. They share the same code but have different memories (State).',
+    pythonInternals: `
 \`\`\`python
 # The Class (The Character Sheet Template)
 class RPGCharacter:
@@ -779,16 +779,16 @@ hero_1.take_damage(50)
 print(hero_2.health) # Still 100
 \`\`\`
 `,
-      history: 'The concept originated in **Simula 67** (1967), created by Ole-Johan Dahl and Kristen Nygaard to simulate real-world systems (like ships or queues). It was further popularized by **Smalltalk** (1970s), where "everything is an object," influencing C++, Java, and Python.',
-      crossLanguage: `
+    history: 'The concept originated in **Simula 67** (1967), created by Ole-Johan Dahl and Kristen Nygaard to simulate real-world systems (like ships or queues). It was further popularized by **Smalltalk** (1970s), where "everything is an object," influencing C++, Java, and Python.',
+    crossLanguage: `
 | Language | Implementation Detail |
 | :--- | :--- |
 | **Java** | Strict. Everything must be inside a class. One public class per file. |
 | **JavaScript** | Originally prototype-based. \`class\` keyword added in ES6 (2015) as "syntactic sugar" over prototypes. |
 | **C** | Does not have classes. Uses \`struct\` for data, but behavior (functions) must be kept separate. |
 `,
-      analogy: 'Think of a Class as a **Cookie Cutter** and Objects as the **Cookies**. You only need one cutter (Class) to make infinite cookies (Objects). Each cookie is made of the same stuff, but one might have sprinkles (different State) and another might be burnt.',
-      relatedTerms: ['Instance', 'Object-Oriented Programming (OOP)', 'Inheritance', 'Encapsulation']
+    analogy: 'Think of a Class as a **Cookie Cutter** and Objects as the **Cookies**. You only need one cutter (Class) to make infinite cookies (Objects). Each cookie is made of the same stuff, but one might have sprinkles (different State) and another might be burnt.',
+    relatedTerms: ['Instance', 'Object-Oriented Programming (OOP)', 'Inheritance', 'Encapsulation']
   },
   'init': {
     id: 'init',
@@ -804,13 +804,13 @@ print(hero_2.health) # Still 100
     history: `Origin: Simula 67 (1967).`,
     relatedTerms: ['self', 'super', 'inheritance']
   },
-'self': {
-      id: 'self',
-      term: 'self',
-      category: 'Core Python',
-      summary: 'A conventional name for the first argument of instance methods. It acts as a reference to the **current specific object** interacting with the code.',
-      adkContext: 'In ADK, an Agent needs to remember things (like `history` or `api_key`). If you just write `history = []` inside a function, that list dies when the function ends. If you write `self.history = []`, it is saved to the Agent\'s permanent backpack. `self` ensures that Agent A doesn\'t accidentally read Agent B\'s memory.',
-      pythonInternals: `
+  'self': {
+    id: 'self',
+    term: 'self',
+    category: 'Core Python',
+    summary: 'A conventional name for the first argument of instance methods. It acts as a reference to the **current specific object** interacting with the code.',
+    adkContext: 'In ADK, an Agent needs to remember things (like `history` or `api_key`). If you just write `history = []` inside a function, that list dies when the function ends. If you write `self.history = []`, it is saved to the Agent\'s permanent backpack. `self` ensures that Agent A doesn\'t accidentally read Agent B\'s memory.',
+    pythonInternals: `
 \`\`\`python
 class Agent:
     def __init__(self, name):
@@ -826,36 +826,36 @@ bot.speak()
 # Agent.speak(bot) -> 'self' becomes 'bot'
 \`\`\`
 **Crucial Note**: \`self\` is technically just a naming convention. You *could* name it \`banana\`, but you will be shunned by the Python community.`,
-      history: 'Python adopted explicit `self` from **Modula-3**. While most languages hide this reference, Python\'s creator, Guido van Rossum, insisted on it because "Explicit is better than implicit" (The Zen of Python). It removes ambiguity about whether you are using a local variable or an instance variable.',
-      crossLanguage: `
+    history: 'Python adopted explicit `self` from **Modula-3**. While most languages hide this reference, Python\'s creator, Guido van Rossum, insisted on it because "Explicit is better than implicit" (The Zen of Python). It removes ambiguity about whether you are using a local variable or an instance variable.',
+    crossLanguage: `
 | Language | Syntax | Difference |
 | :--- | :--- | :--- |
 | **Java/C++** | \`this\` | Implicit. You don't declare it in arguments. You can often omit it (e.g., \`name\` implies \`this.name\`). |
 | **JavaScript** | \`this\` | Context-dependent and notoriously confusing. Its value changes based on *how* a function is called. |
 | **Python** | \`self\` | Explicit. You MUST declare it as the first argument, and you MUST use it to access attributes. |
 `,
-      analogy: 'Think of a Class as a fixed wall mirror. It has the ability to reflect, but it has no face of its own. When **You** stand in front of it, the reflection (Instance) is **Yourself** (`self`). If you step away and a **Cat** stands there, the reflection becomes the **Cat** (`self`). The mirror doesn\'t change, but who "self" is changes depending on who is currently standing in the frame.',
-      relatedTerms: ['Class', 'Instance', 'Scope', 'This']
+    analogy: 'Think of a Class as a fixed wall mirror. It has the ability to reflect, but it has no face of its own. When **You** stand in front of it, the reflection (Instance) is **Yourself** (`self`). If you step away and a **Cat** stands there, the reflection becomes the **Cat** (`self`). The mirror doesn\'t change, but who "self" is changes depending on who is currently standing in the frame.',
+    relatedTerms: ['Class', 'Instance', 'Scope', 'This']
   },
   'decorator': {
-      id: 'decorator',
-      term: 'Decorator',
-      category: 'Advanced Python',
-      summary: 'A design pattern to add functionality to an object without modifying its structure.',
-      adkContext: 'Used heavily in ADK for tools (`@tool`). It tells the framework "Register this function".',
-      pythonInternals: `Syntactic sugar for passing a function into another function.`,
-      relatedTerms: ['Wrapper', 'Higher-Order Function']
+    id: 'decorator',
+    term: 'Decorator',
+    category: 'Advanced Python',
+    summary: 'A design pattern to add functionality to an object without modifying its structure.',
+    adkContext: 'Used heavily in ADK for tools (`@tool`). It tells the framework "Register this function".',
+    pythonInternals: `Syntactic sugar for passing a function into another function.`,
+    relatedTerms: ['Wrapper', 'Higher-Order Function']
   },
   'inheritance': {
-      id: 'inheritance',
-      term: 'Inheritance',
-      category: 'Core Python',
-      summary: 'Basing a class upon another class.',
-      adkContext: '`class MyAgent(BaseAgent):` means your agent gets all the "plumbing" of `BaseAgent` for free.',
-      pythonInternals: 'Python supports multiple inheritance.',
-      relatedTerms: ['Class', 'Super']
+    id: 'inheritance',
+    term: 'Inheritance',
+    category: 'Core Python',
+    summary: 'Basing a class upon another class.',
+    adkContext: '`class MyAgent(BaseAgent):` means your agent gets all the "plumbing" of `BaseAgent` for free.',
+    pythonInternals: 'Python supports multiple inheritance.',
+    relatedTerms: ['Class', 'Super']
   },
-'temperature': {
+  'temperature': {
     id: 'temperature',
     term: 'Temperature',
     category: 'AI Hyperparameters',
@@ -875,7 +875,7 @@ response = model.generate_content(prompt, generation_config=config)
 \`\`\`
 Math: Logits are divided by Temperature before the Softmax layer.`,
     relatedTerms: ['Determinism', 'Probabilistic', 'Hallucination']
-}
+  }
 };
 
 // --- Course Syllabus Data ---
@@ -929,20 +929,20 @@ In ADK, we define this in the [[Class]] \`__init__\`. It sets the baseline behav
 `
               },
               {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                      id: 'nb-persona',
-                      title: 'Deep Dive: Persona Injection',
-                      cells: [
-                          {
-                              id: 'c1',
-                              type: 'markdown',
-                              content: '### Experiment: Changing the System Instruction\nSee how the same user input results in different outputs based on the "System Instruction" (Persona).'
-                          },
-                          {
-                              id: 'c2',
-                              type: 'code',
-                              content: `def simulate_llm(system_instruction, user_input):
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-persona',
+                  title: 'Deep Dive: Persona Injection',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Experiment: Changing the System Instruction\nSee how the same user input results in different outputs based on the "System Instruction" (Persona).'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def simulate_llm(system_instruction, user_input):
     # This simulates how Gemini reacts to system instructions
     if "pirate" in system_instruction.lower():
         return f"Arrr! I be hearin': {user_input}"
@@ -953,25 +953,25 @@ In ADK, we define this in the [[Class]] \`__init__\`. It sets the baseline behav
 
 print(simulate_llm("You are a pirate", "Hello"))
 print(simulate_llm("You are a formal assistant", "Hello"))`
-                          }
-                      ]
-                  }
+                    }
+                  ]
+                }
               },
               {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                      id: 'nb-paradigm',
-                      title: 'Paradigm Shift: If/Else vs AI',
-                      cells: [
-                          {
-                              id: 'c1',
-                              type: 'markdown',
-                              content: '### Experiment 1: The Rigid Router\nThis is traditional code. It looks for exact keyword matches. Try changing the input to "I want to return a product" (without the word "refund") and see it fail.'
-                          },
-                          {
-                              id: 'c2',
-                              type: 'code',
-                              content: `def traditional_router(user_input):
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-paradigm',
+                  title: 'Paradigm Shift: If/Else vs AI',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Experiment 1: The Rigid Router\nThis is traditional code. It looks for exact keyword matches. Try changing the input to "I want to return a product" (without the word "refund") and see it fail.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def traditional_router(user_input):
     if "refund" in user_input.lower():
         return "Routing to Billing Dept..."
     elif "support" in user_input.lower():
@@ -981,16 +981,16 @@ print(simulate_llm("You are a formal assistant", "Hello"))`
 
 print(traditional_router("I want a refund"))
 print(traditional_router("I have a broken screen")) # Will fail`
-                          },
-                          {
-                              id: 'c3',
-                              type: 'markdown',
-                              content: '### Experiment 2: The Semantic Router (Simulated)\nAn Agent understands *meaning*, not just keywords. Even though "broken screen" isn\'t in the code, the Agent knows it belongs to Support.'
-                          },
-                          {
-                              id: 'c4',
-                              type: 'code',
-                              content: `def agent_router(user_input):
+                    },
+                    {
+                      id: 'c3',
+                      type: 'markdown',
+                      content: '### Experiment 2: The Semantic Router (Simulated)\nAn Agent understands *meaning*, not just keywords. Even though "broken screen" isn\'t in the code, the Agent knows it belongs to Support.'
+                    },
+                    {
+                      id: 'c4',
+                      type: 'code',
+                      content: `def agent_router(user_input):
     # In a real app, this calls model.generate_content()
     # We are simulating the probabilistic logic here
     keywords_support = ["broken", "help", "screen", "support", "not working"]
@@ -1005,9 +1005,9 @@ print(traditional_router("I have a broken screen")) # Will fail`
     return "Agent is thinking..."
 
 print(agent_router("I have a broken screen"))`
-                          }
-                      ]
-                  }
+                    }
+                  ]
+                }
               },
               {
                 type: ContentType.CODE_PLAYGROUND,
@@ -1215,20 +1215,20 @@ Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data ce
 `
               },
               {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                      id: 'nb-env-secrets',
-                      title: 'Managing Secrets & Config',
-                      cells: [
-                          {
-                              id: 'c1',
-                              type: 'markdown',
-                              content: '### The `os.environ` Dictionary\nPython accesses environment variables through a dictionary-like object. This is how we read configuration without hardcoding it.'
-                          },
-                          {
-                              id: 'c2',
-                              type: 'code',
-                              content: `import os
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-env-secrets',
+                  title: 'Managing Secrets & Config',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### The `os.environ` Dictionary\nPython accesses environment variables through a dictionary-like object. This is how we read configuration without hardcoding it.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `import os
 
 # 1. Simulate setting a variable (usually done by the OS or Docker)
 # We use a specific key to avoid overwriting your real GCP config if present
@@ -1249,14 +1249,14 @@ def get_config():
     return f"Configured for {project} in {region}"
 
 print(get_config())`
-                          },
-                          {
-                              id: 'c3',
-                              type: 'markdown',
-                              content: '### Why not hardcode?\nImagine you hardcode `PROJECT_ID = "dev-project"`. When you deploy to Production, you have to change the code. With Env Vars, you just change the environment configuration, not the code.'
-                          }
-                      ]
-                  }
+                    },
+                    {
+                      id: 'c3',
+                      type: 'markdown',
+                      content: '### Why not hardcode?\nImagine you hardcode `PROJECT_ID = "dev-project"`. When you deploy to Production, you have to change the code. With Env Vars, you just change the environment configuration, not the code.'
+                    }
+                  ]
+                }
               },
               {
                 type: ContentType.MARKDOWN,
@@ -1300,12 +1300,12 @@ You will see [[self]] everywhere. It represents "This specific robot's memory". 
 `
               },
               {
-  type: ContentType.CODE_PLAYGROUND,
-  codeProject: {
-    id: 'agent-basics-1',
-    language: 'python',
-    description: 'Assignment: Create a "StatefulAgent" class. It should have a `history` list. The `chat` method should append the user input to `history` and return the size of the history.',
-    initialCode: `class StatefulAgent:
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'agent-basics-1',
+                  language: 'python',
+                  description: 'Assignment: Create a "StatefulAgent" class. It should have a `history` list. The `chat` method should append the user input to `history` and return the size of the history.',
+                  initialCode: `class StatefulAgent:
     def __init__(self):
         # TODO: Initialize an empty list called self.history
         pass
@@ -1320,12 +1320,12 @@ You will see [[self]] everywhere. It represents "This specific robot's memory". 
 my_agent = StatefulAgent()
 print(my_agent.chat("Hello AI"))
 print(my_agent.chat("My name is Human"))`,
-    hints: [
-      { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
-      { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
-      { text: 'Use an f-string or string concatenation to return the count: f"I have remembered {len(self.history)} messages"', relearnLessonId: 'day-5' }
-    ],
-    solutionCode: `class StatefulAgent:
+                  hints: [
+                    { text: 'In `__init__`, use `self.history = []`.', relearnLessonId: 'day-5' },
+                    { text: 'In `chat`, use `self.history.append(message)`.', relearnLessonId: 'day-5' },
+                    { text: 'Use an f-string or string concatenation to return the count: f"I have remembered {len(self.history)} messages"', relearnLessonId: 'day-5' }
+                  ],
+                  solutionCode: `class StatefulAgent:
     def __init__(self):
         self.history = []
 
@@ -1336,9 +1336,9 @@ print(my_agent.chat("My name is Human"))`,
 my_agent = StatefulAgent()
 print(my_agent.chat("Hello AI"))
 print(my_agent.chat("My name is Human"))`,
-    expectedOutput: 'I have remembered 1 messages\nI have remembered 2 messages'
-  }
-},
+                  expectedOutput: 'I have remembered 1 messages\nI have remembered 2 messages'
+                }
+              },
               {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
@@ -1444,20 +1444,20 @@ Python is a dynamic language. If you write \`a: int\`, Python doesn't care if yo
 `
               },
               {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                      id: 'nb-tool-schema',
-                      title: 'From Python to JSON Schema',
-                      cells: [
-                          {
-                              id: 'c1',
-                              type: 'markdown',
-                              content: 'See how a Python function is translated into a language the Robot understands.'
-                          },
-                          {
-                              id: 'c2',
-                              type: 'code',
-                              content: `def calculate_tax(price: float, rate: float) -> float:
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-tool-schema',
+                  title: 'From Python to JSON Schema',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: 'See how a Python function is translated into a language the Robot understands.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def calculate_tax(price: float, rate: float) -> float:
     """Calculates sales tax given a price and a rate (0.0 to 1.0)."""
     return price * rate
 
@@ -1476,9 +1476,9 @@ schema = {
 }
 import json
 print(json.dumps(schema, indent=2))`
-                          }
-                      ]
-                  }
+                    }
+                  ]
+                }
               },
               {
                 type: ContentType.CODE_PLAYGROUND,
@@ -1600,52 +1600,52 @@ class MathAgent(Agent):
               {
                 type: ContentType.QUIZ,
                 quiz: {
-                    id: 'quiz-week-1',
-                    title: 'Week 1 Certification Quiz',
-                    questions: [
-                        {
-                            id: 'q1',
-                            question: 'Which component is responsible for making an LLM behave deterministically?',
-                            options: ['The Prompt', 'The Tool', 'The Agent Framework', 'The Temperature'],
-                            correctOptionIndex: 2,
-                            explanation: 'The Agent Framework (ADK) wraps the probabilistic LLM with deterministic code (Tools, Memory) to ensure reliability.',
-                            hint: { text: 'Think about the "Chassis" vs the "Engine".', relearnLessonId: 'day-1-2' },
-                            optionExplanations: [
-                                { text: 'Prompts guide the model but cannot guarantee deterministic behavior on their own.', relearnLessonId: 'day-1-2' },
-                                { text: 'Tools are deterministic functions, but they are just one part of the system.', relearnLessonId: 'day-6' },
-                                { text: 'Correct. The Framework orchestrates the loop, memory, and tools to create reliable outcomes.', relearnLessonId: 'day-1-2' },
-                                { text: 'Temperature reduces randomness but does not eliminate it entirely.', relearnLessonId: 'day-1-2' }
-                            ]
-                        },
-                        {
-                            id: 'q2',
-                            question: 'Why must we use Type Hints in Tool definitions?',
-                            options: ['To make Python faster', 'To generate JSON Schema for the LLM', 'To prevent runtime errors', 'It is optional'],
-                            correctOptionIndex: 1,
-                            explanation: 'ADK introspects the type hints to build the JSON Schema that tells the LLM how to call the function.',
-                            hint: { text: 'The LLM needs to know if it should send a string or a number.', relearnLessonId: 'day-6' },
-                            optionExplanations: [
-                                { text: 'Python type hints are ignored by the interpreter at runtime and do not improve performance.', relearnLessonId: 'day-6' },
-                                { text: 'Correct. The framework reads `a: int` and tells the LLM "Expect an integer".', relearnLessonId: 'day-6' },
-                                { text: 'Type hints do not prevent runtime errors in Python unless you use a static type checker.', relearnLessonId: 'day-6' },
-                                { text: 'In standard Python they are optional, but in ADK Tools they are mandatory.', relearnLessonId: 'day-6' }
-                            ]
-                        },
-                        {
-                            id: 'q3',
-                            question: 'What is the correct way to initialize a subclass of Agent?',
-                            options: ['def __init__(self): pass', 'super().__init__()', 'Agent.init()', 'self.init()'],
-                            correctOptionIndex: 1,
-                            explanation: 'You must call super().__init__() to ensure the base class sets up telemetry and memory.',
-                            hint: { text: 'We need to call the parent class initializer.', relearnLessonId: 'day-5' },
-                            optionExplanations: [
-                                { text: 'This overrides the parent initialization without calling it, which will break the Agent.', relearnLessonId: 'day-5' },
-                                { text: 'Correct. This ensures the `Agent` base class sets up memory and model connections.', relearnLessonId: 'day-5' },
-                                { text: 'This is not valid Python syntax for inheritance.', relearnLessonId: 'day-5' },
-                                { text: 'This method does not exist.', relearnLessonId: 'day-5' }
-                            ]
-                        }
-                    ]
+                  id: 'quiz-week-1',
+                  title: 'Week 1 Certification Quiz',
+                  questions: [
+                    {
+                      id: 'q1',
+                      question: 'Which component is responsible for making an LLM behave deterministically?',
+                      options: ['The Prompt', 'The Tool', 'The Agent Framework', 'The Temperature'],
+                      correctOptionIndex: 2,
+                      explanation: 'The Agent Framework (ADK) wraps the probabilistic LLM with deterministic code (Tools, Memory) to ensure reliability.',
+                      hint: { text: 'Think about the "Chassis" vs the "Engine".', relearnLessonId: 'day-1-2' },
+                      optionExplanations: [
+                        { text: 'Prompts guide the model but cannot guarantee deterministic behavior on their own.', relearnLessonId: 'day-1-2' },
+                        { text: 'Tools are deterministic functions, but they are just one part of the system.', relearnLessonId: 'day-6' },
+                        { text: 'Correct. The Framework orchestrates the loop, memory, and tools to create reliable outcomes.', relearnLessonId: 'day-1-2' },
+                        { text: 'Temperature reduces randomness but does not eliminate it entirely.', relearnLessonId: 'day-1-2' }
+                      ]
+                    },
+                    {
+                      id: 'q2',
+                      question: 'Why must we use Type Hints in Tool definitions?',
+                      options: ['To make Python faster', 'To generate JSON Schema for the LLM', 'To prevent runtime errors', 'It is optional'],
+                      correctOptionIndex: 1,
+                      explanation: 'ADK introspects the type hints to build the JSON Schema that tells the LLM how to call the function.',
+                      hint: { text: 'The LLM needs to know if it should send a string or a number.', relearnLessonId: 'day-6' },
+                      optionExplanations: [
+                        { text: 'Python type hints are ignored by the interpreter at runtime and do not improve performance.', relearnLessonId: 'day-6' },
+                        { text: 'Correct. The framework reads `a: int` and tells the LLM "Expect an integer".', relearnLessonId: 'day-6' },
+                        { text: 'Type hints do not prevent runtime errors in Python unless you use a static type checker.', relearnLessonId: 'day-6' },
+                        { text: 'In standard Python they are optional, but in ADK Tools they are mandatory.', relearnLessonId: 'day-6' }
+                      ]
+                    },
+                    {
+                      id: 'q3',
+                      question: 'What is the correct way to initialize a subclass of Agent?',
+                      options: ['def __init__(self): pass', 'super().__init__()', 'Agent.init()', 'self.init()'],
+                      correctOptionIndex: 1,
+                      explanation: 'You must call super().__init__() to ensure the base class sets up telemetry and memory.',
+                      hint: { text: 'We need to call the parent class initializer.', relearnLessonId: 'day-5' },
+                      optionExplanations: [
+                        { text: 'This overrides the parent initialization without calling it, which will break the Agent.', relearnLessonId: 'day-5' },
+                        { text: 'Correct. This ensures the `Agent` base class sets up memory and model connections.', relearnLessonId: 'day-5' },
+                        { text: 'This is not valid Python syntax for inheritance.', relearnLessonId: 'day-5' },
+                        { text: 'This method does not exist.', relearnLessonId: 'day-5' }
+                      ]
+                    }
+                  ]
                 }
               }
             ]
@@ -1658,14 +1658,14 @@ class MathAgent(Agent):
         title: 'Week 2: Development Fundamentals',
         description: 'Deep dive into Agent architecture, Tools, and GCP Integration.',
         lessons: [
-            { 
-              id: 'w2-d1-3', 
-              title: 'Day 1-3: Agent Architecture Deep Dive', 
-              duration: '3 Days',
-              content: [
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 1. The Memory Problem
+          {
+            id: 'w2-d1-3',
+            title: 'Day 1-3: Agent Architecture Deep Dive',
+            duration: '3 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The Memory Problem
 LLMs are stateless. They don't remember what you said 5 seconds ago.
 The [[Agent]] solves this by sending the *entire conversation history* back to the model with every new message.
 
@@ -1677,37 +1677,37 @@ Every model has a [[Context_Window]]. If you exceed it (e.g., 8000 tokens), the 
 2.  **Summarization**: Ask the LLM to summarize old messages.
 3.  **Vector Store**: Store memories in a database (Long Term Memory).
 `
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-memory-list',
-                    title: 'Python Lists as Memory',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### Appending to History\nIn Python, we use lists to store history. Watch how the list grows.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `history = []
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-memory-list',
+                  title: 'Python Lists as Memory',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Appending to History\nIn Python, we use lists to store history. Watch how the list grows.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `history = []
 history.append("User: Hi")
 history.append("Agent: Hello")
 print(f"History Size: {len(history)}")
 print(history)`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'sliding-window-memory',
-                    language: 'python',
-                    description: 'Assignment: Implement a `SlidingWindowAgent`. It should have a `max_history` limit. If history exceeds this limit, remove the oldest message (index 0).',
-                    initialCode: `class SlidingWindowAgent:
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'sliding-window-memory',
+                  language: 'python',
+                  description: 'Assignment: Implement a `SlidingWindowAgent`. It should have a `max_history` limit. If history exceeds this limit, remove the oldest message (index 0).',
+                  initialCode: `class SlidingWindowAgent:
     def __init__(self, max_history=3):
         self.history = []
         self.max_history = max_history
@@ -1725,11 +1725,11 @@ agent.add_message("Msg 1")
 agent.add_message("Msg 2")
 agent.add_message("Msg 3")
 print(agent.history)`,
-                    hints: [
-                      { text: 'Use `if len(self.history) > self.max_history:`', relearnLessonId: 'w2-d1-3' },
-                      { text: 'Use `self.history.pop(0)` to remove the oldest item.', relearnLessonId: 'w2-d1-3' }
-                    ],
-                    solutionCode: `class SlidingWindowAgent:
+                  hints: [
+                    { text: 'Use `if len(self.history) > self.max_history:`', relearnLessonId: 'w2-d1-3' },
+                    { text: 'Use `self.history.pop(0)` to remove the oldest item.', relearnLessonId: 'w2-d1-3' }
+                  ],
+                  solutionCode: `class SlidingWindowAgent:
     def __init__(self, max_history=3):
         self.history = []
         self.max_history = max_history
@@ -1739,11 +1739,11 @@ print(agent.history)`,
         if len(self.history) > self.max_history:
             self.history.pop(0)`,
                   expectedOutput: "['Msg 2', 'Msg 3']"
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 2. Advanced Prompting
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Advanced Prompting
 The **System Instruction** is your Agent's DNA.
 
 ### Few-Shot Prompting
@@ -1751,22 +1751,22 @@ Instead of just telling the agent what to do, *show* it.
 **Zero-Shot**: "Extract the sentiment."
 **Few-Shot**: "Extract sentiment. Examples: 'I love this' -> POSITIVE. 'I hate this' -> NEGATIVE."
 `
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-few-shot',
-                    title: 'Zero-Shot vs Few-Shot',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### The Power of Examples\nSee how providing examples changes the output format.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `def simulate_extraction(prompt, text):
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-few-shot',
+                  title: 'Zero-Shot vs Few-Shot',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### The Power of Examples\nSee how providing examples changes the output format.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def simulate_extraction(prompt, text):
     # Simulating LLM behavior
     if "Example:" in prompt:
         return "JSON: {'sentiment': 'positive', 'score': 0.9}"
@@ -1776,13 +1776,13 @@ Instead of just telling the agent what to do, *show* it.
 text = "I love ADK!"
 print("Zero Shot:", simulate_extraction("Analyze this:", text))
 print("Few Shot:", simulate_extraction("Analyze this. Example: Output JSON.", text))`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 3. Configuration & Architecture
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Configuration & Architecture
 Agents aren't just about prompts. You can tune the engine and structure the flow.
 
 ### Key Parameters
@@ -1794,22 +1794,22 @@ Agents aren't just about prompts. You can tune the engine and structure the flow
 **Zero-Shot Agent**: No history, just one-off tasks.
 **Conversational Agent**: Maintains history (Stateful).
 **ReAct Agent**: Loops through Thought -> Action -> Observation.`
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-temp-sim',
-                    title: 'Simulating Temperature',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### Randomness Control\nHigh temperature means more randomness. Low temperature means deterministic output.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `import random
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-temp-sim',
+                  title: 'Simulating Temperature',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Randomness Control\nHigh temperature means more randomness. Low temperature means deterministic output.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `import random
 
 def generate(temp):
     options = ["Hello", "Hi", "Greetings", "Yo"]
@@ -1819,17 +1819,17 @@ def generate(temp):
 
 print(f"Temp 0: {generate(0)}")
 print(f"Temp 1: {generate(1)}")`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'config-tuning',
-                    language: 'python',
-                    description: 'Assignment: Implement `generate_response(prompt, config)`. If `config["temperature"]` is 0, return "Precise: " + prompt. If > 0, return "Creative: " + prompt. If `config["stop_sequence"]` is found in prompt, return "Halted".',
-                    initialCode: `def generate_response(prompt, config):
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'config-tuning',
+                  language: 'python',
+                  description: 'Assignment: Implement `generate_response(prompt, config)`. If `config["temperature"]` is 0, return "Precise: " + prompt. If > 0, return "Creative: " + prompt. If `config["stop_sequence"]` is found in prompt, return "Halted".',
+                  initialCode: `def generate_response(prompt, config):
     # TODO: Check stop_sequence in prompt
     # TODO: Check temperature
     pass
@@ -1837,12 +1837,12 @@ print(f"Temp 1: {generate(1)}")`
 conf = {"temperature": 0.7, "stop_sequence": "END"}
 print(generate_response("Hello World", conf))
 print(generate_response("Stop here END", conf))`,
-                    hints: [
-                      { text: 'Check `if config["stop_sequence"] in prompt:` first.', relearnLessonId: 'w2-d1-3' },
-                      { text: 'Return "Halted" if stop sequence found.', relearnLessonId: 'w2-d1-3' },
-                      { text: 'Check `if config["temperature"] == 0:`', relearnLessonId: 'w2-d1-3' }
-                    ],
-                    solutionCode: `def generate_response(prompt, config):
+                  hints: [
+                    { text: 'Check `if config["stop_sequence"] in prompt:` first.', relearnLessonId: 'w2-d1-3' },
+                    { text: 'Return "Halted" if stop sequence found.', relearnLessonId: 'w2-d1-3' },
+                    { text: 'Check `if config["temperature"] == 0:`', relearnLessonId: 'w2-d1-3' }
+                  ],
+                  solutionCode: `def generate_response(prompt, config):
     if config.get("stop_sequence") and config["stop_sequence"] in prompt:
         return "Halted"
     
@@ -1850,18 +1850,18 @@ print(generate_response("Stop here END", conf))`,
         return f"Precise: {prompt}"
     return f"Creative: {prompt}"`,
                   expectedOutput: 'Creative: Hello World\nHalted'
-                  }
                 }
-              ]
-            },
-            { 
-              id: 'w2-d4-5', 
-              title: 'Day 4-5: Advanced Tool Development', 
-              duration: '2 Days',
-              content: [
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 1. Tool Anatomy & Validation
+              }
+            ]
+          },
+          {
+            id: 'w2-d4-5',
+            title: 'Day 4-5: Advanced Tool Development',
+            duration: '2 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. Tool Anatomy & Validation
 When you define a tool, ADK uses [[Pydantic]] to validate inputs.
 
 ### The Docstring
@@ -1869,22 +1869,22 @@ The [[Docstring]] is the most important part of a tool. It is the "Prompt" for t
 **Bad**: \`"""Calculates stuff."""\`
 **Good**: \`"""Calculates compound interest given principal P, rate R, and time T."""\`
 `
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-try-except',
-                    title: 'Handling Errors Gracefully',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### The Try/Except Block\nTools should not crash the Agent. We catch errors and return them as strings.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `def risky_math(x):
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-try-except',
+                  title: 'Handling Errors Gracefully',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### The Try/Except Block\nTools should not crash the Agent. We catch errors and return them as strings.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def risky_math(x):
     try:
         return 10 / x
     except ZeroDivisionError:
@@ -1892,17 +1892,17 @@ The [[Docstring]] is the most important part of a tool. It is the "Prompt" for t
 
 print(risky_math(2))
 print(risky_math(0))`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'tool-error-handling',
-                    language: 'python',
-                    description: 'Tool 1 (Error Handling): Create a robust division tool. If the user divides by zero, DO NOT crash. Return a string "Error: Cannot divide by zero".',
-                    initialCode: `from adk.tools import tool
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'tool-error-handling',
+                  language: 'python',
+                  description: 'Tool 1 (Error Handling): Create a robust division tool. If the user divides by zero, DO NOT crash. Return a string "Error: Cannot divide by zero".',
+                  initialCode: `from adk.tools import tool
 
 @tool
 def safe_divide(a: float, b: float) -> str:
@@ -1910,11 +1910,11 @@ def safe_divide(a: float, b: float) -> str:
     # TODO: Wrap in try/except block
     # TODO: Return result as string, or error message
     pass`,
-                    hints: [
-                      { text: 'Use `try:` and `except ZeroDivisionError:`', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Return `str(a / b)` in the try block.', relearnLessonId: 'w2-d4-5' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use `try:` and `except ZeroDivisionError:`', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Return `str(a / b)` in the try block.', relearnLessonId: 'w2-d4-5' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def safe_divide(a: float, b: float) -> str:
@@ -1924,33 +1924,33 @@ def safe_divide(a: float, b: float) -> str:
     except ZeroDivisionError:
         return "Error: Cannot divide by zero"`,
                   expectedOutput: 'Error: Cannot divide by zero'
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 2. Complex Types & Schemas
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Complex Types & Schemas
 Tools aren't limited to strings and numbers. You can use Lists and Dictionaries.
 
 \`scores: list[int]\`: The LLM will send a JSON array \`[10, 20, 30]\`.
 \`metadata: dict[str, str]\`: The LLM will send a JSON object \`{"key": "value"}\`.
 
 **Warning:** Complex types require strict [[Type_Hinting]] so ADK can generate the correct [[JSON_Schema]].`
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-type-hints',
-                    title: 'Complex Type Hints',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### Typing Lists and Dicts\nADK needs to know what is inside the list.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `from typing import List, Dict
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-type-hints',
+                  title: 'Complex Type Hints',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Typing Lists and Dicts\nADK needs to know what is inside the list.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `from typing import List, Dict
 
 # Python 3.9+ syntax
 scores: list[int] = [10, 20, 30]
@@ -1958,17 +1958,17 @@ user: dict[str, str] = {"name": "Alice"}
 
 print(f"Scores: {scores}")
 print(f"User: {user}")`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'tool-complex-types',
-                    language: 'python',
-                    description: 'Tool 2 (Complex Types): Create a tool `analyze_scores` that takes a list of integers. Return the average score as a string.',
-                    initialCode: `from adk.tools import tool
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'tool-complex-types',
+                  language: 'python',
+                  description: 'Tool 2 (Complex Types): Create a tool `analyze_scores` that takes a list of integers. Return the average score as a string.',
+                  initialCode: `from adk.tools import tool
 
 # TODO: Import List from typing if using Python < 3.9, or use list[int]
 
@@ -1978,12 +1978,12 @@ def analyze_scores(scores: list[int]) -> str:
     # TODO: Calculate average
     # TODO: Handle empty list case
     pass`,
-                    hints: [
-                      { text: 'Use `sum(scores) / len(scores)`', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Check `if not scores:` to avoid division by zero.', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Type hint must be `list[int]`', relearnLessonId: 'w2-d4-5' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use `sum(scores) / len(scores)`', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Check `if not scores:` to avoid division by zero.', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Type hint must be `list[int]`', relearnLessonId: 'w2-d4-5' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def analyze_scores(scores: list[int]) -> str:
@@ -1993,11 +1993,11 @@ def analyze_scores(scores: list[int]) -> str:
     avg = sum(scores) / len(scores)
     return f"Average: {avg:.2f}"`,
                   expectedOutput: 'Average: 20.00'
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 3. Built-in ADK Tools
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Built-in ADK Tools
 You don't always have to build from scratch. ADK provides [[Built_in_Tools]].
 
 1.  **CodeInterpreter**: Gives the agent a Python sandbox to run code (great for math/data).
@@ -2010,14 +2010,14 @@ from adk.tools import CodeInterpreter
 agent = Agent(tools=[CodeInterpreter()])
 \`\`\`
 `
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'tool-practice-currency',
-                    language: 'python',
-                    description: 'Tool 3 (Business Logic): Build a Currency Converter. Define `convert_currency(amount: float, from_curr: str, to_curr: str) -> str`. Use the provided dictionary.',
-                    initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'tool-practice-currency',
+                  language: 'python',
+                  description: 'Tool 3 (Business Logic): Build a Currency Converter. Define `convert_currency(amount: float, from_curr: str, to_curr: str) -> str`. Use the provided dictionary.',
+                  initialCode: `from adk.tools import tool
 
 # Rates: USD->EUR: 0.85, EUR->USD: 1.18
 RATES = {
@@ -2029,12 +2029,12 @@ RATES = {
 # TODO: Define function with type hints
 # TODO: Handle conversion logic
 def convert_currency...`,
-                    hints: [
-                      { text: 'Use `RATES.get((from_curr, to_curr))` to find the rate.', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Return a formatted string like f"{amount} {from_curr} = {result} {to_curr}"', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Don\'t forget the docstring!', relearnLessonId: 'w2-d4-5' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use `RATES.get((from_curr, to_curr))` to find the rate.', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Return a formatted string like f"{amount} {from_curr} = {result} {to_curr}"', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Don\'t forget the docstring!', relearnLessonId: 'w2-d4-5' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 RATES = {
     ("USD", "EUR"): 0.85,
@@ -2049,11 +2049,11 @@ def convert_currency(amount: float, from_curr: str, to_curr: str) -> str:
         return "Error: Rate not found"
     return f"{amount * rate:.2f}"`,
                   expectedOutput: '85.00'
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 4. The Toolsmith's Gauntlet
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. The Toolsmith's Gauntlet
 To certify as a Tool Developer, you must build a suite of tools in one go.
 
 **Requirements:**
@@ -2061,14 +2061,14 @@ To certify as a Tool Developer, you must build a suite of tools in one go.
 2.  **WeatherMock**: Returns "Sunny" if city length is even, "Rainy" if odd.
 3.  **UUIDGenerator**: Returns a fake UUID string "123-abc".
 `
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'tool-gauntlet',
-                    language: 'python',
-                    description: 'Tool 4, 5 & 6 (The Gauntlet): Implement `reverse_string`, `get_weather`, and `generate_uuid`. All must be decorated with @tool and have docstrings.',
-                    initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'tool-gauntlet',
+                  language: 'python',
+                  description: 'Tool 4, 5 & 6 (The Gauntlet): Implement `reverse_string`, `get_weather`, and `generate_uuid`. All must be decorated with @tool and have docstrings.',
+                  initialCode: `from adk.tools import tool
 
 # Tool 4
 # TODO: reverse_string(text: str) -> str
@@ -2080,12 +2080,12 @@ To certify as a Tool Developer, you must build a suite of tools in one go.
 # TODO: generate_uuid() -> str
 
 print("Tools defined.")`,
-                    hints: [
-                      { text: 'Reverse string: `return text[::-1]`', relearnLessonId: 'w2-d4-5' },
-                      { text: 'Weather: `if len(city) % 2 == 0: return "Sunny"`', relearnLessonId: 'w2-d4-5' },
-                      { text: 'UUID: Just return a static string for this mock.', relearnLessonId: 'w2-d4-5' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Reverse string: `return text[::-1]`', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Weather: `if len(city) % 2 == 0: return "Sunny"`', relearnLessonId: 'w2-d4-5' },
+                    { text: 'UUID: Just return a static string for this mock.', relearnLessonId: 'w2-d4-5' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def reverse_string(text: str) -> str:
@@ -2106,18 +2106,18 @@ def generate_uuid() -> str:
 
 print("Tools defined.")`,
                   expectedOutput: 'Tools defined.'
-                  }
                 }
-              ]
-            },
-            { 
-              id: 'w2-d6-7', 
-              title: 'Day 6-7: GCP Service Integration', 
-              duration: '2 Days',
-              content: [
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 1. The Cloud Toolbox
+              }
+            ]
+          },
+          {
+            id: 'w2-d6-7',
+            title: 'Day 6-7: GCP Service Integration',
+            duration: '2 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The Cloud Toolbox
 Real agents don't just calculate numbers; they manage data.
 
 [[BigQuery]]: For structured data (SQL). "How many users signed up yesterday?"
@@ -2125,10 +2125,10 @@ Real agents don't just calculate numbers; they manage data.
 [[Firestore]]: For application state. "Save this user's preferences."
 [[Vertex_AI_Search]]: For searching documents. "Find the policy on remote work."
 `
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `### Example: Mocking a Cloud Tool
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `### Example: Mocking a Cloud Tool
 Since we can't connect to real AWS/GCP in a simple test, we mock the behavior.
 
 \`\`\`python
@@ -2140,25 +2140,25 @@ def read_s3_bucket(bucket_name: str) -> str:
     return "Error: Bucket not found"
 \`\`\`
 `
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'cloud-tools-drill',
-                    language: 'python',
-                    description: 'Drill: Implement two mock cloud tools. 1) `read_gcs(bucket: str, filename: str)` returning "File Content". 2) `add_firestore_doc(collection: str, data: str)` returning "Doc Added".',
-                    initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'cloud-tools-drill',
+                  language: 'python',
+                  description: 'Drill: Implement two mock cloud tools. 1) `read_gcs(bucket: str, filename: str)` returning "File Content". 2) `add_firestore_doc(collection: str, data: str)` returning "Doc Added".',
+                  initialCode: `from adk.tools import tool
 
 # TODO: Define read_gcs
 # TODO: Define add_firestore_doc
 
 print("Cloud tools defined.")`,
-                    hints: [
-                      { text: 'Use @tool decorator for both.', relearnLessonId: 'day-6' },
-                      { text: 'Mock the return values (no real GCP calls needed).', relearnLessonId: 'w2-d6-7' },
-                      { text: 'Ensure type hints are used: `bucket: str`, etc.', relearnLessonId: 'day-6' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use @tool decorator for both.', relearnLessonId: 'day-6' },
+                    { text: 'Mock the return values (no real GCP calls needed).', relearnLessonId: 'w2-d6-7' },
+                    { text: 'Ensure type hints are used: `bucket: str`, etc.', relearnLessonId: 'day-6' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def read_gcs(bucket: str, filename: str) -> str:
@@ -2172,11 +2172,11 @@ def add_firestore_doc(collection: str, data: str) -> str:
 
 print("Cloud tools defined.")`,
                   expectedOutput: 'Cloud tools defined.'
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 2. External APIs & Tool Chaining
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. External APIs & Tool Chaining
 Agents live in the real world. They need to talk to external APIs (Slack, Jira, Weather APIs).
 
 ### API Integration
@@ -2188,22 +2188,22 @@ We use standard Python libraries like \`requests\` inside our tools.
 *Step 1*: Call \`get_sales_report()\` -> Returns text.
 *Step 2*: Call \`send_email(text)\`.
 `
-                },
-                {
-                  type: ContentType.NOTEBOOK,
-                  notebook: {
-                    id: 'nb-chaining-concept',
-                    title: 'Concept: Function Chaining',
-                    cells: [
-                      {
-                        id: 'c1',
-                        type: 'markdown',
-                        content: '### Passing Outputs\nChaining is just passing the return value of one function into another.'
-                      },
-                      {
-                        id: 'c2',
-                        type: 'code',
-                        content: `def get_name():
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-chaining-concept',
+                  title: 'Concept: Function Chaining',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Passing Outputs\nChaining is just passing the return value of one function into another.'
+                    },
+                    {
+                      id: 'c2',
+                      type: 'code',
+                      content: `def get_name():
     return "Alice"
 
 def greet(name):
@@ -2213,17 +2213,17 @@ def greet(name):
 name = get_name()
 message = greet(name)
 print(message)`
-                      }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'api-chaining-drill',
-                    language: 'python',
-                    description: 'Drill: Create a "StockAlert" chain. 1) `get_stock_price(symbol)` returns 150. 2) `send_slack_alert(message)` prints the message. 3) Manually simulate the chain: Get price, then send alert with "Price is 150".',
-                    initialCode: `from adk.tools import tool
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'api-chaining-drill',
+                  language: 'python',
+                  description: 'Drill: Create a "StockAlert" chain. 1) `get_stock_price(symbol)` returns 150. 2) `send_slack_alert(message)` prints the message. 3) Manually simulate the chain: Get price, then send alert with "Price is 150".',
+                  initialCode: `from adk.tools import tool
 
 # 1. Define Tools
 @tool
@@ -2240,11 +2240,11 @@ def send_slack_alert(message: str) -> str:
 price = get_stock_price("GOOG")
 # TODO: Call send_slack_alert with the price info
 `,
-                    hints: [
-                      { text: 'Create a string like f"Price is {price}"', relearnLessonId: 'w2-d6-7' },
-                      { text: 'Pass that string to `send_slack_alert`', relearnLessonId: 'w2-d6-7' }
-                    ],
-                    solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Create a string like f"Price is {price}"', relearnLessonId: 'w2-d6-7' },
+                    { text: 'Pass that string to `send_slack_alert`', relearnLessonId: 'w2-d6-7' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def get_stock_price(symbol: str) -> int:
@@ -2259,11 +2259,11 @@ def send_slack_alert(message: str) -> str:
 price = get_stock_price("GOOG")
 print(send_slack_alert(f"Price is {price}"))`,
                   expectedOutput: 'Sent: Price is 150'
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 3. Going Real: GCP Configuration
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Going Real: GCP Configuration
 Up until now, we mocked our tools. Now, let's connect to the real [[GCP_Console]].
 
 ### Prerequisites
@@ -2283,14 +2283,14 @@ To run the code below on your local machine, you must:
     \`\`\`
     This creates the [[ADC]] file your code needs.
 `
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'real-bq-tool',
-                    language: 'python',
-                    description: 'Real World: Implement a BigQuery tool using the actual GCP library. NOTE: This requires a real GCP project and local authentication.',
-                    initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'real-bq-tool',
+                  language: 'python',
+                  description: 'Real World: Implement a BigQuery tool using the actual GCP library. NOTE: This requires a real GCP project and local authentication.',
+                  initialCode: `from adk.tools import tool
 # Import the REAL library
 from google.cloud import bigquery
 
@@ -2317,16 +2317,16 @@ public_sql = """
     LIMIT 5
 """
 print(query_bigquery_real(public_sql))`,
-                    hints: [
-                      { text: 'Ensure you ran `pip install google-cloud-bigquery` locally.', relearnLessonId: 'w2-d6-7' },
-                      { text: 'Ensure you ran `gcloud auth application-default login`.', relearnLessonId: 'day-3-4' },
-                      { text: 'The `bigquery.Client()` call fails if no credentials are found.', relearnLessonId: 'day-3-4' }
-                    ]
-                  }
-                },
-                {
-                  type: ContentType.MARKDOWN,
-                  markdown: `# 4. Grand Capstone: The Enterprise Agent
+                  hints: [
+                    { text: 'Ensure you ran `pip install google-cloud-bigquery` locally.', relearnLessonId: 'w2-d6-7' },
+                    { text: 'Ensure you ran `gcloud auth application-default login`.', relearnLessonId: 'day-3-4' },
+                    { text: 'The `bigquery.Client()` call fails if no credentials are found.', relearnLessonId: 'day-3-4' }
+                  ]
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Grand Capstone: The Enterprise Agent
 You have built tools. You have built agents. Now combine them.
 
 **Goal**: Build an Agent with **5 Custom Tools** to handle a complex workflow.
@@ -2338,14 +2338,14 @@ You have built tools. You have built agents. Now combine them.
 4.  \`search_knowledge_base(query)\`: Mock Vertex AI Search.
 5.  \`send_email(to, subject, body)\`: Mock External API.
 `
-                },
-                {
-                  type: ContentType.CODE_PLAYGROUND,
-                  codeProject: {
-                    id: 'capstone-week-2-grand',
-                    language: 'python',
-                    description: 'Capstone: Define all 5 tools listed above. Then initialize an Agent with all of them. This simulates a full "Enterprise Data Agent".',
-                    initialCode: `from adk.core import Agent
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'capstone-week-2-grand',
+                  language: 'python',
+                  description: 'Capstone: Define all 5 tools listed above. Then initialize an Agent with all of them. This simulates a full "Enterprise Data Agent".',
+                  initialCode: `from adk.core import Agent
 from adk.tools import tool
 
 # TODO: Define all 5 tools with @tool and docstrings
@@ -2363,12 +2363,12 @@ class EnterpriseAgent(Agent):
 
 bot = EnterpriseAgent()
 print(f"Agent loaded with {len(bot.tools)} tools.")`,
-                    hints: [
-                        { text: 'Just return mock strings for each tool.', relearnLessonId: 'day-6' },
-                        { text: 'Ensure every function has a docstring.', relearnLessonId: 'w2-d4-5' },
-                        { text: 'Add all functions to the `self.tools` list.', relearnLessonId: 'day-5' }
-                    ],
-                    solutionCode: `from adk.core import Agent
+                  hints: [
+                    { text: 'Just return mock strings for each tool.', relearnLessonId: 'day-6' },
+                    { text: 'Ensure every function has a docstring.', relearnLessonId: 'w2-d4-5' },
+                    { text: 'Add all functions to the `self.tools` list.', relearnLessonId: 'day-5' }
+                  ],
+                  solutionCode: `from adk.core import Agent
 from adk.tools import tool
 
 @tool
@@ -2404,61 +2404,61 @@ class EnterpriseAgent(Agent):
 bot = EnterpriseAgent()
 print(f"Agent loaded with {len(bot.tools)} tools.")`,
                   expectedOutput: 'Agent loaded with 5 tools.'
-                  }
-                },
-                {
-                  type: ContentType.QUIZ,
-                  quiz: {
-                    id: 'quiz-week-2',
-                    title: 'Week 2 Certification Quiz',
-                    questions: [
-                      {
-                        id: 'q1',
-                        question: 'What happens if an Agent conversation exceeds the Context Window?',
-                        options: ['The Agent crashes', 'The oldest tokens are dropped (or an error occurs)', 'Google automatically bills you more', 'The Agent summarizes it automatically'],
-                        correctOptionIndex: 1,
-                        explanation: 'Without manual management (like sliding window), the model will reject the request or the beginning of the prompt is truncated.',
-                        hint: { text: 'Think about the "Sliding Window" exercise.', relearnLessonId: 'w2-d1-3' },
-                        optionExplanations: [
-                          { text: 'It might crash if not handled, but usually the API returns a 400 error.', relearnLessonId: 'w2-d1-3' },
-                          { text: 'Correct. The physical limit of the model input has been reached.', relearnLessonId: 'w2-d1-3' },
-                          { text: 'You cannot pay to exceed the hard limit of a model architecture.', relearnLessonId: 'w2-d1-3' },
-                          { text: 'Summarization is a strategy YOU must implement; it is not automatic.', relearnLessonId: 'w2-d1-3' }
-                        ]
-                      },
-                      {
-                        id: 'q2',
-                        question: 'Why is the Docstring critical for Tools?',
-                        options: ['It generates the documentation website', 'It tells the LLM when and how to use the tool', 'It is required by Python syntax', 'It makes the code readable for humans'],
-                        correctOptionIndex: 1,
-                        explanation: 'ADK sends the docstring to the LLM as part of the system prompt/schema.',
-                        hint: { text: 'Who is the primary "reader" of a Tool definition?', relearnLessonId: 'w2-d4-5' },
-                        optionExplanations: [
-                          { text: 'While true for Sphinx/MkDocs, in ADK its primary purpose is functional.', relearnLessonId: 'w2-d4-5' },
-                          { text: 'Correct. The LLM uses this description to decide which tool to call.', relearnLessonId: 'w2-d4-5' },
-                          { text: 'Docstrings are optional in standard Python.', relearnLessonId: 'w2-d4-5' },
-                          { text: 'This is a side benefit, not the main reason in ADK.', relearnLessonId: 'w2-d4-5' }
-                        ]
-                      },
-                      {
-                        id: 'q3',
-                        question: 'What is Tool Chaining?',
-                        options: ['Connecting tools to the internet', 'Using the output of one tool as input for another', 'Defining tools in a linked list', 'Running tools in parallel only'],
-                        correctOptionIndex: 1,
-                        explanation: 'Chaining allows complex workflows where data flows between tools via the Agent\'s reasoning.',
-                        hint: { text: 'Think about "Get Price" -> "Send Alert".', relearnLessonId: 'w2-d6-7' },
-                        optionExplanations: [
-                          { text: 'That is just connectivity, not chaining.', relearnLessonId: 'w2-d6-7' },
-                          { text: 'Correct. This enables multi-step reasoning.', relearnLessonId: 'w2-d6-7' },
-                          { text: 'Data structures are not relevant here.', relearnLessonId: 'w2-d6-7' },
-                          { text: 'Parallel execution is different from chaining (sequential).', relearnLessonId: 'w2-d6-7' }
-                        ]
-                      }
-                    ]
-                  }
                 }
-              ]
-            }
+              },
+              {
+                type: ContentType.QUIZ,
+                quiz: {
+                  id: 'quiz-week-2',
+                  title: 'Week 2 Certification Quiz',
+                  questions: [
+                    {
+                      id: 'q1',
+                      question: 'What happens if an Agent conversation exceeds the Context Window?',
+                      options: ['The Agent crashes', 'The oldest tokens are dropped (or an error occurs)', 'Google automatically bills you more', 'The Agent summarizes it automatically'],
+                      correctOptionIndex: 1,
+                      explanation: 'Without manual management (like sliding window), the model will reject the request or the beginning of the prompt is truncated.',
+                      hint: { text: 'Think about the "Sliding Window" exercise.', relearnLessonId: 'w2-d1-3' },
+                      optionExplanations: [
+                        { text: 'It might crash if not handled, but usually the API returns a 400 error.', relearnLessonId: 'w2-d1-3' },
+                        { text: 'Correct. The physical limit of the model input has been reached.', relearnLessonId: 'w2-d1-3' },
+                        { text: 'You cannot pay to exceed the hard limit of a model architecture.', relearnLessonId: 'w2-d1-3' },
+                        { text: 'Summarization is a strategy YOU must implement; it is not automatic.', relearnLessonId: 'w2-d1-3' }
+                      ]
+                    },
+                    {
+                      id: 'q2',
+                      question: 'Why is the Docstring critical for Tools?',
+                      options: ['It generates the documentation website', 'It tells the LLM when and how to use the tool', 'It is required by Python syntax', 'It makes the code readable for humans'],
+                      correctOptionIndex: 1,
+                      explanation: 'ADK sends the docstring to the LLM as part of the system prompt/schema.',
+                      hint: { text: 'Who is the primary "reader" of a Tool definition?', relearnLessonId: 'w2-d4-5' },
+                      optionExplanations: [
+                        { text: 'While true for Sphinx/MkDocs, in ADK its primary purpose is functional.', relearnLessonId: 'w2-d4-5' },
+                        { text: 'Correct. The LLM uses this description to decide which tool to call.', relearnLessonId: 'w2-d4-5' },
+                        { text: 'Docstrings are optional in standard Python.', relearnLessonId: 'w2-d4-5' },
+                        { text: 'This is a side benefit, not the main reason in ADK.', relearnLessonId: 'w2-d4-5' }
+                      ]
+                    },
+                    {
+                      id: 'q3',
+                      question: 'What is Tool Chaining?',
+                      options: ['Connecting tools to the internet', 'Using the output of one tool as input for another', 'Defining tools in a linked list', 'Running tools in parallel only'],
+                      correctOptionIndex: 1,
+                      explanation: 'Chaining allows complex workflows where data flows between tools via the Agent\'s reasoning.',
+                      hint: { text: 'Think about "Get Price" -> "Send Alert".', relearnLessonId: 'w2-d6-7' },
+                      optionExplanations: [
+                        { text: 'That is just connectivity, not chaining.', relearnLessonId: 'w2-d6-7' },
+                        { text: 'Correct. This enables multi-step reasoning.', relearnLessonId: 'w2-d6-7' },
+                        { text: 'Data structures are not relevant here.', relearnLessonId: 'w2-d6-7' },
+                        { text: 'Parallel execution is different from chaining (sequential).', relearnLessonId: 'w2-d6-7' }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         ]
       },
     ]
@@ -2472,14 +2472,14 @@ print(f"Agent loaded with {len(bot.tools)} tools.")`,
         title: 'Week 3: Advanced Tool Integration',
         description: 'Async tools, Caching, and Memory Systems.',
         lessons: [
-            {
-                id: 'w3-d1-3',
-                title: 'Day 1-3: Complex Tool Patterns',
-                duration: '3 Days',
-                content: [
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 1. The Need for Speed: Async Tools
+          {
+            id: 'w3-d1-3',
+            title: 'Day 1-3: Complex Tool Patterns',
+            duration: '3 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The Need for Speed: Async Tools
 Agents often wait. They wait for APIs, databases, and file reads.
 If your tools are synchronous (blocking), the Agent freezes while waiting.
 
@@ -2489,22 +2489,22 @@ By defining tools with \`async def\`, we allow the Agent to handle [[Parallel_Ex
 **Sync**: Call Tool A (Wait 2s) -> Call Tool B (Wait 2s) = 4s Total.
 **Async**: Call Tool A & B together = 2s Total.
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-async-concept',
+                  title: 'Concept: Sync vs Async',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Blocking vs Non-Blocking\nObserve the syntax difference. Synchronous functions block execution, while asynchronous functions allow defining tasks that can yield control.'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-async-concept',
-                            title: 'Concept: Sync vs Async',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### Blocking vs Non-Blocking\nObserve the syntax difference. Synchronous functions block execution, while asynchronous functions allow defining tasks that can yield control.'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `import time
+                      id: 'c2',
+                      type: 'code',
+                      content: `import time
 import asyncio
 
 # Synchronous (Blocking)
@@ -2518,17 +2518,17 @@ async def async_greet():
     return "Hello Async"
 
 print("Defined functions. Ready to run.")`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'async-tool-drill',
-                            language: 'python',
-                            description: 'Assignment: Create an async tool `slow_fetch(id: int)` that simulates a delay using `await asyncio.sleep(1)` and returns "Data {id}". Then run it.',
-                            initialCode: `import asyncio
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'async-tool-drill',
+                  language: 'python',
+                  description: 'Assignment: Create an async tool `slow_fetch(id: int)` that simulates a delay using `await asyncio.sleep(1)` and returns "Data {id}". Then run it.',
+                  initialCode: `import asyncio
 from adk.tools import tool
 import time
 
@@ -2542,12 +2542,12 @@ async def main():
     print(f"End: {time.strftime('%X')}")
 
 asyncio.run(main())`,
-                            hints: [
-                                { text: 'Define with `async def slow_fetch(id: int) -> str:`', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Inside `main`, use `result = await slow_fetch(1)`', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Don\'t forget the `@tool` decorator.', relearnLessonId: 'day-6' }
-                            ],
-                            solutionCode: `import asyncio
+                  hints: [
+                    { text: 'Define with `async def slow_fetch(id: int) -> str:`', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Inside `main`, use `result = await slow_fetch(1)`', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Don\'t forget the `@tool` decorator.', relearnLessonId: 'day-6' }
+                  ],
+                  solutionCode: `import asyncio
 from adk.tools import tool
 import time
 
@@ -2565,31 +2565,31 @@ async def main():
 asyncio.run(main())`,
                   expectedOutput: 'Data 1',
                   validationType: 'contains'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 2. Parallel Execution
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Parallel Execution
 Defining a tool as \`async\` is only half the battle. You must call them in parallel to get speed benefits.
 
 We use \`asyncio.gather()\` to run multiple tasks at the same time.
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-parallel-demo',
+                  title: 'Visualizing Parallelism',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### The Gather Pattern\n`asyncio.gather` is the magic function that schedules multiple coroutines to run on the event loop simultaneously.'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-parallel-demo',
-                            title: 'Visualizing Parallelism',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### The Gather Pattern\n`asyncio.gather` is the magic function that schedules multiple coroutines to run on the event loop simultaneously.'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `import asyncio
+                      id: 'c2',
+                      type: 'code',
+                      content: `import asyncio
 
 async def task(name, seconds):
     print(f"Task {name} starting...")
@@ -2603,17 +2603,17 @@ async def task(name, seconds):
 #     task("B", 1)
 # )
 print("Code structure for parallel execution.")`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'parallel-execution-drill',
-                            language: 'python',
-                            description: 'Assignment: Run `slow_tool` 3 times in parallel. 1) Define `slow_tool`. 2) In `main`, use `asyncio.gather(slow_tool(1), slow_tool(2), slow_tool(3))`.',
-                            initialCode: `import asyncio
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'parallel-execution-drill',
+                  language: 'python',
+                  description: 'Assignment: Run `slow_tool` 3 times in parallel. 1) Define `slow_tool`. 2) In `main`, use `asyncio.gather(slow_tool(1), slow_tool(2), slow_tool(3))`.',
+                  initialCode: `import asyncio
 from adk.tools import tool
 import time
 
@@ -2633,11 +2633,11 @@ async def main():
     print(f"Total Time: {time.time() - start:.2f}s")
 
 asyncio.run(main())`,
-                            hints: [
-                                { text: 'Remove the individual await lines.', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Use `await asyncio.gather(slow_tool(1), slow_tool(2), slow_tool(3))`', relearnLessonId: 'w3-d1-3' }
-                            ],
-                            solutionCode: `import asyncio
+                  hints: [
+                    { text: 'Remove the individual await lines.', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Use `await asyncio.gather(slow_tool(1), slow_tool(2), slow_tool(3))`', relearnLessonId: 'w3-d1-3' }
+                  ],
+                  solutionCode: `import asyncio
 from adk.tools import tool
 import time
 
@@ -2654,11 +2654,11 @@ async def main():
 asyncio.run(main())`,
                   expectedOutput: 'Total Time: 1.',
                   validationType: 'contains'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 3. Optimization: Caching
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Optimization: Caching
 APIs cost money. Latency kills user experience.
 If an Agent asks for the same data twice, it should not call the API twice.
 
@@ -2668,10 +2668,10 @@ If an Agent asks for the same data twice, it should not call the API twice.
 
 We can use a **Decorator** to add [[Caching]] to any tool.
 `
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `### Example: The Decorator Pattern
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `### Example: The Decorator Pattern
 Here is how a caching decorator looks in Python. You wrap the function so that it checks the cache before running.
 
 \`\`\`python
@@ -2690,14 +2690,14 @@ def heavy_compute(x):
     # ...
 \`\`\`
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'caching-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement a manual cache. 1) Check if `query` is in `CACHE`. 2) If yes, return it. 3) If no, "calculate" it, store in `CACHE`, and return it.',
-                            initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'caching-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement a manual cache. 1) Check if `query` is in `CACHE`. 2) If yes, return it. 3) If no, "calculate" it, store in `CACHE`, and return it.',
+                  initialCode: `from adk.tools import tool
 
 CACHE = {}
 
@@ -2710,11 +2710,11 @@ def expensive_search(query: str) -> str:
 
 print(expensive_search("A")) # Should print Calculating
 print(expensive_search("A")) # Should be instant`,
-                            hints: [
-                                { text: 'Use `if query in CACHE: return CACHE[query]`', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Store result: `CACHE[query] = "Result for " + query`', relearnLessonId: 'w3-d1-3' }
-                            ],
-                            solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use `if query in CACHE: return CACHE[query]`', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Store result: `CACHE[query] = "Result for " + query`', relearnLessonId: 'w3-d1-3' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 CACHE = {}
 
@@ -2732,11 +2732,11 @@ def expensive_search(query: str) -> str:
 print(expensive_search("A"))
 print(expensive_search("A"))`,
                   expectedOutput: 'Calculating...\nResult for A\nResult for A'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 4. Dynamic Routing & Versioning
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Dynamic Routing & Versioning
 Tools evolve. You might have \`SearchTool_v1\` and \`SearchTool_v2\`.
 Instead of hardcoding, we can use [[Tool_Routing]].
 
@@ -2746,10 +2746,10 @@ Instead of hardcoding, we can use [[Tool_Routing]].
 
 **Optimization**: Routing prevents the LLM from seeing 100 tools. It only sees the Router, which then picks from the 100.
 `
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `### Example: The Router Pattern
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `### Example: The Router Pattern
 A router is just a switch statement that delegates to other tools.
 
 \`\`\`python
@@ -2762,14 +2762,14 @@ def router_tool(query):
         return general_chat_tool(query)
 \`\`\`
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'tool-routing-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `master_search`. If query starts with "old:", call `search_v1`. Otherwise, call `search_v2`.',
-                            initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'tool-routing-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `master_search`. If query starts with "old:", call `search_v1`. Otherwise, call `search_v2`.',
+                  initialCode: `from adk.tools import tool
 
 @tool
 def search_v1(q: str) -> str:
@@ -2788,11 +2788,11 @@ def master_search(query: str) -> str:
 
 print(master_search("old:Python 2"))
 print(master_search("Python 3"))`,
-                            hints: [
-                                { text: 'Use `query.startswith("old:")`', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Return the result of the function call directly.', relearnLessonId: 'w3-d1-3' }
-                            ],
-                            solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Use `query.startswith("old:")`', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Return the result of the function call directly.', relearnLessonId: 'w3-d1-3' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def search_v1(q: str) -> str:
@@ -2812,11 +2812,11 @@ def master_search(query: str) -> str:
 print(master_search("old:Python 2"))
 print(master_search("Python 3"))`,
                   expectedOutput: 'Legacy Results for old:Python 2\nModern AI Results for Python 3'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 5. Tool Deprecation
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 5. Tool Deprecation
 Software changes. Sometimes you need to remove a tool.
 But if you delete it, existing Agents might crash.
 
@@ -2825,14 +2825,14 @@ But if you delete it, existing Agents might crash.
 2.  Log a warning when it is called.
 3.  Route to the new tool if possible, or return the old result with a warning.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'deprecation-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `legacy_tool`. It should print a warning "WARNING: Deprecated, use new_tool" but still return "Legacy Data".',
-                            initialCode: `from adk.tools import tool
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'deprecation-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `legacy_tool`. It should print a warning "WARNING: Deprecated, use new_tool" but still return "Legacy Data".',
+                  initialCode: `from adk.tools import tool
 
 @tool
 def legacy_tool() -> str:
@@ -2842,11 +2842,11 @@ def legacy_tool() -> str:
     pass
 
 print(legacy_tool())`,
-                            hints: [
-                                { text: 'Just use `print("WARNING: ...")` for this drill.', relearnLessonId: 'w3-d1-3' },
-                                { text: 'Return the string "Legacy Data".', relearnLessonId: 'w3-d1-3' }
-                            ],
-                            solutionCode: `from adk.tools import tool
+                  hints: [
+                    { text: 'Just use `print("WARNING: ...")` for this drill.', relearnLessonId: 'w3-d1-3' },
+                    { text: 'Return the string "Legacy Data".', relearnLessonId: 'w3-d1-3' }
+                  ],
+                  solutionCode: `from adk.tools import tool
 
 @tool
 def legacy_tool() -> str:
@@ -2856,18 +2856,18 @@ def legacy_tool() -> str:
 
 print(legacy_tool())`,
                   expectedOutput: 'WARNING: Deprecated, use new_tool\nLegacy Data'
-                        }
-                    }
-                ]
-            },
-            {
-                id: 'w3-d4-7',
-                title: 'Day 4-7: Memory Systems',
-                duration: '4 Days',
-                content: [
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 1. The Two Brains: Short vs Long Term
+                }
+              }
+            ]
+          },
+          {
+            id: 'w3-d4-7',
+            title: 'Day 4-7: Memory Systems',
+            duration: '4 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The Two Brains: Short vs Long Term
 Just like humans, Agents have two types of memory.
 
 ### Short-Term Memory (Context Window)
@@ -2880,10 +2880,10 @@ Just like humans, Agents have two types of memory.
 **Limit**: Infinite.
 **Mechanism**: [[RAG]] (Retrieval Augmented Generation). The Agent searches the database for relevant info and injects *only that info* into the Short-Term Memory.
 `
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 2. Vector Search & Embeddings
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Vector Search & Embeddings
 How does an Agent find "relevant" info? It uses [[Embeddings]].
 An embedding is a list of numbers representing meaning.
 
@@ -2893,38 +2893,38 @@ An embedding is a list of numbers representing meaning.
 
 We use [[Cosine_Similarity]] to find vectors that point in the same direction.
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-vector-math',
+                  title: 'Understanding Vectors',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Vectors are just Lists of Numbers\nIn AI, we represent meaning as coordinates in a multi-dimensional space.'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-vector-math',
-                            title: 'Understanding Vectors',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### Vectors are just Lists of Numbers\nIn AI, we represent meaning as coordinates in a multi-dimensional space.'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `vec_dog = [0.9, 0.1]  # High "Animal", Low "Machine"
+                      id: 'c2',
+                      type: 'code',
+                      content: `vec_dog = [0.9, 0.1]  # High "Animal", Low "Machine"
 vec_cat = [0.8, 0.2]  # High "Animal", Low "Machine"
 vec_car = [0.1, 0.9]  # Low "Animal", High "Machine"
 
 print(f"Dog Vector: {vec_dog}")
 print(f"Car Vector: {vec_car}")`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'vector-search-logic',
-                            language: 'python',
-                            description: 'Assignment: Implement a simple vector search. Given a `query_vector` and a `database` of vectors, find the key with the highest cosine similarity.',
-                            initialCode: `import math
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'vector-search-logic',
+                  language: 'python',
+                  description: 'Assignment: Implement a simple vector search. Given a `query_vector` and a `database` of vectors, find the key with the highest cosine similarity.',
+                  initialCode: `import math
 
 # Mock Database of Embeddings
 DATABASE = {
@@ -2950,12 +2950,12 @@ def find_closest(query_vector, db):
 
 # Query: [0.8, 0.2] (Close to "Animals")
 print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`,
-                            hints: [
-                                { text: 'Loop with `for key, vector in db.items():`', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Call `score = cosine_similarity(query_vector, vector)`', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Compare `score > best_score`', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `import math
+                  hints: [
+                    { text: 'Loop with `for key, vector in db.items():`', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Call `score = cosine_similarity(query_vector, vector)`', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Compare `score > best_score`', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `import math
 
 DATABASE = {
     "doc1": [0.9, 0.1],
@@ -2980,11 +2980,11 @@ def find_closest(query_vector, db):
 
 print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`,
                   expectedOutput: 'Closest to query: doc1'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 3. Production: Vertex AI Vector Search
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Production: Vertex AI Vector Search
 In production, you don't loop through a dictionary. You use a scalable engine like [[Vertex_AI_Search]].
 
 **Workflow:**
@@ -2993,14 +2993,14 @@ In production, you don't loop through a dictionary. You use a scalable engine li
 3.  **Deploy**: Deploy the Index to an Endpoint.
 4.  **Query**: Send a vector to the Endpoint to get nearest neighbors.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'mock-vertex-search',
-                            language: 'python',
-                            description: 'Assignment: Mock a Vertex AI Vector Search client. Implement `find_neighbors(vector)`. If vector[0] > 0.5, return ["id_1", "id_2"]. Else return ["id_3"].',
-                            initialCode: `class VectorSearchEndpoint:
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'mock-vertex-search',
+                  language: 'python',
+                  description: 'Assignment: Mock a Vertex AI Vector Search client. Implement `find_neighbors(vector)`. If vector[0] > 0.5, return ["id_1", "id_2"]. Else return ["id_3"].',
+                  initialCode: `class VectorSearchEndpoint:
     def find_neighbors(self, vector):
         # TODO: Check vector[0]
         # TODO: Return list of IDs
@@ -3008,11 +3008,11 @@ In production, you don't loop through a dictionary. You use a scalable engine li
 
 endpoint = VectorSearchEndpoint()
 print(endpoint.find_neighbors([0.9, 0.1]))`,
-                            hints: [
-                                { text: 'Access the first element with `vector[0]`.', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Return the list of strings as requested.', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `class VectorSearchEndpoint:
+                  hints: [
+                    { text: 'Access the first element with `vector[0]`.', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Return the list of strings as requested.', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `class VectorSearchEndpoint:
     def find_neighbors(self, vector):
         if vector[0] > 0.5:
             return ["id_1", "id_2"]
@@ -3021,11 +3021,11 @@ print(endpoint.find_neighbors([0.9, 0.1]))`,
 endpoint = VectorSearchEndpoint()
 print(endpoint.find_neighbors([0.9, 0.1]))`,
                   expectedOutput: "['id_1', 'id_2']"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 4. Retrieval Strategies: Hybrid Search
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Retrieval Strategies: Hybrid Search
 Vectors are great for concepts ("Dog" matches "Puppy").
 But they are bad at exact matches (Part # "X-99").
 
@@ -3035,35 +3035,35 @@ But they are bad at exact matches (Part # "X-99").
 
 \`Final Score = (VectorScore * 0.7) + (KeywordScore * 0.3)\`
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'hybrid-search-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `hybrid_score`. Calculate weighted average of `vec_score` (0.7 weight) and `key_score` (0.3 weight).',
-                            initialCode: `def hybrid_score(vec_score, key_score):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'hybrid-search-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `hybrid_score`. Calculate weighted average of `vec_score` (0.7 weight) and `key_score` (0.3 weight).',
+                  initialCode: `def hybrid_score(vec_score, key_score):
     # TODO: Return weighted sum
     pass
 
 print(hybrid_score(0.9, 0.0)) # High vector, no keyword
 print(hybrid_score(0.5, 1.0)) # Med vector, exact keyword`,
-                            hints: [
-                                { text: 'Multiply `vec_score` by 0.7', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Multiply `key_score` by 0.3', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Add them together.', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `def hybrid_score(vec_score, key_score):
+                  hints: [
+                    { text: 'Multiply `vec_score` by 0.7', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Multiply `key_score` by 0.3', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Add them together.', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `def hybrid_score(vec_score, key_score):
     return (vec_score * 0.7) + (key_score * 0.3)
 
 print(hybrid_score(0.9, 0.0))
 print(hybrid_score(0.5, 1.0))`,
                   expectedOutput: '0.63\n0.65'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 5. Session Management with Firestore
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 5. Session Management with Firestore
 Users expect the Agent to remember them when they come back next week.
 We use [[Firestore]] to store the conversation history (Session State).
 
@@ -3073,10 +3073,10 @@ We use [[Firestore]] to store the conversation history (Session State).
 3.  Agent generates response.
 4.  Agent saves new history to Firestore.
 `
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `### Data Structure Example
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `### Data Structure Example
 In Firestore, a session document might look like this:
 
 \`\`\`json
@@ -3090,14 +3090,14 @@ In Firestore, a session document might look like this:
 }
 \`\`\`
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'firestore-session-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `load_session` and `save_session` using a mock dictionary `FIRESTORE_DB`.',
-                            initialCode: `FIRESTORE_DB = {}
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'firestore-session-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `load_session` and `save_session` using a mock dictionary `FIRESTORE_DB`.',
+                  initialCode: `FIRESTORE_DB = {}
 
 def save_session(session_id: str, history: list):
     # TODO: Save history to FIRESTORE_DB under session_id
@@ -3111,11 +3111,11 @@ def load_session(session_id: str) -> list:
 save_session("user123", ["Hello", "Hi there"])
 print(load_session("user123"))
 print(load_session("unknown"))`,
-                            hints: [
-                                { text: '`FIRESTORE_DB[session_id] = history`', relearnLessonId: 'w3-d4-7' },
-                                { text: '`return FIRESTORE_DB.get(session_id, [])`', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `FIRESTORE_DB = {}
+                  hints: [
+                    { text: '`FIRESTORE_DB[session_id] = history`', relearnLessonId: 'w3-d4-7' },
+                    { text: '`return FIRESTORE_DB.get(session_id, [])`', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `FIRESTORE_DB = {}
 
 def save_session(session_id: str, history: list):
     FIRESTORE_DB[session_id] = history
@@ -3127,11 +3127,11 @@ save_session("user123", ["Hello", "Hi there"])
 print(load_session("user123"))
 print(load_session("unknown"))`,
                   expectedOutput: "['Hello', 'Hi there']\n[]"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 6. User Preferences
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 6. User Preferences
 Beyond history, we store **User Preferences**.
 "Talk like a pirate"
 "Be concise"
@@ -3139,25 +3139,25 @@ Beyond history, we store **User Preferences**.
 
 These are stored in [[Firestore]] alongside the session but injected into the **System Instruction**.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'user-prefs-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `get_system_prompt(user_prefs)`. If `user_prefs["concise"]` is True, return "You are a concise assistant." Else return "You are a helpful assistant."',
-                            initialCode: `def get_system_prompt(user_prefs):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'user-prefs-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `get_system_prompt(user_prefs)`. If `user_prefs["concise"]` is True, return "You are a concise assistant." Else return "You are a helpful assistant."',
+                  initialCode: `def get_system_prompt(user_prefs):
     # TODO: Check "concise" key
     # TODO: Return appropriate string
     pass
 
 print(get_system_prompt({"concise": True}))
 print(get_system_prompt({"concise": False}))`,
-                            hints: [
-                                { text: 'Use `if user_prefs.get("concise"):`', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Return the exact strings requested.', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `def get_system_prompt(user_prefs):
+                  hints: [
+                    { text: 'Use `if user_prefs.get("concise"):`', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Return the exact strings requested.', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `def get_system_prompt(user_prefs):
     if user_prefs.get("concise"):
         return "You are a concise assistant."
     return "You are a helpful assistant."
@@ -3165,33 +3165,33 @@ print(get_system_prompt({"concise": False}))`,
 print(get_system_prompt({"concise": True}))
 print(get_system_prompt({"concise": False}))`,
                   expectedOutput: 'You are a concise assistant.\nYou are a helpful assistant.'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 7. Context Pruning
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 7. Context Pruning
 Even with a 1M token window, sending 1000 messages costs money and adds latency.
 We need **Pruning Strategies**.
 
 **Strategy: Summarization + Tail**
 Keep the System Instruction + Last 10 messages. Summarize the middle.
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-token-sim',
+                  title: 'Simulating Context Limits',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Token Estimation\nA rough rule of thumb: 1 Token ~= 4 Characters (or 0.75 words).'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-token-sim',
-                            title: 'Simulating Context Limits',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### Token Estimation\nA rough rule of thumb: 1 Token ~= 4 Characters (or 0.75 words).'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `text = "The quick brown fox jumps over the lazy dog."
+                      id: 'c2',
+                      type: 'code',
+                      content: `text = "The quick brown fox jumps over the lazy dog."
 char_count = len(text)
 word_count = len(text.split())
 est_tokens = char_count / 4
@@ -3199,17 +3199,17 @@ est_tokens = char_count / 4
 print(f"Chars: {char_count}")
 print(f"Words: {word_count}")
 print(f"Est. Tokens: {est_tokens}")`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'context-pruning-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `prune_history`. If history > 5 messages, keep the first one (System Prompt) and the last 3. Replace the middle with "..." string.',
-                            initialCode: `def prune_history(history):
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'context-pruning-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `prune_history`. If history > 5 messages, keep the first one (System Prompt) and the last 3. Replace the middle with "..." string.',
+                  initialCode: `def prune_history(history):
     if len(history) <= 5:
         return history
     
@@ -3220,11 +3220,11 @@ print(f"Est. Tokens: {est_tokens}")`
 
 chat = ["System", "Msg1", "Msg2", "Msg3", "Msg4", "Msg5", "Msg6"]
 print(prune_history(chat))`,
-                            hints: [
-                                { text: 'Use list slicing: `history[:1]` and `history[-3:]`', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Combine lists: `[head] + ["..."] + [tail]`', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `def prune_history(history):
+                  hints: [
+                    { text: 'Use list slicing: `history[:1]` and `history[-3:]`', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Combine lists: `[head] + ["..."] + [tail]`', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `def prune_history(history):
     if len(history) <= 5:
         return history
     
@@ -3233,94 +3233,94 @@ print(prune_history(chat))`,
 chat = ["System", "Msg1", "Msg2", "Msg3", "Msg4", "Msg5", "Msg6"]
 print(prune_history(chat))`,
                   expectedOutput: "['System', '...', 'Msg4', 'Msg5', 'Msg6']"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 8. Summarization Strategy
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 8. Summarization Strategy
 Instead of deleting old messages, we **Summarize** them.
 We ask the LLM: "**Summarize the conversation so far.**"
 Then we replace the history with that summary.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'summarization-drill',
-                            language: 'python',
-                            description: 'Assignment: Mock a summarizer. Define `summarize_history(history)`. Return a string "Summary of X messages" where X is len(history).',
-                            initialCode: `def summarize_history(history):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'summarization-drill',
+                  language: 'python',
+                  description: 'Assignment: Mock a summarizer. Define `summarize_history(history)`. Return a string "Summary of X messages" where X is len(history).',
+                  initialCode: `def summarize_history(history):
     # TODO: Get length of history
     # TODO: Return "Summary of {len} messages"
     pass
 
 chat = ["Msg1", "Msg2", "Msg3"]
 print(summarize_history(chat))`,
-                            hints: [
-                                { text: 'Use `len(history)`', relearnLessonId: 'w3-d4-7' },
-                                { text: 'Use an f-string.', relearnLessonId: 'w3-d4-7' }
-                            ],
-                            solutionCode: `def summarize_history(history):
+                  hints: [
+                    { text: 'Use `len(history)`', relearnLessonId: 'w3-d4-7' },
+                    { text: 'Use an f-string.', relearnLessonId: 'w3-d4-7' }
+                  ],
+                  solutionCode: `def summarize_history(history):
     return f"Summary of {len(history)} messages"
 
 chat = ["Msg1", "Msg2", "Msg3"]
 print(summarize_history(chat))`,
                   expectedOutput: 'Summary of 3 messages'
-                        }
+                }
+              },
+              {
+                type: ContentType.QUIZ,
+                quiz: {
+                  id: 'quiz-week-3',
+                  title: 'Week 3 Certification Quiz',
+                  questions: [
+                    {
+                      id: 'q1',
+                      question: 'Why do we use Async Tools?',
+                      options: ['To make Python code look cooler', 'To allow the Agent to run multiple tools in parallel', 'To reduce the cost of the API call', 'To increase the accuracy of the tool'],
+                      correctOptionIndex: 1,
+                      explanation: 'Async allows the event loop to handle other tasks (like another tool call) while waiting for I/O.',
+                      hint: { text: 'Think about "Blocking" vs "Non-Blocking".', relearnLessonId: 'w3-d1-3' },
+                      optionExplanations: [
+                        { text: 'Code aesthetics are subjective, performance is objective.', relearnLessonId: 'w3-d1-3' },
+                        { text: 'Correct. It enables concurrency.', relearnLessonId: 'w3-d1-3' },
+                        { text: 'Async does not change the billing of the external API.', relearnLessonId: 'w3-d1-3' },
+                        { text: 'Execution speed does not affect accuracy.', relearnLessonId: 'w3-d1-3' }
+                      ]
                     },
                     {
-                        type: ContentType.QUIZ,
-                        quiz: {
-                            id: 'quiz-week-3',
-                            title: 'Week 3 Certification Quiz',
-                            questions: [
-                                {
-                                    id: 'q1',
-                                    question: 'Why do we use Async Tools?',
-                                    options: ['To make Python code look cooler', 'To allow the Agent to run multiple tools in parallel', 'To reduce the cost of the API call', 'To increase the accuracy of the tool'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'Async allows the event loop to handle other tasks (like another tool call) while waiting for I/O.',
-                                    hint: { text: 'Think about "Blocking" vs "Non-Blocking".', relearnLessonId: 'w3-d1-3' },
-                                    optionExplanations: [
-                                        { text: 'Code aesthetics are subjective, performance is objective.', relearnLessonId: 'w3-d1-3' },
-                                        { text: 'Correct. It enables concurrency.', relearnLessonId: 'w3-d1-3' },
-                                        { text: 'Async does not change the billing of the external API.', relearnLessonId: 'w3-d1-3' },
-                                        { text: 'Execution speed does not affect accuracy.', relearnLessonId: 'w3-d1-3' }
-                                    ]
-                                },
-                                {
-                                    id: 'q2',
-                                    question: 'What is an Embedding?',
-                                    options: ['A way to compress files', 'A numerical representation of text meaning', 'A type of Python decorator', 'A database for images'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'Embeddings convert text into vectors where similar meanings are mathematically close.',
-                                    hint: { text: 'It turns "Dog" into `[0.1, 0.9]`.', relearnLessonId: 'w3-d4-7' },
-                                    optionExplanations: [
-                                        { text: 'While they are compact, their purpose is semantic search, not compression.', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'Correct. Vectors represent semantic meaning.', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'That is a language feature, not an AI concept.', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'Vector stores can hold image embeddings, but an embedding itself is just the vector.', relearnLessonId: 'w3-d4-7' }
-                                    ]
-                                },
-                                {
-                                    id: 'q3',
-                                    question: 'Which memory type is infinite?',
-                                    options: ['Short-Term (Context Window)', 'Long-Term (Vector Store)', 'RAM', 'GPU Memory'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'Vector Stores can hold millions of documents, retrieved only when needed.',
-                                    hint: { text: 'Which one uses a database?', relearnLessonId: 'w3-d4-7' },
-                                    optionExplanations: [
-                                        { text: 'Context Windows are limited (e.g., 1M tokens).', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'Correct. You can store terabytes of vectors.', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'RAM is hardware and very limited.', relearnLessonId: 'w3-d4-7' },
-                                        { text: 'GPU memory is extremely expensive and limited.', relearnLessonId: 'w3-d4-7' }
-                                    ]
-                                }
-                            ]
-                        }
+                      id: 'q2',
+                      question: 'What is an Embedding?',
+                      options: ['A way to compress files', 'A numerical representation of text meaning', 'A type of Python decorator', 'A database for images'],
+                      correctOptionIndex: 1,
+                      explanation: 'Embeddings convert text into vectors where similar meanings are mathematically close.',
+                      hint: { text: 'It turns "Dog" into `[0.1, 0.9]`.', relearnLessonId: 'w3-d4-7' },
+                      optionExplanations: [
+                        { text: 'While they are compact, their purpose is semantic search, not compression.', relearnLessonId: 'w3-d4-7' },
+                        { text: 'Correct. Vectors represent semantic meaning.', relearnLessonId: 'w3-d4-7' },
+                        { text: 'That is a language feature, not an AI concept.', relearnLessonId: 'w3-d4-7' },
+                        { text: 'Vector stores can hold image embeddings, but an embedding itself is just the vector.', relearnLessonId: 'w3-d4-7' }
+                      ]
+                    },
+                    {
+                      id: 'q3',
+                      question: 'Which memory type is infinite?',
+                      options: ['Short-Term (Context Window)', 'Long-Term (Vector Store)', 'RAM', 'GPU Memory'],
+                      correctOptionIndex: 1,
+                      explanation: 'Vector Stores can hold millions of documents, retrieved only when needed.',
+                      hint: { text: 'Which one uses a database?', relearnLessonId: 'w3-d4-7' },
+                      optionExplanations: [
+                        { text: 'Context Windows are limited (e.g., 1M tokens).', relearnLessonId: 'w3-d4-7' },
+                        { text: 'Correct. You can store terabytes of vectors.', relearnLessonId: 'w3-d4-7' },
+                        { text: 'RAM is hardware and very limited.', relearnLessonId: 'w3-d4-7' },
+                        { text: 'GPU memory is extremely expensive and limited.', relearnLessonId: 'w3-d4-7' }
+                      ]
                     }
-                ]
-            }
+                  ]
+                }
+              }
+            ]
+          }
         ]
       },
       {
@@ -3328,14 +3328,14 @@ print(summarize_history(chat))`,
         title: 'Week 4: RAG Implementation',
         description: 'Document processing, Embeddings, and Production RAG.',
         lessons: [
-            {
-                id: 'w4-d1-3',
-                title: 'Day 1-3: Document Processing Pipeline',
-                duration: '3 Days',
-                content: [
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 1. The RAG Pipeline
+          {
+            id: 'w4-d1-3',
+            title: 'Day 1-3: Document Processing Pipeline',
+            duration: '3 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The RAG Pipeline
 Retrieval Augmented Generation ([[RAG]]) starts with data.
 Before an Agent can search your documents, they must go through a pipeline:
 
@@ -3344,14 +3344,14 @@ Before an Agent can search your documents, they must go through a pipeline:
 3.  [[Embeddings]]: Convert text to vectors.
 4.  **Indexing**: Store vectors in a [[Vector_Store]].
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'preprocessing-drill',
-                            language: 'python',
-                            description: 'Assignment: Clean the text. 1) Replace newlines with spaces. 2) Strip leading/trailing whitespace. 3) Convert to lowercase.',
-                            initialCode: `def clean_text(text):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'preprocessing-drill',
+                  language: 'python',
+                  description: 'Assignment: Clean the text. 1) Replace newlines with spaces. 2) Strip leading/trailing whitespace. 3) Convert to lowercase.',
+                  initialCode: `def clean_text(text):
     # TODO: text.replace...
     # TODO: text.strip...
     # TODO: text.lower...
@@ -3359,20 +3359,20 @@ Before an Agent can search your documents, they must go through a pipeline:
 
 raw = "  Title: RAG \\n is cool  "
 print(f"'{clean_text(raw)}'")`,
-                            hints: [
-                                { text: 'Chain the methods: `text.replace(...).strip().lower()`', relearnLessonId: 'w4-d1-3' }
-                            ],
-                            solutionCode: `def clean_text(text):
+                  hints: [
+                    { text: 'Chain the methods: `text.replace(...).strip().lower()`', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def clean_text(text):
     return text.replace("\\n", " ").strip().lower()
 
 raw = "  Title: RAG \\n is cool  "
 print(f"'{clean_text(raw)}'")`,
                   expectedOutput: "'title: rag   is cool'"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 2. Chunking Strategies
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Chunking Strategies
 Why chunk?
 1.  **Context Limits**: You can't fit a whole book in a prompt.
 2.  **Semantic Precision**: A whole book has "mixed" meaning. A paragraph has specific meaning.
@@ -3381,14 +3381,14 @@ Why chunk?
 **Fixed Size**: Split every 500 characters. (Fast, but breaks sentences).
 **Recursive**: Split by \`\\n\\n\`, then \`\\n\`, then \` \`. (Preserves semantic structure).
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'chunking-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `recursive_chunk(text, max_size)`. 1) Split by double newline (paragraphs). 2) If a chunk is too big, split by single newline. 3) Return list of chunks.',
-                            initialCode: `def recursive_chunk(text, max_size):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'chunking-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `recursive_chunk(text, max_size)`. 1) Split by double newline (paragraphs). 2) If a chunk is too big, split by single newline. 3) Return list of chunks.',
+                  initialCode: `def recursive_chunk(text, max_size):
     chunks = []
     # TODO: Split by paragraphs (\\n\\n)
     # TODO: Check size of each paragraph
@@ -3397,11 +3397,11 @@ Why chunk?
 
 text = "Para 1.\\n\\nPara 2 is very long... " * 10
 print(recursive_chunk(text, 50))`,
-                            hints: [
-                                { text: 'Start with `paragraphs = text.split("\\n\\n")`', relearnLessonId: 'w4-d1-3' },
-                                { text: 'Loop through paragraphs. If `len(p) > max_size`, split by `\\n`.', relearnLessonId: 'w4-d1-3' }
-                            ],
-                            solutionCode: `def recursive_chunk(text, max_size):
+                  hints: [
+                    { text: 'Start with `paragraphs = text.split("\\n\\n")`', relearnLessonId: 'w4-d1-3' },
+                    { text: 'Loop through paragraphs. If `len(p) > max_size`, split by `\\n`.', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def recursive_chunk(text, max_size):
     chunks = []
     paragraphs = text.split("\\n\\n")
     for p in paragraphs:
@@ -3416,9 +3416,9 @@ print(recursive_chunk(text, 50))`,
 text = "Para 1.\\n\\nPara 2 is very long and might need splitting."
 print(recursive_chunk(text, 20))`,
                   expectedOutput: "['Para 1.', 'Para 2 is very long ', 'and might need splitt', 'ing.']"
-                        }
-                    },
-                    {
+                }
+              },
+              {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
                   id: 'chunking-overlap-drill',
@@ -3449,22 +3449,22 @@ print(chunk_with_overlap(text, 5, 2))`,
                 }
               },
               {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 3. Metadata Extraction
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Metadata Extraction
 Searching for "Contract" is hard. Searching for "Contract" where \`year=2024\` is easy.
 We extract [[Metadata]] during ingestion.
 
 **Source**: Filename, URL.
 **Content**: Author, Date, Title.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'metadata-drill',
-                            language: 'python',
-                            description: 'Assignment: Extract metadata from a header. Text: "Title: Report\\nDate: 2024-01-01\\n\\nContent...". Return dict `{"title": "Report", "date": "2024-01-01"}`.',
-                            initialCode: `def extract_metadata(text):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'metadata-drill',
+                  language: 'python',
+                  description: 'Assignment: Extract metadata from a header. Text: "Title: Report\\nDate: 2024-01-01\\n\\nContent...". Return dict `{"title": "Report", "date": "2024-01-01"}`.',
+                  initialCode: `def extract_metadata(text):
     meta = {}
     # TODO: Parse lines
     # TODO: Look for "Title:" and "Date:"
@@ -3472,11 +3472,11 @@ We extract [[Metadata]] during ingestion.
 
 doc = "Title: Q3 Report\\nDate: 2023-10-01\\n\\nSales were up..."
 print(extract_metadata(doc))`,
-                            hints: [
-                                { text: 'Split text by lines.', relearnLessonId: 'w4-d1-3' },
-                                { text: 'Use `line.startswith("Title:")`', relearnLessonId: 'w4-d1-3' }
-                            ],
-                            solutionCode: `def extract_metadata(text):
+                  hints: [
+                    { text: 'Split text by lines.', relearnLessonId: 'w4-d1-3' },
+                    { text: 'Use `line.startswith("Title:")`', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def extract_metadata(text):
     meta = {}
     lines = text.split("\\n")
     for line in lines:
@@ -3489,11 +3489,11 @@ print(extract_metadata(doc))`,
 doc = "Title: Q3 Report\\nDate: 2023-10-01\\n\\nSales were up..."
 print(extract_metadata(doc))`,
                   expectedOutput: "{'title': 'Q3 Report', 'date': '2023-10-01'}"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 4. Embedding & Indexing with Vertex AI
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Embedding & Indexing with Vertex AI
 Once chunked, we send text to [[Vertex_AI]] to get [[Embeddings]].
 Then we upload them to **Vertex AI Vector Search**.
 
@@ -3503,22 +3503,22 @@ model = TextEmbeddingModel.from_pretrained("text-embedding-004")
 vectors = model.get_embeddings(["Chunk 1", "Chunk 2"])
 \`\`\`
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-embedding-vis',
+                  title: 'Visualizing Embeddings',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### What does an embedding look like?\nIt is just a list of floating point numbers. The length (dimensions) depends on the model (e.g., 768 for Gemini).'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-embedding-vis',
-                            title: 'Visualizing Embeddings',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### What does an embedding look like?\nIt is just a list of floating point numbers. The length (dimensions) depends on the model (e.g., 768 for Gemini).'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `import random
+                      id: 'c2',
+                      type: 'code',
+                      content: `import random
 
 def mock_embedding(text):
     # Simulate a 5-dimensional embedding
@@ -3526,17 +3526,17 @@ def mock_embedding(text):
 
 print(f"Embedding for 'Hello': {mock_embedding('Hello')}")
 print(f"Embedding for 'World': {mock_embedding('World')}")`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'embedding-gen-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `batch_embed(texts)`. It should return a list of embeddings (mocked as lists of 3 floats).',
-                            initialCode: `def batch_embed(texts):
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'embedding-gen-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `batch_embed(texts)`. It should return a list of embeddings (mocked as lists of 3 floats).',
+                  initialCode: `def batch_embed(texts):
     embeddings = []
     # TODO: Loop through texts
     # TODO: Create a mock list [0.1, 0.2, 0.3] for each
@@ -3544,11 +3544,11 @@ print(f"Embedding for 'World': {mock_embedding('World')}")`
     return embeddings
 
 print(batch_embed(["A", "B"]))`,
-                            hints: [
-                                { text: 'Use a simple for loop.', relearnLessonId: 'w4-d1-3' },
-                                { text: 'Append `[0.1, 0.2, 0.3]` to the list.', relearnLessonId: 'w4-d1-3' }
-                            ],
-                            solutionCode: `def batch_embed(texts):
+                  hints: [
+                    { text: 'Use a simple for loop.', relearnLessonId: 'w4-d1-3' },
+                    { text: 'Append `[0.1, 0.2, 0.3]` to the list.', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def batch_embed(texts):
     embeddings = []
     for t in texts:
         embeddings.append([0.1, 0.2, 0.3])
@@ -3556,31 +3556,31 @@ print(batch_embed(["A", "B"]))`,
 
 print(batch_embed(["A", "B"]))`,
                   expectedOutput: '[[0.1, 0.2, 0.3], [0.1, 0.2, 0.3]]'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 5. Index Creation & Management
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 5. Index Creation & Management
 Vectors are useless if you can't search them fast. We use [[Indexing]].
 In Vertex AI, you create an Index Endpoint and deploy the Index to it.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'index-creation-drill',
-                            language: 'python',
-                            description: 'Assignment: Mock Index Creation. Define `create_index(name, dimensions)`. Return dict `{"name": name, "dims": dimensions, "status": "CREATING"}`.',
-                            initialCode: `def create_index(name, dimensions):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'index-creation-drill',
+                  language: 'python',
+                  description: 'Assignment: Mock Index Creation. Define `create_index(name, dimensions)`. Return dict `{"name": name, "dims": dimensions, "status": "CREATING"}`.',
+                  initialCode: `def create_index(name, dimensions):
     # TODO: Return the config dictionary
     pass
 
 print(create_index("my-rag-index", 768))`,
-                            hints: [
-                                { text: 'Return a dictionary `{...}`', relearnLessonId: 'w4-d1-3' },
-                                { text: 'Ensure keys match instructions.', relearnLessonId: 'w4-d1-3' }
-                            ],
-                            solutionCode: `def create_index(name, dimensions):
+                  hints: [
+                    { text: 'Return a dictionary `{...}`', relearnLessonId: 'w4-d1-3' },
+                    { text: 'Ensure keys match instructions.', relearnLessonId: 'w4-d1-3' }
+                  ],
+                  solutionCode: `def create_index(name, dimensions):
     return {
         "name": name,
         "dims": dimensions,
@@ -3589,18 +3589,18 @@ print(create_index("my-rag-index", 768))`,
 
 print(create_index("my-rag-index", 768))`,
                   expectedOutput: "{'name': 'my-rag-index', 'dims': 768, 'status': 'CREATING'}"
-                        }
-                    }
-                ]
-            },
-            {
-                id: 'w4-d4-5',
-                title: 'Day 4-5: Retrieval Strategies',
-                duration: '2 Days',
-                content: [
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 1. Beyond Simple Search
+                }
+              }
+            ]
+          },
+          {
+            id: 'w4-d4-5',
+            title: 'Day 4-5: Retrieval Strategies',
+            duration: '2 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. Beyond Simple Search
 Retrieving the right document is the hardest part of RAG.
 Simple vector search often fails on specific terms (e.g., part numbers, acronyms).
 
@@ -3609,24 +3609,24 @@ Simple vector search often fails on specific terms (e.g., part numbers, acronyms
 2.  [[Query_Expansion]]: Rewrite the user's query to find what they *meant*, not just what they *said*.
 3.  [[Ranking]]: Re-sort the top results using a smarter model.
 `
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 2. Hybrid Search Implementation
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Hybrid Search Implementation
 We combine scores from two systems.
 **Vector DB**: Returns \`doc_id\` with \`cosine_similarity\`.
 **Keyword DB**: Returns \`doc_id\` with \`BM25_score\`.
 
 We normalize these scores and add them up (Weighted Sum).
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'hybrid-merge-drill',
-                            language: 'python',
-                            description: 'Assignment: Implement `merge_results`. Given `vec_scores` (dict) and `key_scores` (dict), return a dict of `doc_id: final_score`. Use `0.7 * vec + 0.3 * key`.',
-                            initialCode: `def merge_results(vec_scores, key_scores):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'hybrid-merge-drill',
+                  language: 'python',
+                  description: 'Assignment: Implement `merge_results`. Given `vec_scores` (dict) and `key_scores` (dict), return a dict of `doc_id: final_score`. Use `0.7 * vec + 0.3 * key`.',
+                  initialCode: `def merge_results(vec_scores, key_scores):
     final_scores = {}
     # TODO: Iterate through all unique doc_ids
     # TODO: Get vec_score (default 0) and key_score (default 0)
@@ -3636,11 +3636,11 @@ We normalize these scores and add them up (Weighted Sum).
 v_scores = {"doc1": 0.9, "doc2": 0.5}
 k_scores = {"doc2": 0.8, "doc3": 0.6}
 print(merge_results(v_scores, k_scores))`,
-                            hints: [
-                                { text: 'Get all unique keys: `set(vec_scores.keys()) | set(key_scores.keys())`', relearnLessonId: 'w4-d4-5' },
-                                { text: 'Use `.get(id, 0.0)` to handle missing scores.', relearnLessonId: 'w4-d4-5' }
-                            ],
-                            solutionCode: `def merge_results(vec_scores, key_scores):
+                  hints: [
+                    { text: 'Get all unique keys: `set(vec_scores.keys()) | set(key_scores.keys())`', relearnLessonId: 'w4-d4-5' },
+                    { text: 'Use `.get(id, 0.0)` to handle missing scores.', relearnLessonId: 'w4-d4-5' }
+                  ],
+                  solutionCode: `def merge_results(vec_scores, key_scores):
     final_scores = {}
     all_ids = set(vec_scores.keys()) | set(key_scores.keys())
     
@@ -3655,9 +3655,9 @@ v_scores = {"doc1": 0.9, "doc2": 0.5}
 k_scores = {"doc2": 0.8, "doc3": 0.6}
 print(merge_results(v_scores, k_scores))`,
                   expectedOutput: "{'doc1': 0.63, 'doc2': 0.59, 'doc3': 0.18}"
-                        }
-                    },
-                    {
+                }
+              },
+              {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
                   id: 'keyword-scoring-drill',
@@ -3691,33 +3691,33 @@ print(keyword_score("banana", "I love apple pie"))`,
                 }
               },
               {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 3. Query Expansion
+                type: ContentType.MARKDOWN,
+                markdown: `# 3. Query Expansion
 Users write bad queries.
 *User*: "connection error"
 *Docs*: "SocketTimeoutException", "404 Not Found", "DNS Failure"
 
 We use the LLM to **Expand** the query into multiple variations before searching.
 `
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'query-expansion-drill',
-                            language: 'python',
-                            description: 'Assignment: Mock a query expander. If query is "error", return ["error", "bug", "failure"]. If "slow", return ["slow", "latency", "lag"]. Else return [query].',
-                            initialCode: `def expand_query(query):
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'query-expansion-drill',
+                  language: 'python',
+                  description: 'Assignment: Mock a query expander. If query is "error", return ["error", "bug", "failure"]. If "slow", return ["slow", "latency", "lag"]. Else return [query].',
+                  initialCode: `def expand_query(query):
     # TODO: Check keywords
     # TODO: Return list of synonyms
     pass
 
 print(expand_query("I have an error"))
 print(expand_query("It is too slow"))`,
-                            hints: [
-                                { text: 'Check `if "error" in query:`', relearnLessonId: 'w4-d4-5' },
-                                { text: 'Return the list of strings.', relearnLessonId: 'w4-d4-5' }
-                            ],
-                            solutionCode: `def expand_query(query):
+                  hints: [
+                    { text: 'Check `if "error" in query:`', relearnLessonId: 'w4-d4-5' },
+                    { text: 'Return the list of strings.', relearnLessonId: 'w4-d4-5' }
+                  ],
+                  solutionCode: `def expand_query(query):
     if "error" in query:
         return ["error", "bug", "failure"]
     elif "slow" in query:
@@ -3727,11 +3727,11 @@ print(expand_query("It is too slow"))`,
 print(expand_query("I have an error"))
 print(expand_query("It is too slow"))`,
                   expectedOutput: "['error', 'bug', 'failure']\n['slow', 'latency', 'lag']"
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 4. Reranking & Context Optimization
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 4. Reranking & Context Optimization
 After retrieval, we might have 50 documents. We can't fit them all in the [[Context_Window]].
 We use a **Reranker** ([[Cross_Encoder]]) to score them accurately and pick the top 5.
 
@@ -3740,22 +3740,22 @@ We use a **Reranker** ([[Cross_Encoder]]) to score them accurately and pick the 
 **Selection**: Take top N.
 **Compression**: Summarize or remove irrelevant parts of the selected docs.
 `
+              },
+              {
+                type: ContentType.NOTEBOOK,
+                notebook: {
+                  id: 'nb-reranking',
+                  title: 'Vector vs Cross-Encoder',
+                  cells: [
+                    {
+                      id: 'c1',
+                      type: 'markdown',
+                      content: '### Why Rerank?\nVector search is fast but misses nuance. Cross-Encoders are slow but smart. See how the ranking changes.'
                     },
                     {
-                        type: ContentType.NOTEBOOK,
-                        notebook: {
-                            id: 'nb-reranking',
-                            title: 'Vector vs Cross-Encoder',
-                            cells: [
-                                {
-                                    id: 'c1',
-                                    type: 'markdown',
-                                    content: '### Why Rerank?\nVector search is fast but misses nuance. Cross-Encoders are slow but smart. See how the ranking changes.'
-                                },
-                                {
-                                    id: 'c2',
-                                    type: 'code',
-                                    content: `docs = [
+                      id: 'c2',
+                      type: 'code',
+                      content: `docs = [
     {"id": 1, "text": "Apple fruit", "vec_score": 0.9},
     {"id": 2, "text": "Apple iPhone", "vec_score": 0.88}
 ]
@@ -3773,17 +3773,17 @@ def mock_rerank(query, docs):
     return sorted(docs, key=lambda x: x["rerank_score"], reverse=True)
 
 print(mock_rerank(query, docs))`
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'context-packing-drill',
-                            language: 'python',
-                            description: 'Assignment: Context Optimization. Given a list of ranked docs (dicts with "text" and "tokens"), select the top N docs that fit within `max_tokens`. Return the list of selected texts.',
-                            initialCode: `def pack_context(ranked_docs, max_tokens):
+                    }
+                  ]
+                }
+              },
+              {
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'context-packing-drill',
+                  language: 'python',
+                  description: 'Assignment: Context Optimization. Given a list of ranked docs (dicts with "text" and "tokens"), select the top N docs that fit within `max_tokens`. Return the list of selected texts.',
+                  initialCode: `def pack_context(ranked_docs, max_tokens):
     selected_texts = []
     current_tokens = 0
     
@@ -3799,12 +3799,12 @@ docs = [
     {"text": "Doc C", "tokens": 40}
 ]
 print(pack_context(docs, 85))`,
-                            hints: [
-                                { text: 'Loop through `ranked_docs` in order.', relearnLessonId: 'w4-d4-5' },
-                                { text: 'Keep a running total of tokens.', relearnLessonId: 'w4-d4-5' },
-                                { text: 'Stop or skip if the limit is reached.', relearnLessonId: 'w4-d4-5' }
-                            ],
-                            solutionCode: `def pack_context(ranked_docs, max_tokens):
+                  hints: [
+                    { text: 'Loop through `ranked_docs` in order.', relearnLessonId: 'w4-d4-5' },
+                    { text: 'Keep a running total of tokens.', relearnLessonId: 'w4-d4-5' },
+                    { text: 'Stop or skip if the limit is reached.', relearnLessonId: 'w4-d4-5' }
+                  ],
+                  solutionCode: `def pack_context(ranked_docs, max_tokens):
     selected_texts = []
     current_tokens = 0
     
@@ -3822,18 +3822,18 @@ docs = [
 ]
 print(pack_context(docs, 85))`,
                   expectedOutput: "['Doc A', 'Doc B']"
-                        }
-                    }
-                ]
-            },
-            {
-                id: 'w4-d6-7',
-                title: 'Day 6-7: Production RAG System',
-                duration: '2 Days',
-                content: [
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 1. The Final Architecture
+                }
+              }
+            ]
+          },
+          {
+            id: 'w4-d6-7',
+            title: 'Day 6-7: Production RAG System',
+            duration: '2 Days',
+            content: [
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 1. The Final Architecture
 You have built the pieces. Now we assemble the **Production RAG Agent**.
 
 ### Components
@@ -3851,8 +3851,8 @@ You have built the pieces. Now we assemble the **Production RAG Agent**.
     *Step D*: Generate Answer using retrieved facts.
     *Step E*: Save interaction to History.
 `
-                    },
-                    {
+              },
+              {
                 type: ContentType.CODE_PLAYGROUND,
                 codeProject: {
                   id: 'citation-check-drill',
@@ -3876,12 +3876,12 @@ print(check_citation("The sky is blue", "[Doc1]"))`,
                 }
               },
               {
-                        type: ContentType.CODE_PLAYGROUND,
-                        codeProject: {
-                            id: 'capstone-rag-agent',
-                            language: 'python',
-                            description: 'Capstone: Build `KnowledgeAgent`. 1) Implement `retrieve(query)` (return "Fact: Reset via settings"). 2) Implement `chat(user_input)`. It should retrieve facts, append to history, and return "Answer based on [Fact]".',
-                            initialCode: `class KnowledgeAgent:
+                type: ContentType.CODE_PLAYGROUND,
+                codeProject: {
+                  id: 'capstone-rag-agent',
+                  language: 'python',
+                  description: 'Capstone: Build `KnowledgeAgent`. 1) Implement `retrieve(query)` (return "Fact: Reset via settings"). 2) Implement `chat(user_input)`. It should retrieve facts, append to history, and return "Answer based on [Fact]".',
+                  initialCode: `class KnowledgeAgent:
     def __init__(self):
         self.history = []
     
@@ -3897,12 +3897,12 @@ print(check_citation("The sky is blue", "[Doc1]"))`,
 
 bot = KnowledgeAgent()
 print(bot.chat("I forgot my password"))`,
-                            hints: [
-                                { text: 'In `retrieve`, just return "Fact: Go to Settings -> Security".', relearnLessonId: 'w4-d4-5' },
-                                { text: 'In `chat`, call `context = self.retrieve(user_input)`.', relearnLessonId: 'w4-d6-7' },
-                                { text: 'Return f"Answer based on {context}"', relearnLessonId: 'w4-d6-7' }
-                            ],
-                            solutionCode: `class KnowledgeAgent:
+                  hints: [
+                    { text: 'In `retrieve`, just return "Fact: Go to Settings -> Security".', relearnLessonId: 'w4-d4-5' },
+                    { text: 'In `chat`, call `context = self.retrieve(user_input)`.', relearnLessonId: 'w4-d6-7' },
+                    { text: 'Return f"Answer based on {context}"', relearnLessonId: 'w4-d6-7' }
+                  ],
+                  solutionCode: `class KnowledgeAgent:
     def __init__(self):
         self.history = []
     
@@ -3917,11 +3917,11 @@ print(bot.chat("I forgot my password"))`,
 bot = KnowledgeAgent()
 print(bot.chat("I forgot my password"))`,
                   expectedOutput: 'Answer based on Fact: Go to Settings -> Security'
-                        }
-                    },
-                    {
-                        type: ContentType.MARKDOWN,
-                        markdown: `# 2. Evaluation
+                }
+              },
+              {
+                type: ContentType.MARKDOWN,
+                markdown: `# 2. Evaluation
 How do you know your RAG is good?
 We test with **Golden Queries**.
 
@@ -3929,89 +3929,89 @@ We test with **Golden Queries**.
 **Relevance**: Did it answer the user's question?
 **Recall**: Did it find the right document?
 `
+              },
+              {
+                type: ContentType.QUIZ,
+                quiz: {
+                  id: 'quiz-week-4',
+                  title: 'Week 4 Certification Quiz',
+                  questions: [
+                    {
+                      id: 'q1',
+                      question: 'What is the primary purpose of Chunking?',
+                      options: ['To save storage space', 'To fit text into the Context Window and improve semantic precision', 'To encrypt the data', 'To make the text readable by humans'],
+                      correctOptionIndex: 1,
+                      explanation: 'LLMs have token limits. Chunking ensures we only send relevant parts, not the whole library.',
+                      hint: { text: 'Think about "Context Limits".', relearnLessonId: 'w4-d1-3' },
+                      optionExplanations: [
+                        { text: 'Chunking often increases storage overhead due to metadata.', relearnLessonId: 'w4-d1-3' },
+                        { text: 'Correct. It creates bite-sized pieces for the LLM.', relearnLessonId: 'w4-d1-3' },
+                        { text: 'Chunking is not encryption.', relearnLessonId: 'w4-d1-3' },
+                        { text: 'It often breaks sentences, making it harder for humans to read out of context.', relearnLessonId: 'w4-d1-3' }
+                      ]
                     },
                     {
-                        type: ContentType.QUIZ,
-                        quiz: {
-                            id: 'quiz-week-4',
-                            title: 'Week 4 Certification Quiz',
-                            questions: [
-                                {
-                                    id: 'q1',
-                                    question: 'What is the primary purpose of Chunking?',
-                                    options: ['To save storage space', 'To fit text into the Context Window and improve semantic precision', 'To encrypt the data', 'To make the text readable by humans'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'LLMs have token limits. Chunking ensures we only send relevant parts, not the whole library.',
-                                    hint: { text: 'Think about "Context Limits".', relearnLessonId: 'w4-d1-3' },
-                                    optionExplanations: [
-                                        { text: 'Chunking often increases storage overhead due to metadata.', relearnLessonId: 'w4-d1-3' },
-                                        { text: 'Correct. It creates bite-sized pieces for the LLM.', relearnLessonId: 'w4-d1-3' },
-                                        { text: 'Chunking is not encryption.', relearnLessonId: 'w4-d1-3' },
-                                        { text: 'It often breaks sentences, making it harder for humans to read out of context.', relearnLessonId: 'w4-d1-3' }
-                                    ]
-                                },
-                                {
-                                    id: 'q2',
-                                    question: 'What does Hybrid Search combine?',
-                                    options: ['Images and Text', 'Vectors (Semantic) and Keywords (BM25)', 'SQL and NoSQL', 'Python and Java'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'It balances the broad understanding of vectors with the precision of keyword matching.',
-                                    hint: { text: 'Meaning vs Exact Match.', relearnLessonId: 'w4-d4-5' },
-                                    optionExplanations: [
-                                        { text: 'That is Multi-modal search.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Correct. Best of both worlds.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Those are database types.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Those are programming languages.', relearnLessonId: 'w4-d4-5' }
-                                    ]
-                                },
-                                {
-                                    id: 'q3',
-                                    question: 'Why do we need Reranking?',
-                                    options: ['To sort results alphabetically', 'To select the most relevant documents from a larger retrieved set', 'To translate documents', 'To compress documents'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'Vector search is fast but approximate. A Reranker (Cross-Encoder) is slow but accurate, so we use it on the top N results.',
-                                    hint: { text: 'Quality over Quantity.', relearnLessonId: 'w4-d4-5' },
-                                    optionExplanations: [
-                                        { text: 'Alphabetical sorting is rarely useful for relevance.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Correct. It refines the selection for the LLM context.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Translation is a different task.', relearnLessonId: 'w4-d4-5' },
-                                        { text: 'Compression is summarization.', relearnLessonId: 'w4-d4-5' }
-                                    ]
-                                },
-                                {
-                                    id: 'q4',
-                                    question: 'What does "Faithfulness" measure in RAG?',
-                                    options: ['If the answer is polite', 'If the answer comes solely from the retrieved context', 'If the answer is grammatically correct', 'If the answer matches the user\'s opinion'],
-                                    correctOptionIndex: 1,
-                                    explanation: 'Faithfulness ensures the model is not hallucinating info outside the provided documents.',
-                                    hint: { text: 'Is it faithful to the source material?', relearnLessonId: 'w4-d6-7' },
-                                    optionExplanations: [
-                                        { text: 'Politeness is style, not faithfulness.', relearnLessonId: 'w4-d6-7' },
-                                        { text: 'Correct. It checks for hallucinations.', relearnLessonId: 'w4-d6-7' },
-                                        { text: 'Grammar is fluency.', relearnLessonId: 'w4-d6-7' },
-                                        { text: 'That would be "alignment" or "sycophancy".', relearnLessonId: 'w4-d6-7' }
-                                    ]
-                                }
-                            ]
-                        }
+                      id: 'q2',
+                      question: 'What does Hybrid Search combine?',
+                      options: ['Images and Text', 'Vectors (Semantic) and Keywords (BM25)', 'SQL and NoSQL', 'Python and Java'],
+                      correctOptionIndex: 1,
+                      explanation: 'It balances the broad understanding of vectors with the precision of keyword matching.',
+                      hint: { text: 'Meaning vs Exact Match.', relearnLessonId: 'w4-d4-5' },
+                      optionExplanations: [
+                        { text: 'That is Multi-modal search.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Correct. Best of both worlds.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Those are database types.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Those are programming languages.', relearnLessonId: 'w4-d4-5' }
+                      ]
+                    },
+                    {
+                      id: 'q3',
+                      question: 'Why do we need Reranking?',
+                      options: ['To sort results alphabetically', 'To select the most relevant documents from a larger retrieved set', 'To translate documents', 'To compress documents'],
+                      correctOptionIndex: 1,
+                      explanation: 'Vector search is fast but approximate. A Reranker (Cross-Encoder) is slow but accurate, so we use it on the top N results.',
+                      hint: { text: 'Quality over Quantity.', relearnLessonId: 'w4-d4-5' },
+                      optionExplanations: [
+                        { text: 'Alphabetical sorting is rarely useful for relevance.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Correct. It refines the selection for the LLM context.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Translation is a different task.', relearnLessonId: 'w4-d4-5' },
+                        { text: 'Compression is summarization.', relearnLessonId: 'w4-d4-5' }
+                      ]
+                    },
+                    {
+                      id: 'q4',
+                      question: 'What does "Faithfulness" measure in RAG?',
+                      options: ['If the answer is polite', 'If the answer comes solely from the retrieved context', 'If the answer is grammatically correct', 'If the answer matches the user\'s opinion'],
+                      correctOptionIndex: 1,
+                      explanation: 'Faithfulness ensures the model is not hallucinating info outside the provided documents.',
+                      hint: { text: 'Is it faithful to the source material?', relearnLessonId: 'w4-d6-7' },
+                      optionExplanations: [
+                        { text: 'Politeness is style, not faithfulness.', relearnLessonId: 'w4-d6-7' },
+                        { text: 'Correct. It checks for hallucinations.', relearnLessonId: 'w4-d6-7' },
+                        { text: 'Grammar is fluency.', relearnLessonId: 'w4-d6-7' },
+                        { text: 'That would be "alignment" or "sycophancy".', relearnLessonId: 'w4-d6-7' }
+                      ]
                     }
-                ]
-            }
+                  ]
+                }
+              }
+            ]
+          }
         ]
       }
     ]
   },
   {
-      id: 'phase-3',
-      title: 'Phase 3: Advanced Patterns',
-      weeks: [
-          {
-              id: 'week-5',
-              title: 'Week 5: Multi-Agent Systems',
-              description: 'Orchestration, Supervisor patterns, and Workflows.',
-              lessons: []
-          }
-      ]
+    id: 'phase-3',
+    title: 'Phase 3: Advanced Patterns',
+    weeks: [
+      {
+        id: 'week-5',
+        title: 'Week 5: Multi-Agent Systems',
+        description: 'Orchestration, Supervisor patterns, and Workflows.',
+        lessons: []
+      }
+    ]
   }
 ];
 
