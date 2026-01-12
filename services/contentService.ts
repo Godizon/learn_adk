@@ -81,7 +81,7 @@ export const encyclopediaData: Record<string, EncyclopediaEntry> = {
       term: 'Function',
       category: 'Python Basics',
       summary: 'A reusable block of code that performs a specific task.',
-      adkContext: 'Every **[[Tool]]** is a function. It takes input (arguments) and returns output.',
+      adkContext: 'Every [[Tool]] is a function. It takes input (arguments) and returns output.',
       pythonInternals: '`def my_func(arg): return arg * 2`',
       relatedTerms: ['Tool', 'Method']
   },
@@ -214,7 +214,7 @@ for row in results:
       term: 'Hallucination',
       category: 'AI Risks',
       summary: 'When an LLM generates factually incorrect information confidently.',
-      adkContext: 'Agents use **[[Tool]]**s to prevent hallucination. Instead of guessing the weather, they look it up.',
+      adkContext: 'Agents use [[Tool]]s to prevent hallucination. Instead of guessing the weather, they look it up.',
       pythonInternals: 'Caused by the probabilistic nature of the model predicting the next token based on training data, not real-time facts.',
       relatedTerms: ['Grounding', 'Probabilistic']
   },
@@ -223,7 +223,7 @@ for row in results:
       term: 'Grounding',
       category: 'AI Reliability',
       summary: 'Anchoring model outputs to verifiable sources of information.',
-      adkContext: 'Connecting an Agent to a database (like **[[BigQuery]]**) or a Search API grounds its responses in reality.',
+      adkContext: 'Connecting an Agent to a database (like [[BigQuery]]) or a Search API grounds its responses in reality.',
       pythonInternals: 'Often implemented by injecting tool outputs back into the prompt context before the model generates the final answer.',
       relatedTerms: ['Hallucination', 'RAG']
   },
@@ -500,7 +500,7 @@ if resp.status_code == 200:
       term: 'Cross-Encoder',
       category: 'AI Models',
       summary: 'A model that processes two inputs (Query + Document) simultaneously to output a relevance score.',
-      adkContext: 'Used for **[[Ranking]]**. It is slower than Vector Search (Bi-Encoder) but much more accurate because it sees the interaction between words in the query and document.',
+      adkContext: 'Used for [[Ranking]]. It is slower than Vector Search (Bi-Encoder) but much more accurate because it sees the interaction between words in the query and document.',
       pythonInternals: '`score = model.predict([(query, doc)])`',
       relatedTerms: ['Ranking', 'Embeddings']
   },
@@ -509,7 +509,7 @@ if resp.status_code == 200:
       term: 'BM25',
       category: 'Search Algorithms',
       summary: 'Best Matching 25. A ranking function used by search engines to estimate the relevance of documents to a given search query.',
-      adkContext: 'The standard algorithm for **[[Hybrid_Search]]** (Keyword part). It cares about exact word frequency, unlike Vectors.',
+      adkContext: 'The standard algorithm for [[Hybrid_Search]] (Keyword part). It cares about exact word frequency, unlike Vectors.',
       pythonInternals: 'Available in libraries like `rank_bm25`.',
       relatedTerms: ['Hybrid Search', 'TF-IDF']
   },
@@ -828,31 +828,31 @@ Welcome to ADK. The first thing to unlearn is how software typically works.
 
 ### The Old World: Deterministic
 In traditional coding, you write rules: **If A, then B.**
-This is **[[Determinism]]**. It is safe, predictable, and rigid.
+This is [[Determinism]]. It is safe, predictable, and rigid.
 
 ### The New World: Probabilistic
 In AI development, you write goals: **Here is context A, generate result B.**
-This is **[[Probabilistic]]**. The system (the **[[LLM]]**) makes a prediction based on statistical likelihood.
+This is [[Probabilistic]]. The system (the [[LLM]]) makes a prediction based on statistical likelihood.
 
-> **Key Insight:** An ADK **[[Agent]]** is a system designed to make a Probabilistic Engine (the LLM) behave in a Deterministic Way (Reliable Actions) using Tools and Memory.
+**Key Insight:** An ADK [[Agent]] is a system designed to make a Probabilistic Engine (the LLM) behave in a Deterministic Way (Reliable Actions) using Tools and Memory.
 
 # 2. The Cognitive Loop
 Every agent follows a loop, often called the **Reasoning Loop**:
 1.  **Perceive**: Read user input and history.
-2.  **Think**: The LLM processes **[[Token]]**s to decide what to do.
-3.  **Act**: The Agent calls a **[[Tool]]** (like searching a database).
+2.  **Think**: The LLM processes [[Token]]s to decide what to do.
+3.  **Act**: The Agent calls a [[Tool]] (like searching a database).
 4.  **Observe**: The Agent reads the tool's output.
 `
               },
               {
                 type: ContentType.MARKDOWN,
                 markdown: `# 3. The Ghost in the Machine: System Instructions
-Before an Agent enters the loop, it needs a persona. This is the **System Instruction** (a special type of **[[Prompt Engineering]]**).
+Before an Agent enters the loop, it needs a persona. This is the **System Instruction** (a special type of [[Prompt Engineering]]).
 
-*   **User Prompt**: "Book a flight to Paris."
-*   **System Instruction**: "You are a helpful travel agent. Always ask for dates first."
+**User Prompt**: "Book a flight to Paris."
+**System Instruction**: "You are a helpful travel agent. Always ask for dates first."
 
-In ADK, we define this in the **[[Class]]** \`__init__\`. It sets the baseline behavior for the **[[Probabilistic]]** engine.
+In ADK, we define this in the [[Class]] \`__init__\`. It sets the baseline behavior for the [[Probabilistic]] engine.
 `
               },
               {
@@ -973,13 +973,13 @@ print(tokenize("Hello Universe"))`
               {
                 type: ContentType.MARKDOWN,
                 markdown: `# 4. Controlling the Chaos: Temperature
-The **[[LLM]]** is probabilistic. It rolls dice to pick the next word.
+The [[LLM]] is probabilistic. It rolls dice to pick the next word.
 We can control how "wild" these dice are using a parameter called **Temperature**.
 
-*   **Temperature = 0.0**: The model picks the most likely token every time. It becomes almost **[[Determinism]]**. Good for coding and data extraction.
-*   **Temperature = 1.0**: The model takes risks. Good for creative writing.
+**Temperature = 0.0**: The model picks the most likely token every time. It becomes almost [[Determinism]]. Good for coding and data extraction.
+**Temperature = 1.0**: The model takes risks. Good for creative writing.
 
-> **Note:** Even at Temperature 0, there is slight variance due to floating-point math in GPUs. It reduces randomness significantly, but does not strictly eliminate it.`
+**Note:** Even at Temperature 0, there is slight variance due to floating-point math in GPUs. It reduces randomness significantly, but does not strictly eliminate it.`
               },
               {
                 type: ContentType.CODE_PLAYGROUND,
@@ -1023,13 +1023,13 @@ Before writing AI code, we must build the laboratory.
 
 ### The Problem: "It works on my machine"
 Python libraries change often.
-*   Project A needs \`google-cloud-aiplatform==1.0\`
-*   Project B needs \`google-cloud-aiplatform==2.0\`
+Project A needs \`google-cloud-aiplatform==1.0\`
+Project B needs \`google-cloud-aiplatform==2.0\`
 
 If you install these globally, they overwrite each other. This is **Dependency Hell**.
 
 ### The Solution: The Virtual Environment (venv)
-A **[[Virtual_Environment]]** is a self-contained folder that contains a copy of the Python binary and a standalone \`site-packages\` folder.
+A [[Virtual_Environment]] is a self-contained folder that contains a copy of the Python binary and a standalone \`site-packages\` folder.
 
 \`\`\`text
 my-project/
@@ -1042,7 +1042,7 @@ my-project/
 └── requirements.txt    <-- The Recipe
 \`\`\`
 
-When you "activate" a venv, you are telling your shell: *"When I type \`python\`, look in \`my-project/venv/bin\` first, not \`/usr/bin\`."*
+When you **"activate"** a venv, you are telling your shell: "When I type \`python\`, look in \`my-project/venv/bin\` first, not \`/usr/bin\`."
 `
               },
               {
@@ -1050,12 +1050,12 @@ When you "activate" a venv, you are telling your shell: *"When I type \`python\`
                 markdown: `# Analogy: The Sterile Laboratory
 Think of your global Python installation as the outside world. It's messy and full of conflicting bacteria (libraries).
 
-A **[[Virtual_Environment]]** is like a sterile, sealed laboratory box.
+A [[Virtual_Environment]] is like a sterile, sealed laboratory box.
 - **Clean Room**: Nothing is inside except the specific tools (libraries) you explicitly install.
 - **Isolation**: Work you do in Lab A (Project A) cannot contaminate Lab B (Project B).
 - **Reproducibility**: If your experiment works in this lab, you can give someone else the exact same "lab in a box" (the venv + requirements.txt), and it will work for them, too.
 
-> **Pro-Tip:** Never, ever run \`sudo pip install\` or install packages to your system's Python (if you're on Linux/macOS). On Windows, this is just running \`pip install\` from a Command Prompt that is *not* in an activated venv. This is like spilling a test tube in the open air. It leads to contamination and unpredictable results.
+**Pro-Tip:** Never, ever run \`sudo pip install\` or install packages to your system's Python (if you're on Linux/macOS). On Windows, this is just running \`pip install\` from a Command Prompt that is **not** in an activated venv. This is like spilling a test tube in the open air. It leads to contamination and unpredictable results.
 `
               },
               {
@@ -1104,7 +1104,7 @@ pydantic==2.5.3
 python-dotenv==1.0.0
 \`\`\`
 
-> **Best Practice:** Always pin your versions. If you just say \`pydantic\`, a future update might break your code.
+**Best Practice:** Always pin your versions. If you just say \`pydantic\`, a future update might break your code.
 
 To install from a recipe:
 \`\`\`bash
@@ -1129,12 +1129,12 @@ Your code runs on your laptop, but the "Brain" (Gemini) runs in Google's data ce
 
 ### How do they trust you?
 1.  **Service Account**: A digital passport for your robot.
-2.  **[[ADC]] (Application Default Credentials)**: The magic protocol.
-    *   Run \`gcloud auth application-default login\` in your terminal.
-    *   This creates a JSON file on your hard drive.
-    *   The ADK **[[SDK]]** automatically finds this file.
+2.  [[ADC]] (Application Default Credentials)**: The magic protocol.
+    Run \`gcloud auth application-default login\` in your terminal.
+    This creates a JSON file on your hard drive.
+    The ADK [[SDK]] automatically finds this file.
 
-> **Security Rule:** NEVER commit JSON keys to GitHub. Always use ADC or Environment Variables.
+**Security Rule:** NEVER commit JSON keys to GitHub. Always use ADC or Environment Variables.
 `
               },
               {
@@ -1214,12 +1214,12 @@ Separating \`agent.py\` from \`tools\` keeps your code clean as the project grow
                 markdown: `# Anatomy of an Agent
 An Agent is an object that holds **State** (History) and **Configuration** (Model Name).
 
-We build agents using **[[Class]]** syntax.
+We build agents using [[Class]] syntax.
 1.  **\`__init__\`**: The setup. Loads the model, creates memory.
 2.  **\`run\`**: The loop. Takes input, adds to memory, talks to model.
 
 ### The "Self" Concept
-You will see **[[self]]** everywhere. It represents "This specific robot's memory". If you have 50 robots, \`self\` ensures Robot #1 doesn't read Robot #2's memory.
+You will see [[self]] everywhere. It represents "This specific robot's memory". If you have 50 robots, \`self\` ensures Robot #1 doesn't read Robot #2's memory.
 `
               },
               {
@@ -1290,7 +1290,7 @@ r2.say_hello()`
               {
                 type: ContentType.MARKDOWN,
                 markdown: `### Inheritance
-Why write code from scratch? We use **[[Inheritance]]** to steal code from Google's \`BaseAgent\`.
+Why write code from scratch? We use [[Inheritance]] to steal code from Google's \`BaseAgent\`.
 `
               },
               {
@@ -1326,31 +1326,31 @@ class MyBot(Agent):
               {
                 type: ContentType.MARKDOWN,
                 markdown: `# 1. The Hallucination Problem
-LLMs are dream machines. They are **[[Probabilistic]]**. If you ask them "What is the stock price of Google right now?", they will guess (**[[Hallucination]]**) a number because they don't have access to the internet.
+LLMs are dream machines. They are [[Probabilistic]]. If you ask them "What is the stock price of Google right now?", they will guess ([[Hallucination]]) a number because they don't have access to the internet.
 
 ### The Fix: Grounding
-**[[Grounding]]** is the process of connecting the model to reality.
-*   **Ungrounded**: "I think the price is $100." (Guess)
-*   **Grounded**: "I used the 'StockTool' and it returned $175.50." (Fact)
+[[Grounding]] is the process of connecting the model to reality.
+**Ungrounded**: "I think the price is $100." (Guess)
+**Grounded**: "I used the 'StockTool' and it returned $175.50." (Fact)
 
-We achieve Grounding by giving the Agent **[[Tool]]**s.
+We achieve Grounding by giving the Agent [[Tool]]s.
 `
               },
               {
                 type: ContentType.MARKDOWN,
                 markdown: `# 2. Giving the Agent Hands
 By default, an LLM only knows text. It cannot do math perfectly, and it cannot check the weather.
-We give it **[[Tool]]**s.
+We give it [[Tool]]s.
 
 ### How it works
 1.  You write a Python function: \`def add(a: int, b: int)\`
-2.  ADK reads the **[[Type_Hinting]]** and **Docstring**.
-3.  ADK converts this to a **[[JSON_Schema]]**.
-4.  The LLM reads the schema and says: *"Please call function 'add' with a=5, b=10"*
+2.  ADK reads the [[Type_Hinting]] and **Docstring**.
+3.  ADK converts this to a [[JSON_Schema]].
+4.  The LLM reads the schema and says: "**Please call function 'add' with a=5, b=10**"
 
 ### Type Hints & Runtime
 Python is a dynamic language. If you write \`a: int\`, Python doesn't care if you pass a string at runtime.
-**However**, ADK cares. ADK uses these hints to build the **[[JSON_Schema]]**. If the schema says "Integer", the LLM will try to send an Integer.
+**However**, ADK cares. ADK uses these hints to build the [[JSON_Schema]]. If the schema says "Integer", the LLM will try to send an Integer.
 `
               },
               {
@@ -1448,10 +1448,10 @@ def check_stock(product_id: str) -> int:
 You have learned the foundation of Agentic AI.
 
 ### Revision Checklist
-1.  **Architecture**: Do you understand **[[Determinism]]** vs **[[Probabilistic]]** systems? (Review Day 1-2)
-2.  **Environment**: Can you verify you are in a **[[Virtual_Environment]]**? (Review Day 3-4)
-3.  **Agents**: Can you create a **[[Class]]** that inherits from BaseAgent? (Review Day 5)
-4.  **Tools**: Do you understand why **[[Type_Hinting]]** matters for **[[JSON_Schema]]**? (Review Day 6)
+1.  **Architecture**: Do you understand [[Determinism]] vs [[Probabilistic]] systems? (Review Day 1-2)
+2.  **Environment**: Can you verify you are in a [[Virtual_Environment]]? (Review Day 3-4)
+3.  **Agents**: Can you create a [[Class]] that inherits from BaseAgent? (Review Day 5)
+4.  **Tools**: Do you understand why [[Type_Hinting]] matters for [[JSON_Schema]]? (Review Day 6)
 
 # Capstone Project: The Math Tutor
 Your goal is to build a simple Agent that helps students with math.
@@ -1574,10 +1574,10 @@ class MathAgent(Agent):
                   type: ContentType.MARKDOWN,
                   markdown: `# 1. The Memory Problem
 LLMs are stateless. They don't remember what you said 5 seconds ago.
-The **[[Agent]]** solves this by sending the *entire conversation history* back to the model with every new message.
+The [[Agent]] solves this by sending the *entire conversation history* back to the model with every new message.
 
 ### The Limit: Context Window
-Every model has a **[[Context_Window]]**. If you exceed it (e.g., 8000 tokens), the model crashes or forgets the beginning.
+Every model has a [[Context_Window]]. If you exceed it (e.g., 8000 tokens), the model crashes or forgets the beginning.
 
 **Strategies:**
 1.  **FIFO (Sliding Window)**: Keep only the last N messages.
@@ -1654,8 +1654,8 @@ The **System Instruction** is your Agent's DNA.
 
 ### Few-Shot Prompting
 Instead of just telling the agent what to do, *show* it.
-*   **Zero-Shot**: "Extract the sentiment."
-*   **Few-Shot**: "Extract sentiment. Examples: 'I love this' -> POSITIVE. 'I hate this' -> NEGATIVE."
+**Zero-Shot**: "Extract the sentiment."
+**Few-Shot**: "Extract sentiment. Examples: 'I love this' -> POSITIVE. 'I hate this' -> NEGATIVE."
 `
                 },
                 {
@@ -1692,14 +1692,14 @@ print("Few Shot:", simulate_extraction("Analyze this. Example: Output JSON.", te
 Agents aren't just about prompts. You can tune the engine and structure the flow.
 
 ### Key Parameters
-*   **Temperature**: Controls randomness (0.0 = Focused, 1.0 = Creative).
-*   **Max Output Tokens**: Limits verbosity.
-*   **Stop Sequences**: Tells the model when to stop generating (e.g., "User:").
+**Temperature**: Controls randomness (0.0 = Focused, 1.0 = Creative).
+**Max Output Tokens**: Limits verbosity.
+**Stop Sequences**: Tells the model when to stop generating (e.g., "User:").
 
 ### Architecture Patterns
-*   **Zero-Shot Agent**: No history, just one-off tasks.
-*   **Conversational Agent**: Maintains history (Stateful).
-*   **ReAct Agent**: Loops through Thought -> Action -> Observation.`
+**Zero-Shot Agent**: No history, just one-off tasks.
+**Conversational Agent**: Maintains history (Stateful).
+**ReAct Agent**: Loops through Thought -> Action -> Observation.`
                 },
                 {
                   type: ContentType.NOTEBOOK,
@@ -1767,12 +1767,12 @@ print(generate_response("Stop here END", conf))`,
                 {
                   type: ContentType.MARKDOWN,
                   markdown: `# 1. Tool Anatomy & Validation
-When you define a tool, ADK uses **[[Pydantic]]** to validate inputs.
+When you define a tool, ADK uses [[Pydantic]] to validate inputs.
 
 ### The Docstring
-The **[[Docstring]]** is the most important part of a tool. It is the "Prompt" for that specific function.
-*   **Bad**: \`"""Calculates stuff."""\`
-*   **Good**: \`"""Calculates compound interest given principal P, rate R, and time T."""\`
+The [[Docstring]] is the most important part of a tool. It is the "Prompt" for that specific function.
+**Bad**: \`"""Calculates stuff."""\`
+**Good**: \`"""Calculates compound interest given principal P, rate R, and time T."""\`
 `
                 },
                 {
@@ -1835,10 +1835,10 @@ def safe_divide(a: float, b: float) -> str:
                   markdown: `# 2. Complex Types & Schemas
 Tools aren't limited to strings and numbers. You can use Lists and Dictionaries.
 
-*   \`scores: list[int]\`: The LLM will send a JSON array \`[10, 20, 30]\`.
-*   \`metadata: dict[str, str]\`: The LLM will send a JSON object \`{"key": "value"}\`.
+\`scores: list[int]\`: The LLM will send a JSON array \`[10, 20, 30]\`.
+\`metadata: dict[str, str]\`: The LLM will send a JSON object \`{"key": "value"}\`.
 
-> **Warning:** Complex types require strict **[[Type_Hinting]]** so ADK can generate the correct **[[JSON_Schema]]**.`
+**Warning:** Complex types require strict [[Type_Hinting]] so ADK can generate the correct [[JSON_Schema]].`
                 },
                 {
                   type: ContentType.NOTEBOOK,
@@ -1901,7 +1901,7 @@ def analyze_scores(scores: list[int]) -> str:
                 {
                   type: ContentType.MARKDOWN,
                   markdown: `# 3. Built-in ADK Tools
-You don't always have to build from scratch. ADK provides **[[Built_in_Tools]]**.
+You don't always have to build from scratch. ADK provides [[Built_in_Tools]].
 
 1.  **CodeInterpreter**: Gives the agent a Python sandbox to run code (great for math/data).
 2.  **GoogleSearch**: Connects the agent to the web.
@@ -2021,10 +2021,10 @@ print("Tools defined.")`
                   markdown: `# 1. The Cloud Toolbox
 Real agents don't just calculate numbers; they manage data.
 
-*   **[[BigQuery]]**: For structured data (SQL). "How many users signed up yesterday?"
-*   **[[Cloud_Storage]]**: For unstructured data (Files). "Read the PDF in the bucket."
-*   **[[Firestore]]**: For application state. "Save this user's preferences."
-*   **[[Vertex_AI_Search]]**: For searching documents. "Find the policy on remote work."
+[[BigQuery]]: For structured data (SQL). "How many users signed up yesterday?"
+[[Cloud_Storage]]: For unstructured data (Files). "Read the PDF in the bucket."
+[[Firestore]]: For application state. "Save this user's preferences."
+[[Vertex_AI_Search]]: For searching documents. "Find the policy on remote work."
 `
                 },
                 {
@@ -2083,10 +2083,10 @@ Agents live in the real world. They need to talk to external APIs (Slack, Jira, 
 We use standard Python libraries like \`requests\` inside our tools.
 
 ### Tool Chaining
-**[[Tool_Chaining]]** is when the output of Tool A becomes the input of Tool B.
-*   *User*: "Email me the summary of the latest sales report."
-*   *Step 1*: Call \`get_sales_report()\` -> Returns text.
-*   *Step 2*: Call \`send_email(text)\`.
+[[Tool_Chaining]] is when the output of Tool A becomes the input of Tool B.
+*User*: "Email me the summary of the latest sales report."
+*Step 1*: Call \`get_sales_report()\` -> Returns text.
+*Step 2*: Call \`send_email(text)\`.
 `
                 },
                 {
@@ -2163,15 +2163,15 @@ print(send_slack_alert(f"Price is {price}"))`
                 {
                   type: ContentType.MARKDOWN,
                   markdown: `# 3. Going Real: GCP Configuration
-Up until now, we mocked our tools. Now, let's connect to the real **[[GCP_Console]]**.
+Up until now, we mocked our tools. Now, let's connect to the real [[GCP_Console]].
 
 ### Prerequisites
 To run the code below on your local machine, you must:
 1.  **Create a Project**: Go to console.cloud.google.com and create a new project.
 2.  **Enable Billing**: Link a billing account (Free Tier is available).
 3.  **Enable APIs**: Search for and enable:
-    *   **BigQuery API**
-    *   **Cloud Storage API**
+    **BigQuery API**
+    **Cloud Storage API**
 4.  **Install Libraries**:
     \`\`\`bash
     pip install google-cloud-bigquery google-cloud-storage
@@ -2180,7 +2180,7 @@ To run the code below on your local machine, you must:
     \`\`\`bash
     gcloud auth application-default login
     \`\`\`
-    This creates the **[[ADC]]** file your code needs.
+    This creates the [[ADC]] file your code needs.
 `
                 },
                 {
@@ -2382,10 +2382,10 @@ Agents often wait. They wait for APIs, databases, and file reads.
 If your tools are synchronous (blocking), the Agent freezes while waiting.
 
 ### Asynchronous Execution
-By defining tools with \`async def\`, we allow the Agent to handle **[[Parallel_Execution]]**.
+By defining tools with \`async def\`, we allow the Agent to handle [[Parallel_Execution]].
 
-*   **Sync**: Call Tool A (Wait 2s) -> Call Tool B (Wait 2s) = 4s Total.
-*   **Async**: Call Tool A & B together = 2s Total.
+**Sync**: Call Tool A (Wait 2s) -> Call Tool B (Wait 2s) = 4s Total.
+**Async**: Call Tool A & B together = 2s Total.
 `
                     },
                     {
@@ -2560,7 +2560,7 @@ If an Agent asks for the same data twice, it should not call the API twice.
 1.  **In-Memory**: A simple Python dictionary. Fast, but lost on restart.
 2.  **Persistent**: Redis or Firestore. Survives restarts.
 
-We can use a **Decorator** to add **[[Caching]]** to any tool.
+We can use a **Decorator** to add [[Caching]] to any tool.
 `
                     },
                     {
@@ -2631,10 +2631,10 @@ print(expensive_search("A"))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 4. Dynamic Routing & Versioning
 Tools evolve. You might have \`SearchTool_v1\` and \`SearchTool_v2\`.
-Instead of hardcoding, we can use **[[Tool_Routing]]**.
+Instead of hardcoding, we can use [[Tool_Routing]].
 
 ### Deprecation Pattern
-1.  Keep the old tool but mark it deprecated in the **[[Docstring]]**.
+1.  Keep the old tool but mark it deprecated in the [[Docstring]].
 2.  Create a "Router Tool" that decides which version to call based on the user's request or flags.
 
 **Optimization**: Routing prevents the LLM from seeing 100 tools. It only sees the Router, which then picks from the 100.
@@ -2762,27 +2762,27 @@ print(legacy_tool())`
 Just like humans, Agents have two types of memory.
 
 ### Short-Term Memory (Context Window)
-*   **What**: The conversation history sent with every request.
-*   **Limit**: Restricted by the **[[Context_Window]]** (e.g., 8k - 1M tokens).
-*   **Cost**: Expensive (you pay for history every time).
+**What**: The conversation history sent with every request.
+**Limit**: Restricted by the [[Context_Window]] (e.g., 8k - 1M tokens).
+**Cost**: Expensive (you pay for history every time).
 
 ### Long-Term Memory (Vector Store)
-*   **What**: A database of facts, documents, and past conversations.
-*   **Limit**: Infinite.
-*   **Mechanism**: **[[RAG]]** (Retrieval Augmented Generation). The Agent searches the database for relevant info and injects *only that info* into the Short-Term Memory.
+**What**: A database of facts, documents, and past conversations.
+**Limit**: Infinite.
+**Mechanism**: [[RAG]] (Retrieval Augmented Generation). The Agent searches the database for relevant info and injects *only that info* into the Short-Term Memory.
 `
                     },
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 2. Vector Search & Embeddings
-How does an Agent find "relevant" info? It uses **[[Embeddings]]**.
+How does an Agent find "relevant" info? It uses [[Embeddings]].
 An embedding is a list of numbers representing meaning.
 
-*   "Dog": \`[0.9, 0.1]\`
-*   "Puppy": \`[0.8, 0.2]\`
-*   "Car": \`[0.1, 0.9]\`
+"Dog": \`[0.9, 0.1]\`
+"Puppy": \`[0.8, 0.2]\`
+"Car": \`[0.1, 0.9]\`
 
-We use **[[Cosine_Similarity]]** to find vectors that point in the same direction.
+We use [[Cosine_Similarity]] to find vectors that point in the same direction.
 `
                     },
                     {
@@ -2875,7 +2875,7 @@ print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Production: Vertex AI Vector Search
-In production, you don't loop through a dictionary. You use a scalable engine like **[[Vertex_AI_Search]]**.
+In production, you don't loop through a dictionary. You use a scalable engine like [[Vertex_AI_Search]].
 
 **Workflow:**
 1.  **Upload**: Save vectors to a GCS Bucket.
@@ -2918,7 +2918,7 @@ print(endpoint.find_neighbors([0.9, 0.1]))`
 Vectors are great for concepts ("Dog" matches "Puppy").
 But they are bad at exact matches (Part # "X-99").
 
-**[[Hybrid_Search]]** combines:
+[[Hybrid_Search]] combines:
 1.  **Semantic Score** (Cosine Similarity)
 2.  **Keyword Score** (Does the word exist?)
 
@@ -2953,7 +2953,7 @@ print(hybrid_score(0.5, 1.0))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 5. Session Management with Firestore
 Users expect the Agent to remember them when they come back next week.
-We use **[[Firestore]]** to store the conversation history (Session State).
+We use [[Firestore]] to store the conversation history (Session State).
 
 **Pattern:**
 1.  User sends message.
@@ -3020,11 +3020,11 @@ print(load_session("unknown"))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 6. User Preferences
 Beyond history, we store **User Preferences**.
-*   "Talk like a pirate"
-*   "Be concise"
-*   "Use Metric system"
+"Talk like a pirate"
+"Be concise"
+"Use Metric system"
 
-These are stored in **[[Firestore]]** alongside the session but injected into the **System Instruction**.
+These are stored in [[Firestore]] alongside the session but injected into the **System Instruction**.
 `
                     },
                     {
@@ -3124,7 +3124,7 @@ print(prune_history(chat))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 8. Summarization Strategy
 Instead of deleting old messages, we **Summarize** them.
-We ask the LLM: *"Summarize the conversation so far."*
+We ask the LLM: "**Summarize the conversation so far.**"
 Then we replace the history with that summary.
 `
                     },
@@ -3220,13 +3220,13 @@ print(summarize_history(chat))`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 1. The RAG Pipeline
-Retrieval Augmented Generation (**[[RAG]]**) starts with data.
+Retrieval Augmented Generation ([[RAG]]) starts with data.
 Before an Agent can search your documents, they must go through a pipeline:
 
-1.  **[[Ingestion]]**: Read files (PDF, HTML, TXT).
-2.  **[[Chunking]]**: Split text into small pieces.
-3.  **[[Embeddings]]**: Convert text to vectors.
-4.  **Indexing**: Store vectors in a **[[Vector_Store]]**.
+1.  [[Ingestion]]: Read files (PDF, HTML, TXT).
+2.  [[Chunking]]: Split text into small pieces.
+3.  [[Embeddings]]: Convert text to vectors.
+4.  **Indexing**: Store vectors in a [[Vector_Store]].
 `
                     },
                     {
@@ -3261,8 +3261,8 @@ Why chunk?
 2.  **Semantic Precision**: A whole book has "mixed" meaning. A paragraph has specific meaning.
 
 **Strategies:**
-*   **Fixed Size**: Split every 500 characters. (Fast, but breaks sentences).
-*   **Recursive**: Split by \`\\n\\n\`, then \`\\n\`, then \` \`. (Preserves semantic structure).
+**Fixed Size**: Split every 500 characters. (Fast, but breaks sentences).
+**Recursive**: Split by \`\\n\\n\`, then \`\\n\`, then \` \`. (Preserves semantic structure).
 `
                     },
                     {
@@ -3333,10 +3333,10 @@ print(chunk_with_overlap(text, 5, 2))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Metadata Extraction
 Searching for "Contract" is hard. Searching for "Contract" where \`year=2024\` is easy.
-We extract **[[Metadata]]** during ingestion.
+We extract [[Metadata]] during ingestion.
 
-*   **Source**: Filename, URL.
-*   **Content**: Author, Date, Title.
+**Source**: Filename, URL.
+**Content**: Author, Date, Title.
 `
                     },
                     {
@@ -3374,7 +3374,7 @@ print(extract_metadata(doc))`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 4. Embedding & Indexing with Vertex AI
-Once chunked, we send text to **[[Vertex_AI]]** to get **[[Embeddings]]**.
+Once chunked, we send text to [[Vertex_AI]] to get [[Embeddings]].
 Then we upload them to **Vertex AI Vector Search**.
 
 \`\`\`python
@@ -3440,7 +3440,7 @@ print(batch_embed(["A", "B"]))`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 5. Index Creation & Management
-Vectors are useless if you can't search them fast. We use **[[Indexing]]**.
+Vectors are useless if you can't search them fast. We use [[Indexing]].
 In Vertex AI, you create an Index Endpoint and deploy the Index to it.
 `
                     },
@@ -3483,17 +3483,17 @@ Retrieving the right document is the hardest part of RAG.
 Simple vector search often fails on specific terms (e.g., part numbers, acronyms).
 
 **Strategies:**
-1.  **[[Hybrid_Search]]**: Combine Vectors (Meaning) + Keywords (Precision).
-2.  **[[Query_Expansion]]**: Rewrite the user's query to find what they *meant*, not just what they *said*.
-3.  **[[Ranking]]**: Re-sort the top results using a smarter model.
+1.  [[Hybrid_Search]]: Combine Vectors (Meaning) + Keywords (Precision).
+2.  [[Query_Expansion]]: Rewrite the user's query to find what they *meant*, not just what they *said*.
+3.  [[Ranking]]: Re-sort the top results using a smarter model.
 `
                     },
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 2. Hybrid Search Implementation
 We combine scores from two systems.
-*   **Vector DB**: Returns \`doc_id\` with \`cosine_similarity\`.
-*   **Keyword DB**: Returns \`doc_id\` with \`BM25_score\`.
+**Vector DB**: Returns \`doc_id\` with \`cosine_similarity\`.
+**Keyword DB**: Returns \`doc_id\` with \`BM25_score\`.
 
 We normalize these scores and add them up (Weighted Sum).
 `
@@ -3570,8 +3570,8 @@ print(keyword_score("banana", "I love apple pie"))`
                         type: ContentType.MARKDOWN,
                         markdown: `# 3. Query Expansion
 Users write bad queries.
-*   *User*: "connection error"
-*   *Docs*: "SocketTimeoutException", "404 Not Found", "DNS Failure"
+*User*: "connection error"
+*Docs*: "SocketTimeoutException", "404 Not Found", "DNS Failure"
 
 We use the LLM to **Expand** the query into multiple variations before searching.
 `
@@ -3607,13 +3607,13 @@ print(expand_query("It is too slow"))`
                     {
                         type: ContentType.MARKDOWN,
                         markdown: `# 4. Reranking & Context Optimization
-After retrieval, we might have 50 documents. We can't fit them all in the **[[Context_Window]]**.
-We use a **Reranker** (**[[Cross_Encoder]]**) to score them accurately and pick the top 5.
+After retrieval, we might have 50 documents. We can't fit them all in the [[Context_Window]].
+We use a **Reranker** ([[Cross_Encoder]]) to score them accurately and pick the top 5.
 
 **Context Optimization:**
-*   **Ranking**: Sort by relevance.
-*   **Selection**: Take top N.
-*   **Compression**: Summarize or remove irrelevant parts of the selected docs.
+**Ranking**: Sort by relevance.
+**Selection**: Take top N.
+**Compression**: Summarize or remove irrelevant parts of the selected docs.
 `
                     },
                     {
@@ -3719,11 +3719,11 @@ You have built the pieces. Now we assemble the **Production RAG Agent**.
 ### The Flow
 1.  **User**: "How do I reset my password?"
 2.  **Agent**:
-    *   *Step A*: Check History (Context).
-    *   *Step B*: Search Knowledge Base (Retrieval).
-    *   *Step C*: Rerank results.
-    *   *Step D*: Generate Answer using retrieved facts.
-    *   *Step E*: Save interaction to History.
+    *Step A*: Check History (Context).
+    *Step B*: Search Knowledge Base (Retrieval).
+    *Step C*: Rerank results.
+    *Step D*: Generate Answer using retrieved facts.
+    *Step E*: Save interaction to History.
 `
                     },
                     {
@@ -3797,9 +3797,9 @@ print(bot.chat("I forgot my password"))`
 How do you know your RAG is good?
 We test with **Golden Queries**.
 
-*   **Faithfulness**: Did the answer come from the docs?
-*   **Relevance**: Did it answer the user's question?
-*   **Recall**: Did it find the right document?
+**Faithfulness**: Did the answer come from the docs?
+**Relevance**: Did it answer the user's question?
+**Recall**: Did it find the right document?
 `
                     },
                     {
