@@ -18,6 +18,8 @@ export interface CodeProject {
   hints: Hint[];
   language: 'python' | 'javascript' | 'typescript';
   description?: string;
+  expectedOutput?: string;
+  validationType?: 'exact' | 'contains';
 }
 
 export interface NotebookCell {

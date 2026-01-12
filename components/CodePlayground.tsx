@@ -12,6 +12,8 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
   const [output, setOutput] = useState<string | null>(null);
   // Hint state: how many hints are currently revealed. 0 means none.
   const [hintsRevealedCount, setHintsRevealedCount] = useState(0);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [showSolution, setShowSolution] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -25,6 +27,7 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
   const handleRun = async () => {
     setIsRunning(true);
     setOutput(null);
+    setIsCorrect(null);
 
     try {
       const response = await fetch('/execute', {
@@ -34,6 +37,16 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
       });
       const data = await response.json();
       setOutput(data.output);
+
+      // Validation Logic
+      if (project.expectedOutput) {
+        const cleanOutput = (data.output || "").trim();
+        const cleanExpected = project.expectedOutput.trim();
+        const passed = project.validationType === 'contains' 
+            ? cleanOutput.includes(cleanExpected) 
+            : cleanOutput === cleanExpected;
+        setIsCorrect(passed);
+      }
     } catch (error) {
       setOutput(">> Error: Could not connect to Python backend.\n>> Ensure server is running on port 8000.");
     } finally {
@@ -46,6 +59,8 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
       setCode(project.initialCode);
       setOutput(null);
       setHintsRevealedCount(0);
+      setIsCorrect(null);
+      setShowSolution(false);
     }
   };
 
@@ -133,6 +148,54 @@ const CodePlayground: React.FC<CodePlaygroundProps> = ({ project, onNavigate }) 
         <div className="bg-slate-900 text-green-400 p-4 font-mono text-sm border-t border-slate-800">
             <div className="uppercase text-xs text-slate-500 mb-2">Terminal Output</div>
             <pre className="whitespace-pre-wrap">{output}</pre>
+        </div>
+      )}
+
+      {/* Validation Feedback */}
+      {isCorrect !== null && (
+        <div className={`p-4 border-b border-slate-200 ${isCorrect ? 'bg-green-50' : 'bg-red-50'}`}>
+            <div className="flex items-start gap-3">
+                <div className={`mt-0.5 rounded-full p-1 ${isCorrect ? 'bg-green-200 text-green-700' : 'bg-red-200 text-red-700'}`}>
+                    <i className={`fa-solid ${isCorrect ? 'fa-check' : 'fa-xmark'} text-xs w-4 h-4 flex items-center justify-center`}></i>
+                </div>
+                <div className="flex-1">
+                    <h5 className={`text-sm font-bold ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
+                        {isCorrect ? 'Excellent! Output matches expected result.' : 'Incorrect Output'}
+                    </h5>
+                    {!isCorrect && (
+                        <div className="mt-2">
+                            <p className="text-xs text-red-700 mb-3">Your code ran, but the output didn't match the assignment requirements.</p>
+                            <button 
+                                onClick={() => setShowSolution(!showSolution)}
+                                className="text-xs bg-white border border-red-200 text-red-700 px-3 py-1.5 rounded font-semibold hover:bg-red-50 transition-colors shadow-sm"
+                            >
+                                {showSolution ? 'Hide Solution' : 'Reveal Solution'}
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
+            {showSolution && !isCorrect && project.solutionCode && (
+                <div className="mt-4 animate-fadeIn">
+                    <div className="text-xs font-bold text-slate-500 uppercase mb-1">Reference Solution</div>
+                    <div className="relative">
+                        <pre className="bg-slate-800 text-slate-300 p-4 rounded-lg text-xs font-mono overflow-x-auto border border-slate-700">
+                            {project.solutionCode}
+                        </pre>
+                        <button 
+                            onClick={() => {
+                                setCode(project.solutionCode!);
+                                setShowSolution(false);
+                                setIsCorrect(null);
+                                setOutput(null);
+                            }}
+                            className="absolute top-2 right-2 text-[10px] bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded transition-colors"
+                        >
+                            Replace My Code
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
       )}
 

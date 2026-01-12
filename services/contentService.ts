@@ -967,7 +967,8 @@ def tokenize(text):
     return tokens
 
 print(tokenize("Hello World ADK"))
-print(tokenize("Hello Universe"))`
+print(tokenize("Hello Universe"))`,
+                  expectedOutput: '[1, 2, 3]\n[1, 0]'
                 }
               },
               {
@@ -1006,7 +1007,8 @@ print(perceive_and_decide("Tell me a joke"))`,
     elif "time" in user_input.lower():
         return "Action: CheckTime"
     else:
-        return "Action: Chat"`
+        return "Action: Chat"`,
+                  expectedOutput: 'Action: CheckWeather\nAction: Chat'
                 }
               }
             ]
@@ -1088,7 +1090,9 @@ def verify_setup():
     
     if sys.prefix != sys.base_prefix:
         return "Secure: Virtual Env Active"
-    return "Warning: Global Env Detected"`
+    return "Warning: Global Env Detected"`,
+                  expectedOutput: 'Secure: Virtual Env Active',
+                  validationType: 'contains'
                 }
               },
               {
@@ -1248,7 +1252,8 @@ You will see [[self]] everywhere. It represents "This specific robot's memory". 
 
     def chat(self, message):
         self.history.append(message)
-        return f"I have remembered {len(self.history)} messages"`
+        return f"I have remembered {len(self.history)} messages"`,
+                  expectedOutput: 'I have remembered 1 messages'
                 }
               },
               {
@@ -1284,7 +1289,8 @@ r1 = Robot("R2D2")
 r2 = Robot("C3PO")
 
 r1.say_hello()
-r2.say_hello()`
+r2.say_hello()`,
+                  expectedOutput: 'I am R2D2\nI am C3PO'
                 }
               },
               {
@@ -1313,7 +1319,8 @@ class MyBot(Agent):
 
 class MyBot(Agent):
     def __init__(self):
-        super().__init__(name="BotV1")`
+        super().__init__(name="BotV1")`,
+                  expectedOutput: 'BotV1'
                 }
               }
             ]
@@ -1407,7 +1414,8 @@ print(json.dumps(schema, indent=2))`
                   solutionCode: `def greet(name: str, age: int):
     pass
 
-print(greet.__annotations__)`
+print(greet.__annotations__)`,
+                  expectedOutput: "{'name': <class 'str'>, 'age': <class 'int'>}"
                 }
               },
               {
@@ -1432,7 +1440,8 @@ def check_stock...`,
 @tool
 def check_stock(product_id: str) -> int:
     """Returns the quantity of product."""
-    return 42`
+    return 42`,
+                  expectedOutput: '42'
                 }
               }
             ]
@@ -1501,7 +1510,8 @@ class MathAgent(Agent):
     def __init__(self):
         super().__init__(name="MathBot")
         self.tools = [multiply]
-        self.system_instruction = "You are a math tutor."`
+        self.system_instruction = "You are a math tutor."`,
+                  expectedOutput: 'You are a math tutor.\n6'
                 }
               },
               {
@@ -1644,7 +1654,8 @@ print(agent.history)`,
     def add_message(self, msg):
         self.history.append(msg)
         if len(self.history) > self.max_history:
-            self.history.pop(0)`
+            self.history.pop(0)`,
+                  expectedOutput: "['Msg 2', 'Msg 3']"
                   }
                 },
                 {
@@ -1754,7 +1765,8 @@ print(generate_response("Stop here END", conf))`,
     
     if config.get("temperature", 0.5) == 0:
         return f"Precise: {prompt}"
-    return f"Creative: {prompt}"`
+    return f"Creative: {prompt}"`,
+                  expectedOutput: 'Creative: Hello World\nHalted'
                   }
                 }
               ]
@@ -1827,7 +1839,8 @@ def safe_divide(a: float, b: float) -> str:
     try:
         return str(a / b)
     except ZeroDivisionError:
-        return "Error: Cannot divide by zero"`
+        return "Error: Cannot divide by zero"`,
+                  expectedOutput: 'Error: Cannot divide by zero'
                   }
                 },
                 {
@@ -1895,7 +1908,8 @@ def analyze_scores(scores: list[int]) -> str:
     if not scores:
         return "Average: 0"
     avg = sum(scores) / len(scores)
-    return f"Average: {avg:.2f}"`
+    return f"Average: {avg:.2f}"`,
+                  expectedOutput: 'Average: 20.00'
                   }
                 },
                 {
@@ -1950,7 +1964,8 @@ def convert_currency(amount: float, from_curr: str, to_curr: str) -> str:
     rate = RATES.get((from_curr, to_curr))
     if not rate:
         return "Error: Rate not found"
-    return f"{amount * rate:.2f}"`
+    return f"{amount * rate:.2f}"`,
+                  expectedOutput: '85.00'
                   }
                 },
                 {
@@ -2006,7 +2021,8 @@ def generate_uuid() -> str:
     """Generates a unique ID."""
     return "123-abc-456"
 
-print("Tools defined.")`
+print("Tools defined.")`,
+                  expectedOutput: 'Tools defined.'
                   }
                 }
               ]
@@ -2071,7 +2087,8 @@ def add_firestore_doc(collection: str, data: str) -> str:
     """Adds a document to Firestore."""
     return "Doc Added"
 
-print("Cloud tools defined.")`
+print("Cloud tools defined.")`,
+                  expectedOutput: 'Cloud tools defined.'
                   }
                 },
                 {
@@ -2157,7 +2174,8 @@ def send_slack_alert(message: str) -> str:
     return f"Sent: {message}"
 
 price = get_stock_price("GOOG")
-print(send_slack_alert(f"Price is {price}"))`
+print(send_slack_alert(f"Price is {price}"))`,
+                  expectedOutput: 'Sent: Price is 150'
                   }
                 },
                 {
@@ -2301,7 +2319,8 @@ class EnterpriseAgent(Agent):
         self.tools = [query_bigquery, read_gcs_file, write_gcs_file, search_knowledge_base, send_email]
 
 bot = EnterpriseAgent()
-print(f"Agent loaded with {len(bot.tools)} tools.")`
+print(f"Agent loaded with {len(bot.tools)} tools.")`,
+                  expectedOutput: 'Agent loaded with 5 tools.'
                   }
                 },
                 {
@@ -2460,7 +2479,9 @@ async def main():
     print(await slow_fetch(1))
     print(f"End: {time.strftime('%X')}")
 
-asyncio.run(main())`
+asyncio.run(main())`,
+                  expectedOutput: 'Data 1',
+                  validationType: 'contains'
                         }
                     },
                     {
@@ -2547,7 +2568,9 @@ async def main():
     await asyncio.gather(slow_tool(1), slow_tool(2), slow_tool(3))
     print(f"Total Time: {time.time() - start:.2f}s")
 
-asyncio.run(main())`
+asyncio.run(main())`,
+                  expectedOutput: 'Total Time: 1.',
+                  validationType: 'contains'
                         }
                     },
                     {
@@ -2624,7 +2647,8 @@ def expensive_search(query: str) -> str:
     return result
 
 print(expensive_search("A"))
-print(expensive_search("A"))`
+print(expensive_search("A"))`,
+                  expectedOutput: 'Calculating...\nResult for A\nResult for A'
                         }
                     },
                     {
@@ -2703,7 +2727,8 @@ def master_search(query: str) -> str:
     return search_v2(query)
 
 print(master_search("old:Python 2"))
-print(master_search("Python 3"))`
+print(master_search("Python 3"))`,
+                  expectedOutput: 'Legacy Results for old:Python 2\nModern AI Results for Python 3'
                         }
                     },
                     {
@@ -2746,7 +2771,8 @@ def legacy_tool() -> str:
     print("WARNING: Deprecated, use new_tool")
     return "Legacy Data"
 
-print(legacy_tool())`
+print(legacy_tool())`,
+                  expectedOutput: 'WARNING: Deprecated, use new_tool\nLegacy Data'
                         }
                     }
                 ]
@@ -2869,7 +2895,8 @@ def find_closest(query_vector, db):
             best_key = key
     return best_key
 
-print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`
+print(f"Closest to query: {find_closest([0.8, 0.2], DATABASE)}")`,
+                  expectedOutput: 'Closest to query: doc1'
                         }
                     },
                     {
@@ -2909,7 +2936,8 @@ print(endpoint.find_neighbors([0.9, 0.1]))`,
         return ["id_3"]
 
 endpoint = VectorSearchEndpoint()
-print(endpoint.find_neighbors([0.9, 0.1]))`
+print(endpoint.find_neighbors([0.9, 0.1]))`,
+                  expectedOutput: "['id_1', 'id_2']"
                         }
                     },
                     {
@@ -2946,7 +2974,8 @@ print(hybrid_score(0.5, 1.0)) # Med vector, exact keyword`,
     return (vec_score * 0.7) + (key_score * 0.3)
 
 print(hybrid_score(0.9, 0.0))
-print(hybrid_score(0.5, 1.0))`
+print(hybrid_score(0.5, 1.0))`,
+                  expectedOutput: '0.63\n0.65'
                         }
                     },
                     {
@@ -3013,7 +3042,8 @@ def load_session(session_id: str) -> list:
 
 save_session("user123", ["Hello", "Hi there"])
 print(load_session("user123"))
-print(load_session("unknown"))`
+print(load_session("unknown"))`,
+                  expectedOutput: "['Hello', 'Hi there']\n[]"
                         }
                     },
                     {
@@ -3050,7 +3080,8 @@ print(get_system_prompt({"concise": False}))`,
     return "You are a helpful assistant."
 
 print(get_system_prompt({"concise": True}))
-print(get_system_prompt({"concise": False}))`
+print(get_system_prompt({"concise": False}))`,
+                  expectedOutput: 'You are a concise assistant.\nYou are a helpful assistant.'
                         }
                     },
                     {
@@ -3117,7 +3148,8 @@ print(prune_history(chat))`,
     return [history[0]] + ["..."] + history[-3:]
 
 chat = ["System", "Msg1", "Msg2", "Msg3", "Msg4", "Msg5", "Msg6"]
-print(prune_history(chat))`
+print(prune_history(chat))`,
+                  expectedOutput: "['System', '...', 'Msg4', 'Msg5', 'Msg6']"
                         }
                     },
                     {
@@ -3149,7 +3181,8 @@ print(summarize_history(chat))`,
     return f"Summary of {len(history)} messages"
 
 chat = ["Msg1", "Msg2", "Msg3"]
-print(summarize_history(chat))`
+print(summarize_history(chat))`,
+                  expectedOutput: 'Summary of 3 messages'
                         }
                     },
                     {
@@ -3250,7 +3283,8 @@ print(f"'{clean_text(raw)}'")`,
     return text.replace("\\n", " ").strip().lower()
 
 raw = "  Title: RAG \\n is cool  "
-print(f"'{clean_text(raw)}'")`
+print(f"'{clean_text(raw)}'")`,
+                  expectedOutput: "'title: rag   is cool'"
                         }
                     },
                     {
@@ -3297,7 +3331,8 @@ print(recursive_chunk(text, 50))`,
     return chunks
 
 text = "Para 1.\\n\\nPara 2 is very long and might need splitting."
-print(recursive_chunk(text, 20))`
+print(recursive_chunk(text, 20))`,
+                  expectedOutput: "['Para 1.', 'Para 2 is very long ', 'and might need splitt', 'ing.']"
                         }
                     },
                     {
@@ -3326,7 +3361,8 @@ print(chunk_with_overlap(text, 5, 2))`,
     return chunks
 
 text = "abcdefghijklmnop"
-print(chunk_with_overlap(text, 5, 2))`
+print(chunk_with_overlap(text, 5, 2))`,
+                  expectedOutput: "['abcde', 'defgh', 'ghijk', 'jklmn', 'mnop']"
                 }
               },
               {
@@ -3368,7 +3404,8 @@ print(extract_metadata(doc))`,
     return meta
 
 doc = "Title: Q3 Report\\nDate: 2023-10-01\\n\\nSales were up..."
-print(extract_metadata(doc))`
+print(extract_metadata(doc))`,
+                  expectedOutput: "{'title': 'Q3 Report', 'date': '2023-10-01'}"
                         }
                     },
                     {
@@ -3434,7 +3471,8 @@ print(batch_embed(["A", "B"]))`,
         embeddings.append([0.1, 0.2, 0.3])
     return embeddings
 
-print(batch_embed(["A", "B"]))`
+print(batch_embed(["A", "B"]))`,
+                  expectedOutput: '[[0.1, 0.2, 0.3], [0.1, 0.2, 0.3]]'
                         }
                     },
                     {
@@ -3466,7 +3504,8 @@ print(create_index("my-rag-index", 768))`,
         "status": "CREATING"
     }
 
-print(create_index("my-rag-index", 768))`
+print(create_index("my-rag-index", 768))`,
+                  expectedOutput: "{'name': 'my-rag-index', 'dims': 768, 'status': 'CREATING'}"
                         }
                     }
                 ]
@@ -3531,7 +3570,8 @@ print(merge_results(v_scores, k_scores))`,
 
 v_scores = {"doc1": 0.9, "doc2": 0.5}
 k_scores = {"doc2": 0.8, "doc3": 0.6}
-print(merge_results(v_scores, k_scores))`
+print(merge_results(v_scores, k_scores))`,
+                  expectedOutput: "{'doc1': 0.63, 'doc2': 0.59, 'doc3': 0.18}"
                         }
                     },
                     {
@@ -3563,7 +3603,8 @@ print(keyword_score("banana", "I love apple pie"))`,
     return score
 
 print(keyword_score("apple pie", "I love apple pie"))
-print(keyword_score("banana", "I love apple pie"))`
+print(keyword_score("banana", "I love apple pie"))`,
+                  expectedOutput: '2\n0'
                 }
               },
               {
@@ -3601,7 +3642,8 @@ print(expand_query("It is too slow"))`,
     return [query]
 
 print(expand_query("I have an error"))
-print(expand_query("It is too slow"))`
+print(expand_query("It is too slow"))`,
+                  expectedOutput: "['error', 'bug', 'failure']\n['slow', 'latency', 'lag']"
                         }
                     },
                     {
@@ -3695,7 +3737,8 @@ docs = [
     {"text": "Doc B", "tokens": 30},
     {"text": "Doc C", "tokens": 40}
 ]
-print(pack_context(docs, 85))`
+print(pack_context(docs, 85))`,
+                  expectedOutput: "['Doc A', 'Doc B']"
                         }
                     }
                 ]
@@ -3745,7 +3788,8 @@ print(check_citation("The sky is blue", "[Doc1]"))`,
     return source_id in answer
 
 print(check_citation("The sky is blue [Doc1]", "[Doc1]"))
-print(check_citation("The sky is blue", "[Doc1]"))`
+print(check_citation("The sky is blue", "[Doc1]"))`,
+                  expectedOutput: 'True\nFalse'
                 }
               },
               {
@@ -3788,7 +3832,8 @@ print(bot.chat("I forgot my password"))`,
         return f"Answer based on {context}"
 
 bot = KnowledgeAgent()
-print(bot.chat("I forgot my password"))`
+print(bot.chat("I forgot my password"))`,
+                  expectedOutput: 'Answer based on Fact: Go to Settings -> Security'
                         }
                     },
                     {
