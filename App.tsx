@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { syllabusData, getEncyclopediaEntry } from './services/contentService';
 import { NavigationState, EncyclopediaEntry, ContentType } from './types';
 import MarkdownRenderer from './components/MarkdownRenderer';
