@@ -846,14 +846,40 @@ bot.speak()
     pythonInternals: `Syntactic sugar for passing a function into another function.`,
     relatedTerms: ['Wrapper', 'Higher-Order Function']
   },
-  'inheritance': {
-    id: 'inheritance',
-    term: 'Inheritance',
-    category: 'Core Python',
-    summary: 'Basing a class upon another class.',
-    adkContext: '`class MyAgent(BaseAgent):` means your agent gets all the "plumbing" of `BaseAgent` for free.',
-    pythonInternals: 'Python supports multiple inheritance.',
-    relatedTerms: ['Class', 'Super']
+'inheritance': {
+      id: 'inheritance',
+      term: 'Inheritance',
+      category: 'Object-Oriented Programming',
+      summary: 'A mechanism where a new class (Child/Subclass) derives attributes and behavior from an existing class (Parent/Superclass). It allows for code reuse and hierarchical organization.',
+      adkContext: 'In ADK, you almost never write an Agent from scratch. You write `class MyAgent(BaseAgent):`. By inheriting from `BaseAgent`, your code automatically gets the ability to talk to Gemini, manage memory, and handle API errors. You only have to write the specific instructions for *your* agent, while the "parent" handles the boring plumbing.',
+      pythonInternals: `
+\`\`\`python
+class Robot: # Parent
+    def move(self):
+        print("I am moving.")
+
+class FlyingRobot(Robot): # Child
+    # Inherits 'move' automatically
+    
+    # New method specific to Child
+    def fly(self):
+        print("I am flying!")
+
+bot = FlyingRobot()
+bot.move() # Works! (Inherited)
+bot.fly()  # Works! (New)
+\`\`\`
+**Key Concept**: Python supports **Multiple Inheritance** (inheriting from more than one parent), though it is often discouraged due to complexity (The Diamond Problem).`,
+      history: 'Introduced alongside Classes in **Simula 67**. It was designed to model taxonomic hierarchies (e.g., A "Lion" is a "Mammal" is an "Animal"). While revolutionary for code reuse, modern software engineering often prefers "Composition over Inheritance" to avoid rigid, deeply nested hierarchies that become hard to change.',
+      crossLanguage: `
+| Language | Syntax | details |
+| :--- | :--- | :--- |
+| **Java** | \`class B extends A\` | strictly Single Inheritance. A class can only have one parent to prevent conflict. |
+| **C++** | \`class B : public A\` | Supports Multiple Inheritance, giving developers more power but more ways to shoot themselves in the foot. |
+| **Go / Rust** | N/A | These modern languages **rejected** inheritance. They use "Composition" and "Traits/Interfaces" instead to share behavior. |
+`,
+      analogy: 'Think of it like **Genetics**. You (the Child Class) inherit your eye color (Attributes) and your ability to digest lactose (Methods) from your Parents. You don\'t have to "code" your own eyes; you got them for free. However, you can also learn to play the guitar (Extending functionality), which your parents couldn\'t do, or you might choose to dye your hair (Overriding an inherited attribute).',
+      relatedTerms: ['Polymorphism', 'Super', 'Method Overriding', 'Base Class']
   },
   'temperature': {
     id: 'temperature',
