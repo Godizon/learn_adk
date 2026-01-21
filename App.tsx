@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { syllabusData, getEncyclopediaEntry } from './services/contentService';
+import { getEncyclopediaEntry } from './services/encyclopediaService';
+import { adksyllabusData } from './services/contentService';
 import { NavigationState, EncyclopediaEntry, ContentType } from './types';
 import MarkdownRenderer from './components/MarkdownRenderer';
 import EncyclopediaPanel from './components/EncyclopediaPanel';
 import CodePlayground from './components/CodePlayground';
 import Notebook from './components/Notebook';
 import Quiz from './components/Quiz';
+const syllabusData = adksyllabusData;
 
 const App: React.FC = () => {
   // State
@@ -35,8 +37,11 @@ const App: React.FC = () => {
             term: term,
             category: 'Unindexed',
             summary: `This term "${term}" hasn't been added to the local knowledge graph yet.`,
+            analogy: 'TODO',
             adkContext: 'TODO',
             pythonInternals: 'TODO',
+            crossLanguage: 'TODO',
+            history: 'TODO',
             relatedTerms: []
         });
     }
@@ -73,9 +78,9 @@ const App: React.FC = () => {
         <div className="p-6 border-b border-slate-800">
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <i className="fa-solid fa-layer-group text-indigo-400"></i>
-            ADK Hub
+            Learning Hub
           </h1>
-          <p className="text-xs text-slate-500 mt-2 uppercase tracking-widest font-semibold">Learning Platform</p>
+          <p className="text-xs text-slate-500 mt-2 uppercase tracking-widest font-semibold">Learn ADK</p>
         </div>
         
         <nav className="flex-1 overflow-y-auto p-4 space-y-6">

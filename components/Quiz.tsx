@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { QuizData } from '../types';
-import { syllabusData } from '../services/contentService';
-
+import { adksyllabusData } from '../services/contentService';
+const syllabusData = adksyllabusData;
 interface QuizProps {
   quiz: QuizData;
   onNavigate: (lessonId: string) => void;

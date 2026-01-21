@@ -1,5 +1,5 @@
-import { syllabusData } from './contentService';
-
+import { adksyllabusData } from './contentService';
+const syllabusData = adksyllabusData;
 const STORAGE_KEY = 'adk_course_progress';
 
 export interface UserProgress {
@@ -39,4 +39,4 @@ export const markLessonComplete = (lessonId: string) => {
 
 export const isProjectComplete = (projectId: string) => {
   return getProgress().completedProjects.includes(projectId);
-};
+}
