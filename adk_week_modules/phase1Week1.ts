@@ -510,21 +510,21 @@ Why write code from scratch? We use [[Inheritance]] to steal code from Google's 
             id: 'agent-basics-2',
             language: 'python',
             description: 'Assignment: Implement `__init__` calling `super()`. This is CRITICAL for ADK.',
-            initialCode: `from adk.core import Agent
+            initialCode: `from google.adk.agents import Agent
 
 class MyBot(Agent):
     def __init__(self):
         # TODO: Initialize the parent "Agent" class with name="BotV1"
         pass`,
             hints: [
-              { text: 'Use `super().__init__(name="...")`.', relearnLessonId: 'day-5' },
+              { text: 'Use `super().__init__(model="gemini-2.0-flash", name="...")`.', relearnLessonId: 'day-5' },
               { text: 'If you forget this, the agent will crash silently.', relearnLessonId: 'day-5' }
             ],
-            solutionCode: `from adk.core import Agent
+            solutionCode: `from google.adk.agents import Agent
  
 class MyBot(Agent):
     def __init__(self):
-        super().__init__(name="BotV1")
+        super().__init__(model="gemini-2.0-flash", name="BotV1")
 
 print(MyBot().name)`,
             expectedOutput: 'BotV1'
@@ -631,25 +631,25 @@ print(greet.__annotations__)`,
             id: 'tool-def-1',
             language: 'python',
             description: 'Assignment: Define a tool function `check_stock` that takes a `product_id` (str) and returns an `int`. You MUST include type hints and a docstring.',
-            initialCode: `from adk.tools import tool
+            initialCode: `from google.adk.tools import FunctionTool
 
-# TODO: Decorate with @tool
-# TODO: Define function with type hints
-# TODO: Add docstring
-def check_stock...`,
+# TODO: Define function with type hints AND docstring
+# TODO: creates a tool from the function
+def check_stock...
+`,
             hints: [
-              { text: 'Start with `@tool` on the line before `def`.', relearnLessonId: 'day-6' },
               { text: 'Definition: `def check_stock(product_id: str) -> int:`', relearnLessonId: 'day-6' },
-              { text: 'Docstring: `"""Returns the quantity of product."""` inside the function.', relearnLessonId: 'day-6' }
+              { text: 'Docstring: `"""Returns the quantity of product."""` inside the function.', relearnLessonId: 'day-6' },
+              { text: 'Wrap it: `check_stock_tool = FunctionTool(func=check_stock)`', relearnLessonId: 'day-6' }
             ],
-            solutionCode: `from adk.tools import tool
+            solutionCode: `from google.adk.tools import FunctionTool
 
-@tool
 def check_stock(product_id: str) -> int:
     """Returns the quantity of product."""
     return 42
 
-print(check_stock("P123"))`,
+check_stock_tool = FunctionTool(func=check_stock)
+print(check_stock_tool.func("P123"))`,
             expectedOutput: '42'
           }
         }
@@ -684,45 +684,51 @@ It needs:
             id: 'capstone-week-1',
             language: 'python',
             description: 'Capstone: Build the `MathAgent`. 1) Define a tool `multiply`. 2) Initialize the agent with the tool and system instruction.',
-            initialCode: `from adk.core import Agent
-from adk.tools import tool
+            initialCode: `from google.adk.agents import Agent
+from google.adk.tools import FunctionTool
 
-# 1. Define the Tool
-# TODO: @tool multiply(a: int, b: int) -> int
+# 1. Define the Function
+# TODO: def multiply(a: int, b: int) -> int...
 
 class MathAgent(Agent):
     def __init__(self):
         # 2. Init Parent
         # TODO: super().__init__...
         
-        # 3. Register Tool
-        # TODO: self.tools = [multiply]
+        # 3. Create Tool
+        # TODO: multiply_tool = FunctionTool...
         
-        # 4. Set Instruction
-        # TODO: self.system_instruction = "..."
+        # 4. Register Tool
+        # TODO: self.tools = [multiply_tool]
+        
+        # 5. Set Instruction
+        # TODO: self.instruction = "..."
         pass`,
             hints: [
-              { text: 'Define the tool first: `@tool def multiply(a: int, b: int) -> int: return a * b`', relearnLessonId: 'day-6' },
-              { text: 'In `__init__`, call `super().__init__(name="MathBot")`', relearnLessonId: 'day-5' },
-              { text: 'Assign `self.tools = [multiply]` (list of functions)', relearnLessonId: 'day-6' },
-              { text: 'Set `self.system_instruction = "You are a math tutor."`', relearnLessonId: 'day-1-2' }
+              { text: 'Define function: `def multiply(a: int, b: int) -> int: return a * b`', relearnLessonId: 'day-6' },
+              { text: 'Create tool: `multiply_tool = FunctionTool(func=multiply)`', relearnLessonId: 'day-6' },
+              { text: 'In `__init__`, call `super().__init__(model="gemini-2.0-flash", name="MathBot", tools=[multiply_tool], instruction="...")`', relearnLessonId: 'day-5' }
             ],
-            solutionCode: `from adk.core import Agent
-from adk.tools import tool
+            solutionCode: `from google.adk.agents import Agent
+from google.adk.tools import FunctionTool
 
-@tool
 def multiply(a: int, b: int) -> int:
     """Multiplies two integers."""
     return a * b
 
+multiply_tool = FunctionTool(func=multiply)
+
 class MathAgent(Agent):
     def __init__(self):
-        super().__init__(name="MathBot")
-        self.tools = [multiply]
-        self.system_instruction = "You are a math tutor."
+        super().__init__(
+            model="gemini-2.0-flash",
+            name="MathBot",
+            tools=[multiply_tool],
+            instruction="You are a math tutor."
+        )
         
 agent = MathAgent()
-print(agent.system_instruction)
+print(agent.instruction)
 print(multiply(2, 3))`,
             expectedOutput: 'You are a math tutor.\n6'
           }
