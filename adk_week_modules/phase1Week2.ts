@@ -468,8 +468,10 @@ def generate_uuid() -> str:
     """Generates a unique ID."""
     return "123-abc-456"
 
-print("Tools defined.")`,
-            expectedOutput: 'Tools defined.'
+print(reverse_string("hello"))
+print(get_weather("Paris"))
+print(generate_uuid())`,
+            expectedOutput: 'olleh\nRainy\n123-abc-456'
           }
         }
       ]
@@ -793,8 +795,9 @@ class EnterpriseAgent(Agent):
         self.tools = [query_bigquery, read_gcs_file, write_gcs_file, search_knowledge_base, send_email]
 
 bot = EnterpriseAgent()
-print(f"Agent loaded with {len(bot.tools)} tools.")`,
-            expectedOutput: 'Agent loaded with 5 tools.'
+print(f"Agent loaded with {len(bot.tools)} tools.")
+print(f"Test Query: {query_bigquery('SELECT *')}")`,
+            expectedOutput: 'Agent loaded with 5 tools.\nTest Query: rows'
           }
         },
         {
