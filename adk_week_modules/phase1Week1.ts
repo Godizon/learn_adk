@@ -197,7 +197,10 @@ print(perceive_and_decide("Tell me a joke"))`,
     elif "time" in user_input.lower():
         return "Action: CheckTime"
     else:
-        return "Action: Chat"`,
+        return "Action: Chat"
+
+print(perceive_and_decide("What is the weather?"))
+print(perceive_and_decide("Tell me a joke"))`,
             expectedOutput: 'Action: CheckWeather\nAction: Chat'
           }
         }
@@ -280,7 +283,9 @@ def verify_setup():
     
     if sys.prefix != sys.base_prefix:
         return "Secure: Virtual Env Active"
-    return "Warning: Global Env Detected"`,
+    return "Warning: Global Env Detected"
+
+print(verify_setup())`,
             expectedOutput: 'Secure: Virtual Env Active',
             validationType: 'contains'
           }
@@ -516,10 +521,12 @@ class MyBot(Agent):
               { text: 'If you forget this, the agent will crash silently.', relearnLessonId: 'day-5' }
             ],
             solutionCode: `from adk.core import Agent
-
+ 
 class MyBot(Agent):
     def __init__(self):
-        super().__init__(name="BotV1")`,
+        super().__init__(name="BotV1")
+
+print(MyBot().name)`,
             expectedOutput: 'BotV1'
           }
         }
@@ -640,7 +647,9 @@ def check_stock...`,
 @tool
 def check_stock(product_id: str) -> int:
     """Returns the quantity of product."""
-    return 42`,
+    return 42
+
+print(check_stock("P123"))`,
             expectedOutput: '42'
           }
         }
@@ -710,7 +719,11 @@ class MathAgent(Agent):
     def __init__(self):
         super().__init__(name="MathBot")
         self.tools = [multiply]
-        self.system_instruction = "You are a math tutor."`,
+        self.system_instruction = "You are a math tutor."
+        
+agent = MathAgent()
+print(agent.system_instruction)
+print(multiply(2, 3))`,
             expectedOutput: 'You are a math tutor.\n6'
           }
         },

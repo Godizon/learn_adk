@@ -85,7 +85,13 @@ print(agent.history)`,
     def add_message(self, msg):
         self.history.append(msg)
         if len(self.history) > self.max_history:
-            self.history.pop(0)`,
+            self.history.pop(0)
+
+agent = SlidingWindowAgent(max_history=2)
+agent.add_message("Msg 1")
+agent.add_message("Msg 2")
+agent.add_message("Msg 3")
+print(agent.history)`,
             expectedOutput: "['Msg 2', 'Msg 3']"
           }
         },
@@ -196,7 +202,11 @@ print(generate_response("Stop here END", conf))`,
     
     if config.get("temperature", 0.5) == 0:
         return f"Precise: {prompt}"
-    return f"Creative: {prompt}"`,
+    return f"Creative: {prompt}"
+
+conf = {"temperature": 0.7, "stop_sequence": "END"}
+print(generate_response("Hello World", conf))
+print(generate_response("Stop here END", conf))`,
             expectedOutput: 'Creative: Hello World\nHalted'
           }
         }
@@ -270,7 +280,9 @@ def safe_divide(a: float, b: float) -> str:
     try:
         return str(a / b)
     except ZeroDivisionError:
-        return "Error: Cannot divide by zero"`,
+        return "Error: Cannot divide by zero"
+
+print(safe_divide(10, 0))`,
             expectedOutput: 'Error: Cannot divide by zero'
           }
         },
@@ -339,7 +351,9 @@ def analyze_scores(scores: list[int]) -> str:
     if not scores:
         return "Average: 0"
     avg = sum(scores) / len(scores)
-    return f"Average: {avg:.2f}"`,
+    return f"Average: {avg:.2f}"
+
+print(analyze_scores([10, 20, 30]))`,
             expectedOutput: 'Average: 20.00'
           }
         },
@@ -395,7 +409,9 @@ def convert_currency(amount: float, from_curr: str, to_curr: str) -> str:
     rate = RATES.get((from_curr, to_curr))
     if not rate:
         return "Error: Rate not found"
-    return f"{amount * rate:.2f}"`,
+    return f"{amount * rate:.2f}"
+
+print(convert_currency(100, "USD", "EUR"))`,
             expectedOutput: '85.00'
           }
         },
@@ -669,7 +685,34 @@ print(query_bigquery_real(public_sql))`,
               { text: 'Ensure you ran `pip install google-cloud-bigquery` locally.', relearnLessonId: 'w2-d6-7' },
               { text: 'Ensure you ran `gcloud auth application-default login`.', relearnLessonId: 'day-3-4' },
               { text: 'The `bigquery.Client()` call fails if no credentials are found.', relearnLessonId: 'day-3-4' }
-            ]
+            ],
+            solutionCode: `from adk.tools import tool
+# Import the REAL library
+from google.cloud import bigquery
+
+@tool
+def query_bigquery_real(sql: str) -> str:
+    """Executes a real SQL query in BigQuery."""
+    try:
+        # Client automatically finds credentials via ADC
+        client = bigquery.Client()
+        
+        # Run the query
+        query_job = client.query(sql)
+        results = query_job.result()
+        
+        return f"Success: Found {results.total_rows} rows."
+    except Exception as e:
+        return f"GCP Error: {e}"
+
+public_sql = """
+    SELECT name 
+    FROM \`bigquery-public-data.usa_names.usa_1910_2013\` 
+    LIMIT 5
+"""
+print(query_bigquery_real(public_sql))`,
+            expectedOutput: 'Success: Found',
+            validationType: 'contains'
           }
         },
         {

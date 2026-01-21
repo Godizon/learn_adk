@@ -206,7 +206,12 @@ print(result) # Should be 1 + 4 + 9 = 14`,
     return [x*x for x in numbers]
 
 def reduce_task(squares):
-    return sum(squares)`,
+    return sum(squares)
+
+data = [1, 2, 3]
+mapped = map_task(data)
+result = reduce_task(mapped)
+print(result)`,
             expectedOutput: '14'
           }
         },
@@ -264,7 +269,10 @@ def execute_sensitive_action(action):
     if APPROVED:
         print(f"Executing: {action}")
     else:
-        print("Action Blocked: Approval Required")`,
+        print("Action Blocked: Approval Required")
+
+print("--- Test 1 ---")
+execute_sensitive_action("Delete Database")`,
             expectedOutput: '--- Test 1 ---\nAction Blocked: Approval Required'
           }
         },
