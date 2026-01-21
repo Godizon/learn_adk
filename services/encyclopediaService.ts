@@ -973,6 +973,97 @@ Math: Logits are divided by Temperature before the Softmax layer.`,
     adkContext: 'If the "Researcher" agent fails 3 times (e.g., API down), the Circuit Breaker trips and stops the workflow instead of burning money on infinite retries.',
     pythonInternals: '`if failures > 3: raise CircuitBreakerError("Too many failures")`',
     relatedTerms: ['Error Handling', 'Reliability']
+  },
+  // --- Enterprise Integration ---
+  'etl': {
+    id: 'etl',
+    term: 'ETL',
+    category: 'Data Integration',
+    summary: 'Extract, Transform, Load. The standard pipeline for moving data.',
+    adkContext: 'Agents are excellent at the "Transform" step: converting messy JSON/Text into clean structured data for the "Load" step.',
+    pythonInternals: 'Python scripts or Airflow DAGs often run ETL jobs.',
+    relatedTerms: ['BigQuery', 'Batch Processing']
+  },
+  'sql_injection': {
+    id: 'sql_injection',
+    term: 'SQL Injection',
+    category: 'Security',
+    summary: 'A vulnerability where an attacker interferes with the queries an application makes to its database.',
+    adkContext: 'If an Agent allows a user to "Say a name" and inserts that directly into a SQL query, a malicious user could say "Bob; DROP TABLE users". Always validate generated SQL.',
+    pythonInternals: 'Use parameterized queries (`cursor.execute("SELECT * FROM x WHERE id=%s", (id,))`) instead of f-strings.',
+    relatedTerms: ['BigQuery', 'Security']
+  },
+  'oauth': {
+    id: 'oauth',
+    term: 'OAuth 2.0',
+    category: 'Security',
+    summary: 'The industry-standard protocol for authorization.',
+    adkContext: 'Allows your Agent to access a user\'s Google Calendar or Slack without seeing their password. It uses "Access Tokens" and "Refresh Tokens".',
+    pythonInternals: 'Libraries like `google-auth-oauthlib` handle the complex handshake.',
+    relatedTerms: ['Authentication', 'JWT']
+  },
+  'jwt': {
+    id: 'jwt',
+    term: 'JWT',
+    category: 'Security',
+    summary: 'JSON Web Token. A compact, URL-safe means of representing claims to be transferred between two parties.',
+    adkContext: 'Used as a "Bearer Token" in API headers. `Authorization: Bearer <jwt>`. The Agent sends this to prove identity.',
+    pythonInternals: 'Encoded strings that look like `header.payload.signature`.',
+    relatedTerms: ['Authentication', 'OAuth']
+  },
+  'rate_limiting': {
+    id: 'rate_limiting',
+    term: 'Rate Limiting',
+    category: 'API Patterns',
+    summary: 'Controlling the rate of traffic sent or received by a network interface.',
+    adkContext: 'Agents loop fast. If they hit an API 100 times/sec, they get blocked (HTTP 429). Agents must implement "Exponential Backoff" to be good citizens.',
+    pythonInternals: '`time.sleep(2 ** attempts)`',
+    relatedTerms: ['Latency', 'API Integration']
+  },
+  'iam': {
+    id: 'iam',
+    term: 'IAM',
+    category: 'GCP Security',
+    summary: 'Identity and Access Management.',
+    adkContext: 'Controls "Who can do What". You give your Agent a "Service Account" and grant that account "BigQuery Data Viewer" (Role).',
+    pythonInternals: 'GCP specific. In code, you just use the SDK, and IAM checks happen on Google\'s servers.',
+    relatedTerms: ['Service Account', 'Principle of Least Privilege']
+  },
+  'secret_manager': {
+    id: 'secret_manager',
+    term: 'Secret Manager',
+    category: 'GCP Security',
+    summary: 'A secure and convenient storage system for API keys, passwords, and certificates.',
+    adkContext: 'NEVER commit "sk-12345" to GitHub. Store it in Secret Manager, and have the Agent fetch it at runtime.',
+    pythonInternals: '`client.access_secret_version(request={"name": "projects/.../secrets/my-key/versions/1"})`',
+    relatedTerms: ['Environment Variable', 'Security']
+  },
+  'pii': {
+    id: 'pii',
+    term: 'PII',
+    category: 'Privacy',
+    summary: 'Personally Identifiable Information.',
+    adkContext: 'Names, emails, phone numbers. You should redact these before sending data to a public LLM if privacy is a concern.',
+    pythonInternals: 'Regex or Presidio library can detect and redact PII.',
+    relatedTerms: ['Compliance', 'Data Masking']
+  },
+  'audit_logging': {
+    id: 'audit_logging',
+    term: 'Audit Logging',
+    category: 'Governance',
+    summary: 'Recording a chronological record of system activities.',
+    adkContext: 'Important for Enterprise Agents. "Why did the Agent reject that loan application?" The audit log shows the reasoning and data used.',
+    pythonInternals: '`logging.info({"user": "bob", "action": "query", "timestamp": "..."})`',
+    relatedTerms: ['Governance', 'Observability']
+  },
+  'zero_trust': {
+    id: 'zero_trust',
+    term: 'Zero Trust',
+    category: 'Security Architecture',
+    summary: 'A security concept centered on the belief that organizations should not automatically trust anything inside or outside its perimeters.',
+    adkContext: 'Even if the Agent is "internal", check its permissions every time. Verify every input.',
+    pythonInternals: 'Check permissions in every tool function.',
+    relatedTerms: ['IAM', 'Security']
   }
 };
 
