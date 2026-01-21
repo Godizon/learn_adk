@@ -505,6 +505,34 @@ Why write code from scratch? We use [[Inheritance]] to steal code from Google's 
 `
         },
         {
+          type: ContentType.MARKDOWN,
+          markdown: `# The ADK Agent API
+To make a real agent, we use the \`Agent\` class from the ADK library.
+
+### Importing
+\`\`\`python
+from google.adk.agents import Agent
+\`\`\`
+
+### Initialization
+When we inherit from \`Agent\`, we **must** configure it in the \`__init__\` method using \`super()\`:
+
+\`\`\`python
+class MyBot(Agent):
+    def __init__(self):
+        super().__init__(
+            model="gemini-2.0-flash",  # The brain to use
+            name="MyBot_v1",           # Name for logs/telemetry
+            instruction="You are..."   # The System Prompt (Persona)
+        )
+\`\`\`
+**Key Parameters:**
+*   \`model\`: Which Gemini version to use.
+*   \`name\`: Helps you track which agent is talking in the logs.
+*   \`instruction\`: The "Ghost in the Machine". Tells the LLM who it is.
+`
+        },
+        {
           type: ContentType.CODE_PLAYGROUND,
           codeProject: {
             id: 'agent-basics-2',
@@ -624,6 +652,29 @@ print(json.dumps(schema, indent=2))`
 print(greet.__annotations__)`,
             expectedOutput: "{'name': <class 'str'>, 'age': <class 'int'>}"
           }
+        },
+        {
+          type: ContentType.MARKDOWN,
+          markdown: `# The FunctionTool Wrapper
+ADK needs to know more than just your function's code—it needs to know how to **call** it safely. We use \`FunctionTool\` to wrap your Python function.
+
+### Importing
+\`\`\`python
+from google.adk.tools import FunctionTool
+\`\`\`
+
+### Wrapping a Function
+\`\`\`python
+def my_math_func(a: int) -> int:
+    """Doubles the input."""
+    return a * 2
+
+# Create the Tool
+my_tool = FunctionTool(func=my_math_func)
+\`\`\`
+
+Now \`my_tool\` is ready to be given to an Agent!
+`
         },
         {
           type: ContentType.CODE_PLAYGROUND,
