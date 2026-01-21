@@ -71,6 +71,7 @@ export interface Lesson {
 }
 
 export interface Week {
+  phaseid: string;
   id: string;
   title: string;
   description: string;

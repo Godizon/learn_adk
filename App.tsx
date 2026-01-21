@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getEncyclopediaEntry } from './services/encyclopediaService';
-import { adksyllabusData } from './services/contentService';
+import { adksyllabusData } from './services/adkContentService';
 import { NavigationState, EncyclopediaEntry, ContentType } from './types';
 import MarkdownRenderer from './components/MarkdownRenderer';
 import EncyclopediaPanel from './components/EncyclopediaPanel';

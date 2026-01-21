@@ -1,4 +1,4 @@
-import { adksyllabusData } from './contentService';
+import { adksyllabusData } from './adkContentService';
 const syllabusData = adksyllabusData;
 const STORAGE_KEY = 'adk_course_progress';
 
@@ -39,4 +39,4 @@ export const markLessonComplete = (lessonId: string) => {
 
 export const isProjectComplete = (projectId: string) => {
   return getProgress().completedProjects.includes(projectId);
-}
+};

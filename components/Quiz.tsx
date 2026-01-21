@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { QuizData } from '../types';
-import { adksyllabusData } from '../services/contentService';
+import { adksyllabusData } from '../services/adkContentService';
 const syllabusData = adksyllabusData;
 interface QuizProps {
   quiz: QuizData;

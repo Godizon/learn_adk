@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Confetti from 'react-confetti';
 import { CodeProject } from '../types';
-import { adksyllabusData, getLessonByProjectId, getNextLesson } from '../services/contentService';
+import { adksyllabusData, getLessonByProjectId, getNextLesson } from '../services/adkContentService';
 import { markProjectComplete, markLessonComplete, getProgress } from '../services/progressService';
 const syllabusData = adksyllabusData;
 interface CodePlaygroundProps {
