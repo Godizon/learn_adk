@@ -845,13 +845,13 @@ bot.speak()
     pythonInternals: `Syntactic sugar for passing a function into another function.`,
     relatedTerms: ['Wrapper', 'Higher-Order Function']
   },
-'inheritance': {
-      id: 'inheritance',
-      term: 'Inheritance',
-      category: 'Object-Oriented Programming',
-      summary: 'A mechanism where a new class (Child/Subclass) derives attributes and behavior from an existing class (Parent/Superclass). It allows for code reuse and hierarchical organization.',
-      adkContext: 'In ADK, you almost never write an Agent from scratch. You write `class MyAgent(BaseAgent):`. By inheriting from `BaseAgent`, your code automatically gets the ability to talk to Gemini, manage memory, and handle API errors. You only have to write the specific instructions for *your* agent, while the "parent" handles the boring plumbing.',
-      pythonInternals: `
+  'inheritance': {
+    id: 'inheritance',
+    term: 'Inheritance',
+    category: 'Object-Oriented Programming',
+    summary: 'A mechanism where a new class (Child/Subclass) derives attributes and behavior from an existing class (Parent/Superclass). It allows for code reuse and hierarchical organization.',
+    adkContext: 'In ADK, you almost never write an Agent from scratch. You write `class MyAgent(BaseAgent):`. By inheriting from `BaseAgent`, your code automatically gets the ability to talk to Gemini, manage memory, and handle API errors. You only have to write the specific instructions for *your* agent, while the "parent" handles the boring plumbing.',
+    pythonInternals: `
 \`\`\`python
 class Robot: # Parent
     def move(self):
@@ -869,16 +869,16 @@ bot.move() # Works! (Inherited)
 bot.fly()  # Works! (New)
 \`\`\`
 **Key Concept**: Python supports **Multiple Inheritance** (inheriting from more than one parent), though it is often discouraged due to complexity (The Diamond Problem).`,
-      history: 'Introduced alongside Classes in **Simula 67**. It was designed to model taxonomic hierarchies (e.g., A "Lion" is a "Mammal" is an "Animal"). While revolutionary for code reuse, modern software engineering often prefers "Composition over Inheritance" to avoid rigid, deeply nested hierarchies that become hard to change.',
-      crossLanguage: `
+    history: 'Introduced alongside Classes in **Simula 67**. It was designed to model taxonomic hierarchies (e.g., A "Lion" is a "Mammal" is an "Animal"). While revolutionary for code reuse, modern software engineering often prefers "Composition over Inheritance" to avoid rigid, deeply nested hierarchies that become hard to change.',
+    crossLanguage: `
 | Language | Syntax | details |
 | :--- | :--- | :--- |
 | **Java** | \`class B extends A\` | strictly Single Inheritance. A class can only have one parent to prevent conflict. |
 | **C++** | \`class B : public A\` | Supports Multiple Inheritance, giving developers more power but more ways to shoot themselves in the foot. |
 | **Go / Rust** | N/A | These modern languages **rejected** inheritance. They use "Composition" and "Traits/Interfaces" instead to share behavior. |
 `,
-      analogy: 'Think of it like **Genetics**. You (the Child Class) inherit your eye color (Attributes) and your ability to digest lactose (Methods) from your Parents. You don\'t have to "code" your own eyes; you got them for free. However, you can also learn to play the guitar (Extending functionality), which your parents couldn\'t do, or you might choose to dye your hair (Overriding an inherited attribute).',
-      relatedTerms: ['Polymorphism', 'Super', 'Method Overriding', 'Base Class']
+    analogy: 'Think of it like **Genetics**. You (the Child Class) inherit your eye color (Attributes) and your ability to digest lactose (Methods) from your Parents. You don\'t have to "code" your own eyes; you got them for free. However, you can also learn to play the guitar (Extending functionality), which your parents couldn\'t do, or you might choose to dye your hair (Overriding an inherited attribute).',
+    relatedTerms: ['Polymorphism', 'Super', 'Method Overriding', 'Base Class']
   },
   'temperature': {
     id: 'temperature',
@@ -900,6 +900,79 @@ response = model.generate_content(prompt, generation_config=config)
 \`\`\`
 Math: Logits are divided by Temperature before the Softmax layer.`,
     relatedTerms: ['Determinism', 'Probabilistic', 'Hallucination']
+  },
+  // --- Multi-Agent Systems ---
+  'multi_agent_system': {
+    id: 'multi_agent_system',
+    term: 'Multi-Agent System',
+    category: 'Architecture',
+    summary: 'A system composed of multiple interacting intelligent agents.',
+    adkContext: 'Instead of one "God Mode" agent, we use a Researcher, a Writer, and a Reviewer working together. This improves reliability and separation of concerns.',
+    pythonInternals: 'Implemented by instantiating multiple `Agent` classes and defining a workflow to pass messages between them.',
+    relatedTerms: ['Orchestration', 'Supervisor Pattern']
+  },
+  'orchestrator': {
+    id: 'orchestrator',
+    term: 'Orchestrator',
+    category: 'Architecture',
+    summary: 'A component (or agent) that manages the flow of tasks between other agents.',
+    adkContext: 'The Orchestrator is the "Project Manager". It doesn\'t do the work; it assigns tasks to the "Workers" (Agents) and ensures data flows correctly.',
+    pythonInternals: 'Can be a simple Python `if/else` router or a complex State Graph.',
+    relatedTerms: ['Supervisor Pattern', 'Router']
+  },
+  'supervisor_pattern': {
+    id: 'supervisor_pattern',
+    term: 'Supervisor Pattern',
+    category: 'Agent Patterns',
+    summary: 'A centralized orchestration pattern where a "Supervisor" delegates tasks to workers and reviews their output.',
+    adkContext: 'User -> Supervisor -> (Delegates to Researcher) -> Supervisor -> (Delegates to Writer) -> Supervisor -> User.',
+    pythonInternals: 'The Supervisor is often an LLM itself, prompting: "Given the user request, who should act next: [Researcher, Writer, or FINISH]?"',
+    relatedTerms: ['Multi-Agent System', 'Orchestration']
+  },
+  'human_in_the_loop': {
+    id: 'human_in_the_loop',
+    term: 'Human-in-the-Loop',
+    category: 'Governance',
+    summary: 'A design pattern where human interaction is required for critical decisions or approvals.',
+    adkContext: 'Before an Agent sends an email or buys a stock, the workflow pauses. A human reviews the plan and clicks "Approve". Only then does the Agent proceed.',
+    pythonInternals: 'Implemented using "Checkpoints" in the workflow state. `if state["status"] == "awaiting_approval": pause()`.',
+    relatedTerms: ['Governance', 'Circuit Breaker']
+  },
+  'langgraph': {
+    id: 'langgraph',
+    term: 'LangGraph',
+    category: 'Libraries',
+    summary: 'A library for building stateful, multi-agent applications with LLMs.',
+    adkContext: 'ADK uses concepts from LangGraph to define Workflows. It treats agents as nodes in a graph and edges as the transition logic.',
+    pythonInternals: '`graph = StateGraph(State)` ... `graph.add_node("agent", agent_func)` ... `graph.compile()`',
+    relatedTerms: ['Orchestration', 'State Management']
+  },
+  'state_management': {
+    id: 'state_management',
+    term: 'State Management',
+    category: 'Architecture',
+    summary: 'How agents share context and memory (the "Blackboard") in a workflow.',
+    adkContext: 'In a multi-agent system, agents don\'t talk directly. They read/write to a shared State object. Agent A writes a draft to State; Agent B reads it from State.',
+    pythonInternals: 'Usually a TypedDict or Pydantic model: `class State(TypedDict): messages: list`',
+    relatedTerms: ['Multi-Agent System', 'Context Window']
+  },
+  'agent_handoff': {
+    id: 'agent_handoff',
+    term: 'Agent Handoff',
+    category: 'Agent Patterns',
+    summary: 'The process of transferring control from one agent to another.',
+    adkContext: 'When the "triage" agent realizes the user wants technical help, it performs a "Handoff" to the "Support Engineer" agent, passing the conversation history.',
+    pythonInternals: '`return "Delegate to: SupportAgent"`',
+    relatedTerms: ['Router', 'Orchestration']
+  },
+  'circuit_breaker': {
+    id: 'circuit_breaker',
+    term: 'Circuit Breaker',
+    category: 'Reliability',
+    summary: 'A design pattern to stop execution when failure rates exceed a threshold.',
+    adkContext: 'If the "Researcher" agent fails 3 times (e.g., API down), the Circuit Breaker trips and stops the workflow instead of burning money on infinite retries.',
+    pythonInternals: '`if failures > 3: raise CircuitBreakerError("Too many failures")`',
+    relatedTerms: ['Error Handling', 'Reliability']
   }
 };
 
